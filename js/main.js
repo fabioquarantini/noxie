@@ -14,6 +14,10 @@ var siteInit = {
 			siteInit.modalGallery();
 		}
 
+		if ($('.flexslider').length > 0) {
+			siteInit.slider();
+		}
+
 	},
 
 
@@ -48,6 +52,22 @@ var siteInit = {
 			initialWidth: 50,
 			initialHeight: 50,
 			className: "colorbox-gallery"
+		});
+
+	},
+
+
+	/* FlexSlider */
+
+	slider: function() {
+
+		$('.flexslider').flexslider({
+			animation: "slide",
+			slideshow: true,
+			slideshowSpeed: 7000,
+			controlNav: true,
+			directionNav: true,
+			animationSpeed: 600
 		});
 
 	}
