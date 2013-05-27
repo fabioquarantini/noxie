@@ -16,19 +16,18 @@ module.exports = function(grunt) {
 		}
 	},
 	cssmin: {	// https://github.com/gruntjs/grunt-contrib-cssmin
+		// todo: attualmente il file main.css viene sovrascritto 
 		combine: {
 			files: {
-				'css/main.css': ['css/main.css', 'css/reset.css']
+				'css/main.css': ['css/main.min.css', 'css/normalize.min.css']
 			}
 		},
-		cssmin: {
-			minify: {
-				expand: true,
-				cwd: 'css/',
-				src: ['*.css'],
-				dest: 'css/',
-				ext: '.min.css'
-			}
+		minify: {
+			expand: true,
+			cwd: 'css/',
+			src: ['*.css'],
+			dest: 'css/',
+			ext: '.min.css'
 		}
 	},
 	// image-min https://github.com/gruntjs/grunt-contrib-imagemin
@@ -37,9 +36,12 @@ module.exports = function(grunt) {
 			options: {
 				optimizationLevel: 3
 			},
-			files: {
-				'src/*': 'src/*'	// 'destination': 'source'			
-			}
+			files: [{
+				expand: true,
+				cwd: 'img/',
+				src: '*',
+				dest: 'img'
+			}]
 		}
 	},
 	uglify: {
@@ -55,10 +57,10 @@ module.exports = function(grunt) {
 	}
 });
 
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
+grunt.loadNpmTasks('grunt-contrib-concat');
+grunt.loadNpmTasks('grunt-contrib-cssmin');
+grunt.loadNpmTasks('grunt-contrib-uglify');
+grunt.loadNpmTasks('grunt-contrib-imagemin');
 
 
 
