@@ -65,3 +65,4 @@ sitemap.xml.gz
 # Project #
 ###########
 backup/
+node_modules/
