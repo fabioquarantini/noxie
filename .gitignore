@@ -65,8 +65,5 @@ sitemap.xml.gz
 # Project #
 ###########
 backup/
-<<<<<<< HEAD
 node_modules/
-=======
 phpmailer/
->>>>>>> Added backup folder
