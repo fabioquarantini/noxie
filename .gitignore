@@ -67,3 +67,4 @@ sitemap.xml.gz
 backup/
 node_modules/
 phpmailer/
+sftp-config.json
