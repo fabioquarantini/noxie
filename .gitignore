@@ -69,3 +69,5 @@ node_modules/
 phpmailer/
 sftp-config.json
 form.php
+config.rb
+scss/.sass-cache/
