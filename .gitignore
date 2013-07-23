@@ -69,5 +69,8 @@ node_modules/
 mail/
 sftp-config.json
 form.php
+<<<<<<< HEAD
 config.rb
 scss/.sass-cache/
+=======
+>>>>>>> parent of aac8d6b... gitignore

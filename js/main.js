@@ -80,5 +80,5 @@ var siteInit = {
 	==========================================================================  */
 
 $(document).ready(function() {
-	siteInit.DOMready();
+	siteInit.DOMready();	
 });
