@@ -66,7 +66,7 @@ sitemap.xml.gz
 ###########
 backup/
 node_modules/
-phpmailer/
+mail/
 sftp-config.json
 form.php
 config.rb

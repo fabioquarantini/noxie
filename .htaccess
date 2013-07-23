@@ -203,3 +203,19 @@ FileETag None
     ExpiresByType image/svg+xml                         "access plus 1 month"
 
 </IfModule>
+
+
+# http://feross.org/cmsploit/
+
+<Files ~ "(^#.*#|~|\.sw[op])$">
+Order allow,deny
+Deny from all
+</Files>
+
+
+# Deny access to debug log
+
+<Files debug.log>
+   Order allow,deny
+   Deny from all
+</Files>
