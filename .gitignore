@@ -1,16 +1,62 @@
-# Compiled source #
-###################
+#########################################
+# Specific for project
+#########################################
 
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
+backup/
+mail/
+form.php
+config.rb
 
 
-# Packages #
-############
+#########################################
+# Database
+#########################################
+
+*.sql
+*.sqlite
+*.sqlite3
+
+
+#########################################
+# Dropbox
+#########################################
+
+.dropbox
+.dropbox/*
+
+
+#########################################
+# Logs
+#########################################
+
+*.log
+
+
+#########################################
+# Node
+#########################################
+
+npm-debug.log
+node_modules
+
+
+#########################################
+# OSX
+#########################################
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+# Thumbnails
+._*
+.Spotlight-V100
+.Trashes
+
+
+#########################################
+# Packages
+#########################################
 
 *.7z
 *.dmg
@@ -20,32 +66,53 @@
 *.rar
 *.tar
 *.zip
+*.tgz
+*.iso
 
 
-# Logs and databases #
-######################
+#########################################
+# Sass
+#########################################
 
-*.log
-*.sql
-*.sqlite
+*.sass-cache
 
 
-# OS generated files #
-######################
+#########################################
+# Sitemap
+#########################################
 
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-Icon?
-ehthumbs.db
+sitemap.xml
+sitemap.xml.gz
+
+
+#########################################
+# Sublime Text
+#########################################
+
+sftp-config.json
+*.sublime-workspace
+
+
+#########################################
+# Subversion
+#########################################
+
+.svn/
+
+
+#########################################
+# Windows
+#########################################
+
 Thumbs.db
+ehthumbs.db
 Desktop.ini
+$RECYCLE.BIN/
 
 
-# WordPress #
-#############
+#########################################
+# WordPress
+#########################################
 
 wp-config.php
 wp-content/uploads/
@@ -54,20 +121,5 @@ wp-content/upgrade/
 wp-content/backup-db/
 wp-content/advanced-cache.php
 wp-content/wp-cache-config.php
-sitemap.xml
-*.log
 wp-content/cache/
 wp-content/backups/
-sitemap.xml
-sitemap.xml.gz
-
-
-# Project #
-###########
-backup/
-node_modules/
-mail/
-sftp-config.json
-form.php
-config.rb
-.sass-cache/
