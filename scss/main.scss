@@ -3,9 +3,12 @@
 	========================================================================== */
 
 @import "partials/normalize";
+@import "partials/base"
+@import "partials/typography"
+@import "partials/grids"
 @import "vendor/colorbox";
 @import "vendor/flexslider";
-
+@import "partials/helpers"
 
 /*  ==========================================================================
 	Variables (http://sachagreif.com/sass-color-variables/)
@@ -22,19 +25,7 @@ $color-link: $white;
 	Mixin
 	========================================================================== */
 
-/* usage: .selector { @extend %clearfix; } */
-%clearfix:before,
-%clearfix:after {
-	content: " "; 
-	display: table;
-}
- 
-%clearfix:after {
-    clear: both;
-}
-%clearfix {
-    *zoom: 1;
-}
+
 
 
 /*  ==========================================================================
