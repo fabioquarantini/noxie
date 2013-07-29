@@ -55,14 +55,29 @@ module.exports = function(grunt) {
 					'js/plugins.js': ['js/plugins/*.js']
 				}
 			}
-		}
+		},
+		sass: {                                 // Task
+			dev: {  
+				files: {                        // Dictionary of files
+					'css/main.css': 'scss/main.scss'     // 'destination': 'source'
+				},                           // Another target
+				options: {                      // Dictionary of render options
+					outputStyle: 'expanded'
+				},
+				files: {
+					'main.css': 'main.scss'
+				}
+			}
+		},
+
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
-
-	//grunt.registerTask('default', [ 'concat']);
+	grunt.loadNpmTasks('grunt-sass');
+	//grunt.registerTask('default', [ 'sass:dev']);
 
 };
+
