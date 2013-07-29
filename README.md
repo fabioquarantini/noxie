@@ -11,9 +11,9 @@ You may need this project if you need a simple and powerful starting kit for you
 ## What is hangar made of ##
 **Hangar** in it's core uses: 
 
-- [Html5Boilerplate](https://github.com/h5bp/html5-boilerplate)
-- [Grunt](Gru "Gruntjs") 
-- [Sass](https://github.com/nex3/sass)
+- [Html5Boilerplate](http://html5boilerplate.com/)
+- [Grunt](http://gruntjs.com/) 
+- [Sass](http://sass-lang.com/)
 
 
 ## File Architecture and Structure ##
@@ -35,6 +35,7 @@ You may need this project if you need a simple and powerful starting kit for you
  		- _grids.scss
  		- _helpers.scss
  		- _normalize.scss
+ 		- _forms.scss
  		- _typography.scss
  	- vendor/
  		- _colorbox.scss
