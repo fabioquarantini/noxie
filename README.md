@@ -2,7 +2,7 @@
 ## A web development starter kit  ##
 
 **Hangar** is a web development starter kit, provides project architecture and code conventions, it's goal is to ease the web developers job.
-**Hangar** also provides usefull [Grunt](Gru "Gruntjs") tasks specifically made for performance optimization.
+**Hangar** also provides useful [Grunt]("Gruntjs") tasks specifically made for performance optimization.
 
 ## Who needs this ##
 
@@ -17,26 +17,26 @@ You may need this project if you need a simple and powerful starting kit for you
 
 
 ## File Architecture and Structure ##
-- /css
+- css/
 -	main.css
-- /js
-	- /plugins
+- js/
+	- plugins/
  		- console.js
  		- jquery-colorbox-1.4-15.js
  		- jquery-flexslider.2-1.js
- 	- /vendor
+ 	- vendor/
  	 	- jquery-1.10.2.min.js
  	 	- modernizr-2.6.2.min.js
  	- main.js
  	- plugins.js
-- /scss
- 	- /partials
+- scss/
+ 	- partials/
  		- _base.scss
  		- _grids.scss
  		- _helpers.scss
  		- _normalize.scss
  		- _typography.scss
- 	- /vendor
+ 	- vendor/
  		- _colorbox.scss
  		- _flexslider.scss
  	- main.scss
