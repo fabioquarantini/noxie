@@ -62,8 +62,8 @@ module.exports = function(grunt) {
 					'css/main.css': 'scss/main.scss'
 				},
 				options: {
-					sourcemap: true,
-					style: 'expanded', // Requires Sass 3.3.0, which can be installed with gem install sass --pre
+					sourcemap: true,  // Requires Sass 3.3.0, which can be installed with gem install sass --pre
+					style: 'expanded',
 					lineNumbers: true
 				}
 			},

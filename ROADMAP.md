@@ -1,9 +1,11 @@
 # Hangar #
 ## Roadmap ##
 
-**Features that are going to be included:**
+**Features that are in our wishlist:**
 
-- forms.scss Sass form builder module
+- Sass Forms builder module
 - Vertical Rhytm debugger
-- grids 
+- Grids 
 - Styleguide
+- Watch & LiveReload
+- File Versioning? main.css?v=0.1 etc 
