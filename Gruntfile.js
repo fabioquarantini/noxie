@@ -56,27 +56,33 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		sass: {                                 // Task
+		sass: {                                 
 			dev: {  
-				files: {                        // Dictionary of files
-					'css/main.css': 'scss/main.scss'     // 'destination': 'source'
-				},                           // Another target
-				options: {                      // Dictionary of render options
-					outputStyle: 'expanded'
+				files: {                        
+					'css/main.css': 'scss/main.scss'
 				},
-				files: {
-					'main.css': 'main.scss'
+				options: {
+					sourcemap: true,
+					style: 'expanded', // Requires Sass 3.3.0, which can be installed with gem install sass --pre
+					lineNumbers: true
 				}
-			}
-		},
-
+			},
+			dist: {                             
+            	files: {
+	                'css/main.css': 'scss/main.scss'
+    	        },
+        	    options: {
+            		style: 'compressed'
+            	}
+        	}
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-sass');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 	//grunt.registerTask('default', [ 'sass:dev']);
 
 };
