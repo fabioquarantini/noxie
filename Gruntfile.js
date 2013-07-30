@@ -1,12 +1,17 @@
-/*global module:false*/
+/*  ==========================================================================
+	Grunt configuration
+	==========================================================================  */
+
 module.exports = function(grunt) {
 
-	// Project configuration.
 	grunt.initConfig({
-		// Metadata.
+
+		/* Reads dependencies from package.json */
 		pkg: grunt.file.readJSON('package.json'),
 
-		concat: { //https://github.com/gruntjs/grunt-contrib-concat
+
+		/* [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat) */
+		concat: {
 			options: {
 				separator: ';'
 			},
@@ -15,36 +20,9 @@ module.exports = function(grunt) {
 				dest: 'js/plugins.js'
 			}
 		},
-		cssmin: { // https://github.com/gruntjs/grunt-contrib-cssmin
-			// todo: attualmente il file main.css viene sovrascritto 
-			combine: {
-				files: {
-					'css/main.css': ['css/main.min.css', 'css/normalize.min.css']
-				}
-			},
-			minify: {
-				expand: true,
-				cwd: 'css/',
-				src: ['*.css'],
-				dest: 'css/',
-				ext: '.min.css'
-			}
-		},
-		// image-min https://github.com/gruntjs/grunt-contrib-imagemin
-		imagemin: {
-			dist: {
-				options: {
-					optimizationLevel: 3
-				},
-				files: [{
-						expand: true,
-						cwd: 'img/',
-						src: '*',
-						dest: 'img'
-					}
-				]
-			}
-		},
+
+
+		/* [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify) */
 		uglify: {
 			my_target: {
 				options: {
@@ -56,34 +34,78 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		sass: {                                 
-			dev: {  
-				files: {                        
+
+
+		/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */
+		cssmin: {
+			combine: {
+				files: {
+					'css/main.css': ['css/*.min.css']
+				}
+			},
+			minify: {
+				expand: true,
+				cwd: 'css/',
+				src: ['*.css'],
+				dest: 'css/',
+				ext: '.min.css'
+			}
+		},
+
+
+		/* [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin) */
+		imagemin: {
+			dist: {
+				options: {
+					optimizationLevel: 3,
+					progressive: true
+				},
+				files: [{
+						expand: true,
+						cwd: 'img/',
+						src: '*',
+						dest: 'img/optimized/'
+					}
+				]
+			}
+		},
+
+		/* [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass) */
+		/* [ grunt sass:dist ] Compiles main.scss in distribution mode */
+		sass: {
+			dev: {
+				files: {
 					'css/main.css': 'scss/main.scss'
 				},
 				options: {
-					sourcemap: true,  // Requires Sass 3.3.0, which can be installed with gem install sass --pre
+					sourcemap: false,  // Requires Sass 3.3.0, which can be installed with gem install sass --pre
 					style: 'expanded',
-					lineNumbers: true
+					lineNumbers: true,
+					debugInfo: true
 				}
 			},
-			dist: {                             
-            	files: {
-	                'css/main.css': 'scss/main.scss'
-    	        },
-        	    options: {
-            		style: 'compressed'
-            	}
-        	}
+			dist: {
+				files: {
+					'css/main.css': 'scss/main.scss'
+				},
+				options: {
+					style: 'compressed'
+				}
+			}
 		}
 	});
 
+
+	/* Load tasks */
+	
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	//grunt.registerTask('default', [ 'sass:dev']);
+	
+	
+	/* Register tasks */
+	grunt.registerTask('default', [ 'sass:dev']);
 
 };
-
