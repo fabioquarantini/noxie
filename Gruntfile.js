@@ -68,17 +68,17 @@
 					sourcemap: false,  // Requires Sass 3.3.0, which can be installed with gem install sass --pre
 					style: 'expanded',
 					lineNumbers: true,
-					debugInfo: true
+					debugInfo: true // enable if you want to use FireSass
 				}
 			},
-			dist: {
-				files: {
-					'css/main.css': 'scss/main.scss'
-				},
-				options: {
-					style: 'compressed'
+				dist: {
+					files: {
+						'css/main.css': 'scss/main.scss'
+					},
+					options: {
+						style: 'compressed'
+					}
 				}
-			}
 		},
 
 
@@ -94,13 +94,28 @@
 				}
 			}
 		},
+		/* [ grunt watch ] Watches for file changes and optimizes images, concats and minifies scripts in plugins and also starts a livereload server */
 		watch: {
 			css: {
 				files: 'scss/*.scss',
-				tasks: ['sass'],
+				tasks: ['sass:dev'],
 				options: {
-					livereload: true,
+					livereload: true
 				}
+			},
+			src: {
+				files: ['*.html'],
+				options: {
+					livereload: true	
+				}
+			},
+			images: {
+				files: ['img/*.jpg','img/*.jpeg','img/*.JPG', 'img/*.JPEG','img/*.png' ],
+				tasks: ['imagemin']
+			},
+			scripts: {
+				files: 'js/plugins/*.js',
+				tasks: ['concat', 'uglify']
 			}
 		}		
 		
@@ -116,6 +131,6 @@ grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-contrib-watch');
 
 /* Register tasks */
-grunt.registerTask('default', [ 'sass:dev']);
+grunt.registerTask('default', [ 'watch']);
 
 };

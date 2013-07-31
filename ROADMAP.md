@@ -7,5 +7,5 @@
 - Vertical Rhytm debugger
 - Grids 
 - Styleguide
-- Watch & LiveReload
+- <del>Watch & LiveReload</del>
 - File Versioning? main.css?v=0.1 etc 
