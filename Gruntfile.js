@@ -22,20 +22,6 @@ module.exports = function(grunt) {
 		},
 
 
-		/* [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify) */
-		uglify: {
-			my_target: {
-				options: {
-					sourceMapRoot: 'js/plugins/',
-					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> + <%= grunt.template.today("yyyy-mm-dd") %> */'
-				},
-				files: {
-					'js/plugins.js': ['js/plugins/*.js']
-				}
-			}
-		},
-
-
 		/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */
 		cssmin: {
 			combine: {
@@ -70,6 +56,7 @@ module.exports = function(grunt) {
 			}
 		},
 
+
 		/* [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass) */
 		/* [ grunt sass:dist ] Compiles main.scss in distribution mode */
 		sass: {
@@ -93,17 +80,30 @@ module.exports = function(grunt) {
 				}
 			}
 		}
+
+
+		/* [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify) */
+		uglify: {
+			my_target: {
+				options: {
+					sourceMapRoot: 'js/plugins/',
+					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> + <%= grunt.template.today("yyyy-mm-dd") %> */'
+				},
+				files: {
+					'js/plugins.js': ['js/plugins/*.js']
+				}
+			}
+		},
+		
 	});
 
 
 	/* Load tasks */
-	
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	
+	grunt.loadNpmTasks('grunt-contrib-uglify');	
 	
 	/* Register tasks */
 	grunt.registerTask('default', [ 'sass:dev']);
