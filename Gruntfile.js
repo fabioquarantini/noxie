@@ -7,10 +7,12 @@
 		grunt.initConfig({
 
 			/* Reads dependencies from package.json */
+			
 			pkg: grunt.file.readJSON('package.json'),
 
 
 			/* [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat) */
+			
 			concat: {
 				options: {
 					separator: ';'
@@ -23,6 +25,7 @@
 
 
 			/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */
+			
 			cssmin: {
 				combine: {
 					files: {
@@ -40,6 +43,7 @@
 
 
 			/* [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin) */
+			
 			imagemin: {
 				dist: {
 					options: {
@@ -59,6 +63,7 @@
 
 			/* [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass) */
 			/* [ grunt sass:dist ] Compiles main.scss in distribution mode */
+			
 			sass: {
 				dev: {
 					files: {
@@ -82,7 +87,17 @@
 			},
 
 
+			/* [ grunt shell ] Run shell comand (https://github.com/sindresorhus/grunt-shell) */
+
+			shell: {
+				weinre: {
+					command: 'weinre --boundHost -all-'
+				}
+			}
+
+
 			/* [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify) */
+			
 			uglify: {
 				my_target: {
 					options: {
@@ -96,7 +111,8 @@
 			},
 			
 
-			/* [ grunt watch ] Watches for file changes and optimizes images, concats and minifies scripts in plugins and also starts a livereload server */
+			/* [ grunt watch ] Watches for file changes and optimizes images, concats and minifies scripts in plugins and also starts a livereload server (https://github.com/gruntjs/grunt-contrib-watch)*/
+			
 			watch: {
 				css: {
 					files: 'scss/*.scss',
@@ -125,16 +141,13 @@
 						livereload: true
 					}
 				}
-			},
-			shell: {
-				weinre: {
-					command: 'weinre --boundHost -all-'
-				}
 			}
+			
 		});
 
 
 /* Load tasks */
+
 grunt.loadNpmTasks('grunt-contrib-concat');
 grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-imagemin');
@@ -144,6 +157,7 @@ grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-shell');
 
 /* Register tasks */
+
 grunt.registerTask('default', [ 'watch']);
 
 };
