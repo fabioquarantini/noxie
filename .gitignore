@@ -2,10 +2,8 @@
 # Specific for project
 #########################################
 
-backup/
-mail/
-form.php
 config.rb
+img/optimized/
 
 
 #########################################
