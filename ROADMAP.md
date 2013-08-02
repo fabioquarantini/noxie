@@ -8,5 +8,4 @@
 - Grids 
 - Styleguide
 - <del>Watch & LiveReload</del>
-- File Versioning? main.css?v=0.1 etc 
 - <del>Weinre</del>
