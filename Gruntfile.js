@@ -11,6 +11,25 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 
+		/* [ grunt autoprefixer ] Prefixes css3 propreties (https://github.com/nDmitry/grunt-autoprefixer) */
+
+		autoprefixer: {
+			options: {
+				browsers: ['last 3 version', '> 1%', 'ie 8', 'ie 7']
+			},
+			dev: {
+				files: {
+					'css/main.css' : ['css/main.css']
+				}
+			},
+			deploy: {
+				files: {
+					'deploy/css/main.css': ['deploy/css/main.css']	
+				}				
+			}
+		},
+
+
 		/* [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat) */
 		
 		concat: {
@@ -28,42 +47,28 @@ module.exports = function(grunt) {
 		},
 
 
+		/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */			
+		
+		cssmin: {
+			minify: {
+				expand: true,
+				cwd: 'deploy/css/',
+				src: ['main.css'],
+				dest: 'deploy/css/'
+			}
+		},
+
+
 		/* [ grunt copy ] */
 
 		copy: {
 			deploy: {
 				files: [{
 					expand: true, 
-					src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js' ], 
+					src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js', 'img/**/*.gif' ], 
 					dest: 'deploy/', 
 					filter: 'isFile'
 				}]
-			}
-		},
-
-
-		/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */			
-		
-		cssmin: {
-			dev: {
-				combine: {
-					files: {
-						'css/main.css': ['css/*.css']
-					}
-				}
-			},
-			deploy: {
-				minify: {
-					expand: true,
-					cwd: 'deploy/css/',
-					src: ['*.css'],
-					dest: 'deploy/css/'
-				},
-				combine: {
-					files: {
-						'deploy/css/main.css': ['deploy/css/*.css']
-					}
-				}
 			}
 		},
 
@@ -86,7 +91,7 @@ module.exports = function(grunt) {
 			deploy: {
 				files: [{
 					expand: true,
-					cwd: 'img/',
+					cwd: 'img/original',
 					src: '*',
 					dest: 'deploy/img/'
 				}]
@@ -157,7 +162,7 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: 'scss/*.scss',
-				tasks: ['sass:dev'],
+				tasks: ['sass:dev', 'autoprefixer:dev'],
 				options: {
 					livereload: true
 				}
@@ -189,6 +194,7 @@ module.exports = function(grunt) {
 
 	/* Load tasks */
 
+	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -199,7 +205,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 
 
-	grunt.registerTask('default', [ 'sass:dev', 'imagemin:dev', 'concat:dev', 'shell:weinre', 'watch']);
-	grunt.registerTask('deploy', [ 'sass:deploy', 'imagemin', 'concat:deploy','uglify:deploy', 'copy:deploy']);
+	grunt.registerTask('default', [ 'sass:dev', 'imagemin:dev', 'concat:dev', 'watch']);
+	grunt.registerTask('deploy', [ 'sass:deploy', 'autoprefixer:deploy', 'cssmin', 'imagemin', 'concat:deploy','uglify:deploy', 'copy:deploy']);
 
 };
