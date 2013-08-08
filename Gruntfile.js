@@ -17,35 +17,55 @@
 				options: {
 					separator: ';'
 				},
-				dist: {
+				dev: {
 					src: ['js/plugins/*.js'],
 					dest: 'js/plugins.js'
+				},
+				deploy: {
+					src: ['js/plugins/*.js', '!js/plugins/livereload.js', '!js/plugins/weinre.js'],
+					dest: 'deploy/js/plugins.js'
+				}
+			},
+			copy: {
+				deploy: {
+					files: [{
+						expand: true, 
+						src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js' ], 
+						dest: 'deploy/', 
+						filter: 'isFile'
+					}]
 				}
 			},
 
-
-			/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */
-			
+			/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */			
 			cssmin: {
-				combine: {
-					files: {
-						'css/main.css': ['css/*.min.css']
+				dev: {
+					combine: {
+						files: {
+							'css/main.css': ['css/*.css']
+						}
 					}
 				},
-				minify: {
-					expand: true,
-					cwd: 'css/',
-					src: ['*.css'],
-					dest: 'css/',
-					ext: '.min.css'
-				}
+				deploy: {
+					minify: {
+						expand: true,
+						cwd: 'deploy/css/',
+						src: ['*.css'],
+						dest: 'deploy/css/'
+					},
+					combine: {
+						files: {
+							'deploy/css/main.css': ['deploy/css/*.css']
+						}
+					}
+				}				
 			},
 
 
 			/* [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin) */
 			
 			imagemin: {
-				dist: {
+				deploy: {
 					options: {
 						optimizationLevel: 3,
 						progressive: true
@@ -54,7 +74,7 @@
 						expand: true,
 						cwd: 'img/',
 						src: '*',
-						dest: 'img/optimized/'
+						dest: 'deploy/img/'
 					}
 					]
 				}
@@ -62,7 +82,7 @@
 
 
 			/* [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass) */
-			/* [ grunt sass:dist ] Compiles main.scss in distribution mode */
+			/* [ grunt sass:deploy ] Compiles main.scss in distribution mode */
 			
 			sass: {
 				dev: {
@@ -76,9 +96,9 @@
 						debugInfo: true // enable if you want to use FireSass
 					}
 				},
-				dist: {
+				deploy: {
 					files: {
-						'css/main.css': 'scss/main.scss'
+						'deploy/css/main.css': 'scss/main.scss'
 					},
 					options: {
 						style: 'compressed'
@@ -91,22 +111,32 @@
 
 			shell: {
 				weinre: {
-					command: 'weinre --boundHost -all-'
+					command: 'weinre --boundHost -all-'	
 				}
-			}
+			},
 
 
 			/* [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify) */
 			
-			uglify: {
-				my_target: {
+			uglify: {	
+				deploy: {
 					options: {
 						sourceMapRoot: 'js/plugins/',
 						banner: '/*! <%= pkg.name %> - v<%= pkg.version %> + <%= grunt.template.today("yyyy-mm-dd") %> */'
+					},			
+					files: {
+						'deploy/js/plugins.js': ['deploy/js/plugins.js'],
+						'deploy/js/main.js': ['js/main.js']
+					}
+					
+				},
+				dev: {
+					files: {
+						'js/plugins.js': ['deploy/js/plugins.js']
 					},
 					files: {
-						'js/plugins.js': ['js/plugins/*.js']
-					}
+						'js/main.js': ['js/main.js']
+					}						
 				}
 			},
 			
@@ -127,13 +157,9 @@
 						livereload: true	
 					}
 				},
-				images: {
-					files: ['img/*.jpg','img/*.jpeg','img/*.JPG', 'img/*.JPEG','img/*.png' ],
-					tasks: ['imagemin']
-				},
 				plugins: {
 					files: 'js/plugins/*.js',
-					tasks: ['concat', 'uglify']
+					tasks: ['concat']
 				},
 				scripts: {
 					files: ['js/main.js','js/plugins.js'],
@@ -149,6 +175,7 @@
 /* Load tasks */
 
 grunt.loadNpmTasks('grunt-contrib-concat');
+grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-imagemin');
 grunt.loadNpmTasks('grunt-contrib-sass');
@@ -156,8 +183,10 @@ grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-shell');
 
+
 /* Register tasks */
 
-grunt.registerTask('default', [ 'watch']);
+grunt.registerTask('default', [ 'sass:dev', 'concat', 'shell:weinre', 'watch']);
+grunt.registerTask('deploy', [ 'imagemin:deploy','sass:deploy','concat:deploy','uglify:deploy', 'copy:deploy']);
 
 };
