@@ -113,7 +113,7 @@
 				weinre: {
 					command: 'weinre --boundHost -all-'	
 				}
-		},
+			},
 
 
 			/* [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify) */
@@ -184,7 +184,7 @@ grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-shell');
 
 
-
+/* Register tasks */
 
 grunt.registerTask('default', [ 'sass:dev', 'concat', 'shell:weinre', 'watch']);
 grunt.registerTask('deploy', [ 'imagemin:deploy','sass:deploy','concat:deploy','uglify:deploy', 'copy:deploy']);

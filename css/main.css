@@ -8,7 +8,6 @@
 /**
  * Correct `block` display not defined in IE 8/9.
  */
-/* line 11, ../scss/partials/_normalize.scss */
 article,
 aside,
 details,
@@ -21,38 +20,31 @@ main,
 nav,
 section,
 summary {
-  display: block;
-}
+  display: block; }
 
 /**
  * Correct `inline-block` display not defined in IE 8/9.
  */
-/* line 30, ../scss/partials/_normalize.scss */
 audio,
 canvas,
 video {
-  display: inline-block;
-}
+  display: inline-block; }
 
 /**
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
-/* line 41, ../scss/partials/_normalize.scss */
 audio:not([controls]) {
   display: none;
-  height: 0;
-}
+  height: 0; }
 
 /**
  * Address `[hidden]` styling not present in IE 8/9.
  * Hide the `template` element in IE, Safari, and Firefox < 22.
  */
-/* line 51, ../scss/partials/_normalize.scss */
 [hidden],
 template {
-  display: none;
-}
+  display: none; }
 
 /* ==========================================================================
    Base
@@ -62,23 +54,19 @@ template {
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
-/* line 66, ../scss/partials/_normalize.scss */
 html {
   font-family: sans-serif;
   /* 1 */
   -ms-text-size-adjust: 100%;
   /* 2 */
   -webkit-text-size-adjust: 100%;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
  * Remove default margin.
  */
-/* line 76, ../scss/partials/_normalize.scss */
 body {
-  margin: 0;
-}
+  margin: 0; }
 
 /* ==========================================================================
    Links
@@ -86,27 +74,21 @@ body {
 /**
  * Remove the gray background color from active links in IE 10.
  */
-/* line 88, ../scss/partials/_normalize.scss */
 a {
-  background: transparent;
-}
+  background: transparent; }
 
 /**
  * Address `outline` inconsistency between Chrome and other browsers.
  */
-/* line 96, ../scss/partials/_normalize.scss */
 a:focus {
-  outline: thin dotted;
-}
+  outline: thin dotted; }
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
-/* line 104, ../scss/partials/_normalize.scss */
 a:active,
 a:hover {
-  outline: 0;
-}
+  outline: 0; }
 
 /* ==========================================================================
    Typography
@@ -115,113 +97,87 @@ a:hover {
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
-/* line 118, ../scss/partials/_normalize.scss */
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
-}
+  margin: 0.67em 0; }
 
 /**
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
  */
-/* line 127, ../scss/partials/_normalize.scss */
 abbr[title] {
-  border-bottom: 1px dotted;
-}
+  border-bottom: 1px dotted; }
 
 /**
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
-/* line 135, ../scss/partials/_normalize.scss */
 b,
 strong {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /**
  * Address styling not present in Safari 5 and Chrome.
  */
-/* line 144, ../scss/partials/_normalize.scss */
 dfn {
-  font-style: italic;
-}
+  font-style: italic; }
 
 /**
  * Address differences between Firefox and other browsers.
  */
-/* line 152, ../scss/partials/_normalize.scss */
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  height: 0;
-}
+  height: 0; }
 
 /**
  * Address styling not present in IE 8/9.
  */
-/* line 162, ../scss/partials/_normalize.scss */
 mark {
   background: #ff0;
-  color: #000;
-}
+  color: #000; }
 
 /**
  * Correct font family set oddly in Safari 5 and Chrome.
  */
-/* line 171, ../scss/partials/_normalize.scss */
 code,
 kbd,
 pre,
 samp {
   font-family: monospace, serif;
-  font-size: 1em;
-}
+  font-size: 1em; }
 
 /**
  * Improve readability of pre-formatted text in all browsers.
  */
-/* line 183, ../scss/partials/_normalize.scss */
 pre {
-  white-space: pre-wrap;
-}
+  white-space: pre-wrap; }
 
 /**
  * Set consistent quote types.
  */
-/* line 191, ../scss/partials/_normalize.scss */
 q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
-}
+  quotes: "\201C" "\201D" "\2018" "\2019"; }
 
 /**
  * Address inconsistent and variable font size in all browsers.
  */
-/* line 199, ../scss/partials/_normalize.scss */
 small {
-  font-size: 80%;
-}
+  font-size: 80%; }
 
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
-/* line 207, ../scss/partials/_normalize.scss */
 sub,
 sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline;
-}
+  vertical-align: baseline; }
 
-/* line 215, ../scss/partials/_normalize.scss */
 sup {
-  top: -0.5em;
-}
+  top: -0.5em; }
 
-/* line 219, ../scss/partials/_normalize.scss */
 sub {
-  bottom: -0.25em;
-}
+  bottom: -0.25em; }
 
 /* ==========================================================================
    Embedded content
@@ -229,18 +185,14 @@ sub {
 /**
  * Remove border when inside `a` element in IE 8/9.
  */
-/* line 231, ../scss/partials/_normalize.scss */
 img {
-  border: 0;
-}
+  border: 0; }
 
 /**
  * Correct overflow displayed oddly in IE 9.
  */
-/* line 239, ../scss/partials/_normalize.scss */
 svg:not(:root) {
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 /* ==========================================================================
    Figures
@@ -248,10 +200,8 @@ svg:not(:root) {
 /**
  * Address margin not present in IE 8/9 and Safari 5.
  */
-/* line 251, ../scss/partials/_normalize.scss */
 figure {
-  margin: 0;
-}
+  margin: 0; }
 
 /* ==========================================================================
    Forms
@@ -259,31 +209,26 @@ figure {
 /**
  * Define consistent border, margin, and padding.
  */
-/* line 263, ../scss/partials/_normalize.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
-}
+  padding: 0.35em 0.625em 0.75em; }
 
 /**
  * 1. Correct `color` not being inherited in IE 8/9.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
-/* line 274, ../scss/partials/_normalize.scss */
 legend {
   border: 0;
   /* 1 */
   padding: 0;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
  * 1. Correct font family not being inherited in all browsers.
  * 2. Correct font size not being inherited in all browsers.
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
-/* line 285, ../scss/partials/_normalize.scss */
 button,
 input,
 select,
@@ -293,18 +238,15 @@ textarea {
   font-size: 100%;
   /* 2 */
   margin: 0;
-  /* 3 */
-}
+  /* 3 */ }
 
 /**
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-/* line 299, ../scss/partials/_normalize.scss */
 button,
 input {
-  line-height: normal;
-}
+  line-height: normal; }
 
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
@@ -312,11 +254,9 @@ input {
  * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
  * Correct `select` style inheritance in Firefox 4+ and Opera.
  */
-/* line 311, ../scss/partials/_normalize.scss */
 button,
 select {
-  text-transform: none;
-}
+  text-transform: none; }
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
@@ -325,7 +265,6 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-/* line 324, ../scss/partials/_normalize.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -333,77 +272,64 @@ input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
-  /* 3 */
-}
+  /* 3 */ }
 
 /**
  * Re-set default cursor for disabled elements.
  */
-/* line 336, ../scss/partials/_normalize.scss */
 button[disabled],
 html input[disabled] {
-  cursor: default;
-}
+  cursor: default; }
 
 /**
  * 1. Address box sizing set to `content-box` in IE 8/9.
  * 2. Remove excess padding in IE 8/9.
  */
-/* line 346, ../scss/partials/_normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-/* line 358, ../scss/partials/_normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   /* 2 */
-  box-sizing: content-box;
-}
+  box-sizing: content-box; }
 
 /**
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-/* line 370, ../scss/partials/_normalize.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
+  -webkit-appearance: none; }
 
 /**
  * Remove inner padding and border in Firefox 4+.
  */
-/* line 379, ../scss/partials/_normalize.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 /**
  * 1. Remove default vertical scrollbar in IE 8/9.
  * 2. Improve readability and alignment in all browsers.
  */
-/* line 390, ../scss/partials/_normalize.scss */
 textarea {
   overflow: auto;
   /* 1 */
   vertical-align: top;
-  /* 2 */
-}
+  /* 2 */ }
 
 /* ==========================================================================
    Tables
@@ -411,94 +337,75 @@ textarea {
 /**
  * Remove most spacing between table cells.
  */
-/* line 403, ../scss/partials/_normalize.scss */
 table {
   border-collapse: collapse;
-  border-spacing: 0;
-}
+  border-spacing: 0; }
 
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
-/* line 5, ../scss/partials/_base.scss */
 html,
 button,
 input,
 select,
 textarea {
-  color: #222;
-}
+  color: #222; }
 
-/* line 13, ../scss/partials/_base.scss */
 body {
   font-size: 1em;
-  line-height: 1.4;
-}
+  line-height: 1.4; }
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
  * Customize the background color to match your design.
  */
-/* line 24, ../scss/partials/_base.scss */
 ::-moz-selection {
   background: #b3d4fc;
-  text-shadow: none;
-}
+  text-shadow: none; }
 
-/* line 29, ../scss/partials/_base.scss */
 ::selection {
   background: #b3d4fc;
-  text-shadow: none;
-}
+  text-shadow: none; }
 
 /*
  * A better looking default horizontal rule
  */
-/* line 38, ../scss/partials/_base.scss */
 hr {
   display: block;
   height: 1px;
   border: 0;
   border-top: 1px solid #ccc;
   margin: 1em 0;
-  padding: 0;
-}
+  padding: 0; }
 
 /*
  * Remove the gap between images, videos, audio and canvas and the bottom of
  * their containers: h5bp.com/i/440
  */
-/* line 52, ../scss/partials/_base.scss */
 audio,
 canvas,
 img,
 video {
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
 /*
  * Remove default fieldset styles.
  */
-/* line 63, ../scss/partials/_base.scss */
 fieldset {
   border: 0;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 /*
  * Allow only vertical resizing of textareas.
  */
-/* line 73, ../scss/partials/_base.scss */
 textarea {
-  resize: vertical;
-}
+  resize: vertical; }
 
 /*  ==========================================================================
 	Colorbox
 	==========================================================================  */
-/* line 5, ../scss/vendor/_colorbox.scss */
 #colorbox,
 #cboxOverlay,
 #cboxWrapper {
@@ -506,56 +413,40 @@ textarea {
   top: 0;
   left: 0;
   z-index: 9999;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
-/* line 15, ../scss/vendor/_colorbox.scss */
 #cboxOverlay {
   position: fixed;
   width: 100%;
-  height: 100%;
-}
+  height: 100%; }
 
-/* line 21, ../scss/vendor/_colorbox.scss */
 #cboxMiddleLeft,
 #cboxBottomLeft {
-  clear: left;
-}
+  clear: left; }
 
-/* line 26, ../scss/vendor/_colorbox.scss */
 #cboxContent {
-  position: relative;
-}
+  position: relative; }
 
-/* line 30, ../scss/vendor/_colorbox.scss */
 #cboxLoadedContent {
-  overflow: auto;
-}
+  overflow: auto; }
 
-/* line 34, ../scss/vendor/_colorbox.scss */
 #cboxLoadingOverlay,
 #cboxLoadingGraphic {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-}
+  height: 100%; }
 
-/* line 39, ../scss/vendor/_colorbox.scss */
 #cboxPrevious,
 #cboxNext,
 #cboxClose,
 #cboxSlideshow {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
-/* line 46, ../scss/vendor/_colorbox.scss */
 #colorbox img {
-  max-width: none;
-}
+  max-width: none; }
 
-/* line 48, ../scss/vendor/_colorbox.scss */
 .cboxPhoto {
   display: block;
   float: left;
@@ -570,90 +461,59 @@ textarea {
   -moz-animation-fill-mode: forwards;
   -ms-animation-fill-mode: forwards;
   -o-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
+  animation-fill-mode: forwards; }
 
 @-moz-keyframes fadePhoto {
-  /* line 66, ../scss/vendor/_colorbox.scss */
   0% {
-    opacity: 0;
-  }
+    opacity: 0; }
 
-  /* line 67, ../scss/vendor/_colorbox.scss */
   100% {
-    opacity: 1;
-  }
-}
+    opacity: 1; } }
 
 @-webkit-keyframes fadePhoto {
-  /* line 71, ../scss/vendor/_colorbox.scss */
   0% {
-    opacity: 0;
-  }
+    opacity: 0; }
 
-  /* line 72, ../scss/vendor/_colorbox.scss */
   100% {
-    opacity: 1;
-  }
-}
+    opacity: 1; } }
 
 @keyframes fadePhoto {
-  /* line 76, ../scss/vendor/_colorbox.scss */
   0% {
-    opacity: 0;
-  }
+    opacity: 0; }
 
-  /* line 77, ../scss/vendor/_colorbox.scss */
   100% {
-    opacity: 1;
-  }
-}
+    opacity: 1; } }
 
-/* line 80, ../scss/vendor/_colorbox.scss */
 .cboxIframe {
   display: block;
   width: 100%;
   height: 100%;
-  border: 0;
-}
+  border: 0; }
 
-/* line 87, ../scss/vendor/_colorbox.scss */
 #cboxOverlay {
-  background-color: #000;
-}
+  background-color: #000; }
 
-/* line 91, ../scss/vendor/_colorbox.scss */
 #colorbox {
   -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); }
 
-/* line 97, ../scss/vendor/_colorbox.scss */
 #cboxContent {
   overflow: hidden;
   border: 0 solid #fff;
-  background: #fff;
-}
+  background: #fff; }
 
-/* line 103, ../scss/vendor/_colorbox.scss */
 .cboxIframe {
-  background: #fff;
-}
+  background: #fff; }
 
-/* line 107, ../scss/vendor/_colorbox.scss */
 #cboxError {
   padding: 50px;
-  border: 1px solid #ccc;
-}
+  border: 1px solid #ccc; }
 
-/* line 112, ../scss/vendor/_colorbox.scss */
 #cboxLoadingGraphic {
-  background: url("../img/loading.gif") center center no-repeat;
-}
+  background: url("../img/loading.gif") center center no-repeat; }
 
 /* Custom colorbox style */
-/* line 119, ../scss/vendor/_colorbox.scss */
 #cboxTitle {
   position: absolute;
   bottom: 6px;
@@ -662,19 +522,15 @@ textarea {
   margin: 0;
   width: 100%;
   color: #949494;
-  text-align: center;
-}
+  text-align: center; }
 
-/* line 130, ../scss/vendor/_colorbox.scss */
 #cboxCurrent {
   position: absolute;
   bottom: 6px;
   left: 68px;
   display: none !important;
-  color: #949494;
-}
+  color: #949494; }
 
-/* line 138, ../scss/vendor/_colorbox.scss */
 #colorbox button {
   position: absolute;
   bottom: 0;
@@ -687,126 +543,84 @@ textarea {
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
+  transition: all 0.5s; }
 
-/* line 153, ../scss/vendor/_colorbox.scss */
 .no-touch #colorbox button {
-  bottom: -28px;
-}
+  bottom: -28px; }
 
-/* line 157, ../scss/vendor/_colorbox.scss */
 .no-touch #colorbox:hover button {
-  bottom: 0;
-}
+  bottom: 0; }
 
-/* line 161, ../scss/vendor/_colorbox.scss */
 #colorbox #cboxPrevious {
   left: 0;
-  background-position: 0 0;
-}
+  background-position: 0 0; }
 
-/* line 166, ../scss/vendor/_colorbox.scss */
 #colorbox #cboxPrevious:hover {
-  background-color: #788083;
-}
+  background-color: #788083; }
 
-/* line 170, ../scss/vendor/_colorbox.scss */
 #colorbox #cboxNext {
   left: 28px;
-  background-position: -28px 0;
-}
+  background-position: -28px 0; }
 
-/* line 175, ../scss/vendor/_colorbox.scss */
 #colorbox #cboxNext:hover {
-  background-color: #788083;
-}
+  background-color: #788083; }
 
-/* line 179, ../scss/vendor/_colorbox.scss */
 #colorbox #cboxClose {
   top: 0;
   right: 0;
   background-color: #788083;
-  background-position: -56px 0;
-}
+  background-position: -56px 0; }
 
-/* line 186, ../scss/vendor/_colorbox.scss */
 #colorbox.colorbox-gallery #cboxClose {
-  top: auto;
-}
+  top: auto; }
 
-/* line 190, ../scss/vendor/_colorbox.scss */
 #colorbox #cboxClose:hover {
-  background-color: #333;
-}
+  background-color: #333; }
 
-/* line 194, ../scss/vendor/_colorbox.scss */
 #cboxSlideshow {
-  right: 28px;
-}
+  right: 28px; }
 
-/* line 198, ../scss/vendor/_colorbox.scss */
 #cboxSlideshow:hover {
-  background-color: #788083;
-}
+  background-color: #788083; }
 
-/* line 202, ../scss/vendor/_colorbox.scss */
 .cboxSlideshow_off #cboxSlideshow {
-  background-position: -84px 0;
-}
+  background-position: -84px 0; }
 
-/* line 206, ../scss/vendor/_colorbox.scss */
 .cboxSlideshow_on #cboxSlideshow {
-  background-position: -112px 0;
-}
+  background-position: -112px 0; }
 
 /* No javaScript fallback */
-/* line 3, ../scss/vendor/_flexslider.scss */
 .no-js .slides > li:first-child {
-  display: block;
-}
+  display: block; }
 
 /* FlexSlider default theme */
-/* line 10, ../scss/vendor/_flexslider.scss */
 .flexslider {
   width: 40%;
   margin: 60px auto;
   background: #fff;
   position: relative;
-  zoom: 1;
-}
+  zoom: 1; }
 
-/* line 18, ../scss/vendor/_flexslider.scss */
 .flex-viewport {
   max-height: 2000px;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
-  transition: all 1s ease;
-}
+  transition: all 1s ease; }
 
-/* line 26, ../scss/vendor/_flexslider.scss */
 .loading .flex-viewport {
-  max-height: 300px;
-}
+  max-height: 300px; }
 
-/* line 30, ../scss/vendor/_flexslider.scss */
 .flexslider .slides {
-  zoom: 1;
-}
+  zoom: 1; }
 
-/* line 34, ../scss/vendor/_flexslider.scss */
 .carousel li {
-  margin-right: 5px;
-}
+  margin-right: 5px; }
 
 /* Direction Nav */
-/* line 41, ../scss/vendor/_flexslider.scss */
 .flex-direction-nav {
-  *height: 0;
-}
+  *height: 0; }
 
-/* line 45, ../scss/vendor/_flexslider.scss */
 .flex-direction-nav a {
   width: 30px;
   height: 30px;
@@ -822,63 +636,45 @@ textarea {
   -webkit-transition: all .3s ease;
   -moz-transition: all .3s ease;
   -o-transition: all .3s ease;
-  transition: all 0.3s ease;
-}
+  transition: all 0.3s ease; }
 
-/* line 63, ../scss/vendor/_flexslider.scss */
 .flex-direction-nav .flex-next {
   background-position: 100% 0;
-  right: -36px;
-}
+  right: -36px; }
 
-/* line 68, ../scss/vendor/_flexslider.scss */
 .flex-direction-nav .flex-prev {
-  left: -36px;
-}
+  left: -36px; }
 
-/* line 72, ../scss/vendor/_flexslider.scss */
 .flexslider:hover .flex-next {
   opacity: .8;
-  right: 5px;
-}
+  right: 5px; }
 
-/* line 77, ../scss/vendor/_flexslider.scss */
 .flexslider:hover .flex-prev {
   opacity: .8;
-  left: 5px;
-}
+  left: 5px; }
 
-/* line 82, ../scss/vendor/_flexslider.scss */
 .flexslider:hover .flex-next:hover,
 .flexslider:hover .flex-prev:hover {
-  opacity: 1;
-}
+  opacity: 1; }
 
-/* line 87, ../scss/vendor/_flexslider.scss */
 .flex-direction-nav .flex-disabled {
   opacity: 0.3 !important;
   filter: alpha(opacity=30);
-  cursor: default;
-}
+  cursor: default; }
 
 /* Control Nav */
-/* line 95, ../scss/vendor/_flexslider.scss */
 .flex-control-nav {
   width: 100%;
   position: absolute;
   bottom: -40px;
-  text-align: center;
-}
+  text-align: center; }
 
-/* line 102, ../scss/vendor/_flexslider.scss */
 .flex-control-nav li {
   margin: 0 6px;
   display: inline-block;
   zoom: 1;
-  *display: inline;
-}
+  *display: inline; }
 
-/* line 109, ../scss/vendor/_flexslider.scss */
 .flex-control-paging li a {
   width: 11px;
   height: 11px;
@@ -891,104 +687,77 @@ textarea {
   -moz-border-radius: 20px;
   -o-border-radius: 20px;
   border-radius: 20px;
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-}
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3); }
 
-/* line 124, ../scss/vendor/_flexslider.scss */
 .flex-control-paging li a:hover {
   background: #333;
-  background: rgba(0, 0, 0, 0.7);
-}
+  background: rgba(0, 0, 0, 0.7); }
 
-/* line 129, ../scss/vendor/_flexslider.scss */
 .flex-control-paging li a.flex-active {
   background: #000;
   background: rgba(0, 0, 0, 0.9);
-  cursor: default;
-}
+  cursor: default; }
 
-/* line 135, ../scss/vendor/_flexslider.scss */
 .flex-control-thumbs {
   margin: 5px 0 0;
   position: static;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
-/* line 141, ../scss/vendor/_flexslider.scss */
 .flex-control-thumbs li {
   width: 25%;
   float: left;
-  margin: 0;
-}
+  margin: 0; }
 
-/* line 147, ../scss/vendor/_flexslider.scss */
 .flex-control-thumbs img {
   width: 100%;
   display: block;
   opacity: .7;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
-/* line 154, ../scss/vendor/_flexslider.scss */
 .flex-control-thumbs img:hover {
-  opacity: 1;
-}
+  opacity: 1; }
 
-/* line 158, ../scss/vendor/_flexslider.scss */
 .flex-control-thumbs .flex-active {
   opacity: 1;
-  cursor: default;
-}
+  cursor: default; }
 
 @media screen and (max-width: 860px) {
-  /* line 165, ../scss/vendor/_flexslider.scss */
   .flex-direction-nav .flex-prev {
     opacity: 1;
-    left: 0;
-  }
+    left: 0; }
 
-  /* line 170, ../scss/vendor/_flexslider.scss */
   .flex-direction-nav .flex-next {
     opacity: 1;
-    right: 0;
-  }
-}
+    right: 0; } }
 /* ==========================================================================
    Helper classes
    ========================================================================== */
 /*
  * Image replacement
  */
-/* line 9, ../scss/partials/_helpers.scss */
 .ir {
   background-color: transparent;
   border: 0;
   overflow: hidden;
   /* IE 6/7 fallback */
-  *text-indent: -9999px;
-}
+  *text-indent: -9999px; }
 
-/* line 17, ../scss/partials/_helpers.scss */
 .ir:before {
   content: "";
   display: block;
   width: 0;
-  height: 150%;
-}
+  height: 150%; }
 
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 28, ../scss/partials/_helpers.scss */
 .hidden {
   display: none !important;
-  visibility: hidden;
-}
+  visibility: hidden; }
 
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 37, ../scss/partials/_helpers.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -997,14 +766,12 @@ textarea {
   overflow: hidden;
   padding: 0;
   position: absolute;
-  width: 1px;
-}
+  width: 1px; }
 
 /*
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 53, ../scss/partials/_helpers.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -1012,16 +779,13 @@ textarea {
   margin: 0;
   overflow: visible;
   position: static;
-  width: auto;
-}
+  width: auto; }
 
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 67, ../scss/partials/_helpers.scss */
 .invisible {
-  visibility: hidden;
-}
+  visibility: hidden; }
 
 /*
  * Clearfix: contain floats
@@ -1034,28 +798,22 @@ textarea {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 83, ../scss/partials/_helpers.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
   /* 1 */
   display: table;
-  /* 2 */
-}
+  /* 2 */ }
 
-/* line 89, ../scss/partials/_helpers.scss */
 .clearfix:after {
-  clear: both;
-}
+  clear: both; }
 
 /*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 98, ../scss/partials/_helpers.scss */
 .clearfix {
-  *zoom: 1;
-}
+  *zoom: 1; }
 
 /*  ==========================================================================
 	Variables (http://sachagreif.com/sass-color-variables/)
@@ -1063,92 +821,59 @@ textarea {
 /*  ==========================================================================
 	Mixin
 	========================================================================== */
-/* line 29, ../scss/main.scss */
-h1 {
-  color: red;
-  font-size: 84px;
-}
-
 /*  ==========================================================================
 	Print style
 	========================================================================== */
 @media print {
   /*  ==========================================================================
   	Print styles
-  	==========================================================================  */
-}
+  	==========================================================================  */ }
 @media print {
-  /* line 7, ../scss/print.scss */
   * {
     background: transparent !important;
     color: #000 !important;
     box-shadow: none !important;
-    text-shadow: none !important;
-  }
+    text-shadow: none !important; }
 
-  /* line 14, ../scss/print.scss */
   a,
   a:visited {
-    text-decoration: underline;
-  }
+    text-decoration: underline; }
 
-  /* line 19, ../scss/print.scss */
   a[href]:after {
-    content: " (" attr(href) ")";
-  }
+    content: " (" attr(href) ")"; }
 
-  /* line 23, ../scss/print.scss */
   abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
+    content: " (" attr(title) ")"; }
 
-  /* line 27, ../scss/print.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
-    content: "";
-  }
+    content: ""; }
 
-  /* line 33, ../scss/print.scss */
   pre,
   blockquote {
     border: 1px solid #999;
-    page-break-inside: avoid;
-  }
+    page-break-inside: avoid; }
 
-  /* line 39, ../scss/print.scss */
   thead {
-    display: table-header-group;
-  }
+    display: table-header-group; }
 
-  /* line 43, ../scss/print.scss */
   tr,
   img {
-    page-break-inside: avoid;
-  }
+    page-break-inside: avoid; }
 
-  /* line 48, ../scss/print.scss */
   img {
-    max-width: 100% !important;
-  }
+    max-width: 100% !important; }
 
   @page {
-    margin: 0.5cm;
-}
+    margin: 0.5cm; }
 
-  /* line 56, ../scss/print.scss */
   p,
   h2,
   h3 {
     orphans: 3;
-    widows: 3;
-  }
+    widows: 3; }
 
-  /* line 63, ../scss/print.scss */
   h2,
   h3 {
-    page-break-after: avoid;
-  }
-}
-
-/*# sourceMappingURL=main.css.map */
+    page-break-after: avoid; } }
