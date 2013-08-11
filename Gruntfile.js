@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 
 		/* Reads dependencies from package.json */
-		
+
 		pkg: grunt.file.readJSON('package.json'),
 
 
@@ -24,31 +24,35 @@ module.exports = function(grunt) {
 			},
 			deploy: {
 				files: {
-					'deploy/css/main.css': ['deploy/css/main.css']	
-				}				
+					'deploy/css/main.css': ['deploy/css/main.css']
+				}
 			}
 		},
 
 
 		/* [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat) */
-		
+
 		concat: {
 			options: {
 				separator: ';'
 			},
 			dev: {
-				src: ['js/plugins/*.js'],
+				src: ['js/plugins/*.js', '!js/plugins/weinre.js'],
 				dest: 'js/plugins.js'
 			},
 			deploy: {
 				src: ['js/plugins/*.js', '!js/plugins/livereload.js', '!js/plugins/weinre.js'],
 				dest: 'deploy/js/plugins.js'
+			},
+			weinre: {
+				src: ['js/plugins/*.js'],
+				dest: 'js/plugins.js'
 			}
 		},
 
 
-		/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */			
-		
+		/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */
+
 		cssmin: {
 			minify: {
 				expand: true,
@@ -64,9 +68,9 @@ module.exports = function(grunt) {
 		copy: {
 			deploy: {
 				files: [{
-					expand: true, 
-					src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js', 'img/**/*.gif' ], 
-					dest: 'deploy/', 
+					expand: true,
+					src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js', 'img/**/*.gif' ],
+					dest: 'deploy/',
 					filter: 'isFile'
 				}]
 			}
@@ -74,7 +78,7 @@ module.exports = function(grunt) {
 
 
 		/* [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin) */
-		
+
 		imagemin: {
 			options: {
 				optimizationLevel: 3,
@@ -101,7 +105,7 @@ module.exports = function(grunt) {
 
 		/* [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass) */
 		/* [ grunt sass:deploy ] Compiles main.scss in distribution mode */
-		
+
 		sass: {
 			dev: {
 				files: {
@@ -126,16 +130,16 @@ module.exports = function(grunt) {
 
 
 		/* [ grunt shell ] Run shell comand (https://github.com/sindresorhus/grunt-shell) */
-
+		/* First install weinre [ sudo npm -g install weinre ] (http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html) */
 		shell: {
 			weinre: {
-				command: 'weinre --boundHost -all-'	
+				command: 'weinre --boundHost -all-'
 			}
 		},
 
 
 		/* [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify) */
-		
+
 		uglify: {
 			dev: {
 				files: {
@@ -147,18 +151,18 @@ module.exports = function(grunt) {
 				options: {
 					sourceMapRoot: 'js/plugins/',
 					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> + <%= grunt.template.today("yyyy-mm-dd") %> */'
-				},			
+				},
 				files: {
 					'deploy/js/plugins.js': ['deploy/js/plugins.js'],
 					'deploy/js/main.js': ['js/main.js']
 				}
-				
-			}	
+
+			}
 		},
-		
+
 
 		/* [ grunt watch ] Watches for file changes and optimizes images, concats and minifies scripts in plugins and also starts a livereload server (https://github.com/gruntjs/grunt-contrib-watch)*/
-		
+
 		watch: {
 			css: {
 				files: 'scss/*.scss',
@@ -188,7 +192,7 @@ module.exports = function(grunt) {
 				tasks: ['imagemin:dev']
 			}
 		}
-		
+
 	});
 
 
@@ -204,7 +208,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-shell');
 
-
+	grunt.registerTask('weinre', ['concat:weinre', 'shell:weinre']);
 	grunt.registerTask('default', [ 'sass:dev', 'imagemin:dev', 'concat:dev', 'watch']);
 	grunt.registerTask('deploy', [ 'sass:deploy', 'autoprefixer:deploy', 'cssmin', 'imagemin', 'concat:deploy','uglify:deploy', 'copy:deploy']);
 
