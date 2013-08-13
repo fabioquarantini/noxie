@@ -11,10 +11,10 @@ You may need this project if you need a simple and powerful starting kit for you
 ## What is hangar made of ##
 **Hangar** in it's core uses: 
 
+- [Grunt](http://gruntjs.com/)
 - [Html5Boilerplate](http://html5boilerplate.com/)
-- [Grunt](http://gruntjs.com/) 
 - [Sass](http://sass-lang.com/)
-
+- [Weinre](http://people.apache.org/~pmuellr/weinre/docs/latest/)
 
 ## File Architecture and Structure ##
 - css/
@@ -24,6 +24,8 @@ You may need this project if you need a simple and powerful starting kit for you
  		- console.js
  		- jquery-colorbox-1.4-15.js
  		- jquery-flexslider.2-1.js
+ 		- livereload.js
+ 		- weinre.js
  	- vendor/
  	 	- jquery-1.10.2.min.js
  	 	- modernizr-2.6.2.min.js

@@ -131,6 +131,7 @@ module.exports = function(grunt) {
 
 		/* [ grunt shell ] Run shell comand (https://github.com/sindresorhus/grunt-shell) */
 		/* First install weinre [ sudo npm -g install weinre ] (http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html) */
+
 		shell: {
 			weinre: {
 				command: 'weinre --boundHost -all-'
@@ -208,8 +209,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-shell');
 
-	grunt.registerTask('weinre', ['concat:weinre', 'shell:weinre']);
 	grunt.registerTask('default', [ 'sass:dev', 'imagemin:dev', 'concat:dev', 'watch']);
 	grunt.registerTask('deploy', [ 'sass:deploy', 'autoprefixer:deploy', 'cssmin', 'imagemin', 'concat:deploy','uglify:deploy', 'copy:deploy']);
+	grunt.registerTask('weinre', ['concat:weinre', 'shell:weinre']);
+
 
 };
