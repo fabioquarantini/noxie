@@ -101,6 +101,23 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		
+		notify: {
+			open:{
+				options: {
+        			title: 'Browser',  // optional
+        			message: 'Weinre server launched', //required
+      			}
+			}
+		},
+
+		/* [grunt open:weinre ] Opens weinre url in default web browser (https://github.com/jsoverson/grunt-open) */
+
+		open: {
+		    weinre : {
+		      path: 'http://localhost:8080/'
+		    }
+		},
 
 
 		/* [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass) */
@@ -207,11 +224,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-notify');
+	grunt.loadNpmTasks('grunt-open');
 	grunt.loadNpmTasks('grunt-shell');
 
 	grunt.registerTask('default', [ 'sass:dev', 'imagemin:dev', 'concat:dev', 'watch']);
 	grunt.registerTask('deploy', [ 'sass:deploy', 'autoprefixer:deploy', 'cssmin', 'imagemin', 'concat:deploy','uglify:deploy', 'copy:deploy']);
-	grunt.registerTask('weinre', ['concat:weinre', 'shell:weinre']);
+	grunt.registerTask('weinre', ['concat:weinre', 'open:weinre', 'notify:open', 'shell:weinre']);
 
 
 };
