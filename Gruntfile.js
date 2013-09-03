@@ -69,10 +69,20 @@ module.exports = function(grunt) {
 			deploy: {
 				files: [{
 					expand: true,
-					src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js', 'img/**/*.gif' ],
+					src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js' ],
 					dest: 'deploy/',
 					filter: 'isFile'
-				}]
+				},
+				{
+					expand: true,
+					src: ['img/original/*.gif', 'img/original/*.GIF' ],
+					dest: 'deploy/img',
+					flatten: true,
+					filter: 'isFile'
+				}
+
+
+				]
 			}
 		},
 
@@ -229,7 +239,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 
 	grunt.registerTask('default', [ 'sass:dev', 'imagemin:dev', 'concat:dev', 'watch']);
-	grunt.registerTask('deploy', [ 'sass:deploy', 'autoprefixer:deploy', 'cssmin', 'imagemin', 'concat:deploy','uglify:deploy', 'copy:deploy']);
+	grunt.registerTask('deploy', [ 'sass:deploy', 'autoprefixer:deploy', 'cssmin', 'imagemin:deploy', 'concat:deploy','uglify:deploy', 'copy:deploy']);
 	grunt.registerTask('weinre', ['concat:weinre', 'open:weinre', 'notify:open', 'shell:weinre']);
 
 
