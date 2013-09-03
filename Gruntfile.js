@@ -63,26 +63,23 @@ module.exports = function(grunt) {
 		},
 
 
-		/* [ grunt copy ] */
+		/* [ grunt copy ] Copies files for deployment (https://github.com/gruntjs/grunt-contrib-copy) */
 
 		copy: {
 			deploy: {
 				files: [{
-					expand: true,
-					src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js' ],
-					dest: 'deploy/',
-					filter: 'isFile'
-				},
-				{
-					expand: true,
-					src: ['img/original/*.gif', 'img/original/*.GIF' ],
-					dest: 'deploy/img',
-					flatten: true,
-					filter: 'isFile'
-				}
-
-
-				]
+						expand: true,
+						src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js' ],
+						dest: 'deploy/',
+						filter: 'isFile'
+					},
+					{
+						expand: true,
+						src: ['img/original/*.gif', 'img/original/*.GIF' ],
+						dest: 'deploy/img',
+						flatten: true,
+						filter: 'isFile'
+					}]
 			}
 		},
 
@@ -112,21 +109,25 @@ module.exports = function(grunt) {
 			}
 		},
 		
+
+		/* [grunt notify:open ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify) */
+
 		notify: {
 			open:{
 				options: {
-        			title: 'Browser',  // optional
-        			message: 'Weinre server launched', //required
-      			}
+					title: 'Browser',  // optional
+					message: 'Weinre server launched', //required
+				}
 			}
 		},
+
 
 		/* [grunt open:weinre ] Opens weinre url in default web browser (https://github.com/jsoverson/grunt-open) */
 
 		open: {
-		    weinre : {
-		      path: 'http://localhost:8080/'
-		    }
+			weinre : {
+				path: 'http://localhost:8080/'
+			}
 		},
 
 

@@ -18,7 +18,7 @@
     "grunt-contrib-watch": "~0.5.1",
     "grunt-shell": "~0.3.1",
     "grunt-autoprefixer": "~0.2.20130806",
-    "grunt-open": "~0.2.2",
-    "grunt-notify": "~0.2.13"
+    "grunt-notify": "~0.2.13",
+    "grunt-open": "~0.2.2"    
   }
 }
