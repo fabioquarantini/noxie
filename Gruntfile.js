@@ -118,6 +118,18 @@ module.exports = function(grunt) {
 					title: 'Browser',  // optional
 					message: 'Weinre server launched', //required
 				}
+			},
+			imagemin: {
+				options: {
+					title: 'Minification',  // optional
+					message: 'Image minification done successfully', //required
+				}				
+			},
+			sass: {
+				options: {
+					title: 'Sass',  // optional
+					message: 'SASS Compilation completed.', //required
+				}
 			}
 		},
 
@@ -195,7 +207,7 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: 'scss/*.scss',
-				tasks: ['sass:dev', 'autoprefixer:dev'],
+				tasks: ['sass:dev', 'autoprefixer:dev', 'notify:sass'],
 				options: {
 					livereload: true
 				}
@@ -218,7 +230,7 @@ module.exports = function(grunt) {
 			},
 			images: {
 				files: ['img/original/*'],
-				tasks: ['imagemin:dev']
+				tasks: ['imagemin:dev', 'notify:imagemin']
 			}
 		}
 
