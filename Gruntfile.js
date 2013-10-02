@@ -230,7 +230,7 @@ module.exports = function(grunt) {
 			},
 			images: {
 				files: ['img/original/*'],
-				tasks: ['imagemin:dev', 'notify:imagemin']
+				tasks: ['newer:imagemin:dev', 'notify:imagemin']
 			}
 		}
 
@@ -247,6 +247,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-notify');
 	grunt.loadNpmTasks('grunt-open');
 	grunt.loadNpmTasks('grunt-shell');
