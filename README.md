@@ -1,8 +1,9 @@
 # Hangar #
+
 ## A web development starter kit  ##
 
 **Hangar** is a web development starter kit, provides project architecture and code conventions, it's goal is to ease the web developers job.
-**Hangar** also provides useful [Grunt]("Gruntjs") tasks specifically made for performance optimization.
+**Hangar** also provides useful [Grunt]("http://gruntjs.com/") tasks specifically made for performance optimization.
 
 ## Who needs this ##
 
@@ -16,42 +17,45 @@ You may need this project if you need a simple and powerful starting kit for you
 - [Sass](http://sass-lang.com/)
 - [Weinre](http://people.apache.org/~pmuellr/weinre/docs/latest/)
 
-## File Architecture and Structure ##
-- css/
--	main.css
-- js/
-	- plugins/
- 		- console.js
- 		- jquery-colorbox-1.4-15.js
- 		- jquery-flexslider.2-1.js
- 		- livereload.js
- 		- weinre.js
- 	- vendor/
- 	 	- jquery-1.10.2.min.js
- 	 	- modernizr-2.6.2.min.js
- 	- main.js
- 	- plugins.js
-- scss/
- 	- partials/
- 		- _base.scss
- 		- _grids.scss
- 		- _helpers.scss
- 		- _normalize.scss
- 		- _forms.scss
- 		- _typography.scss
- 	- vendor/
- 		- _colorbox.scss
- 		- _flexslider.scss
- 	- main.scss
- 	- print.scss
-- .htaccess
-- Gruntfile.js
-- humans.txt
-- index.html
-- package.json
-- robots.txt
 
-Todo:
+## Structure
 
-- plugins
-- workflow
+The basic structure of the project is given in the following way:
+
+```
+├── css/
+│   └── main.css
+├── js/
+│   ├── plugins
+│   │   ├── console.js
+│   │   ├── livereload.js
+│   │   └── weinre.js
+│   ├── vendor
+│   │   ├── jquery-1.10.2.min.js
+│   │   └── modernizr-2.6.2.min.js
+│   ├── main.js
+│   └── plugins.js
+├── scss/
+│   ├── partials/
+│   │   ├── _base.scss
+│   │   ├── _grids.scss
+│   │   ├── _helpers.scss
+│   │   ├── _normalize.scss
+│   │   ├── _forms.scss
+│   │   └── _typography.scss
+│   ├── vendor/
+│   ├── main.scss
+│   └── print.scss
+├── .gitignore
+├── .htaccess
+├── humans.txt
+├── index.html
+├── LICENSE.md
+├── package.json
+├── README.md
+└── robots.txt
+```
+
+## License
+
+[MIT License](http://opensource.org/licenses/MIT)
