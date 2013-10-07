@@ -4,12 +4,23 @@
 
 module.exports = function(grunt) {
 
+	/* Load all grunt task in package.json */
+
+	require('load-grunt-tasks')(grunt);
+
+
 	grunt.initConfig({
 
 		/* Reads dependencies from package.json */
 
 		pkg: grunt.file.readJSON('package.json'),
 
+
+		/* Hangar Config */
+
+		hangar: {
+			deploy: 'deploy'
+		},
 
 		/* [ grunt autoprefixer ] Prefixes css3 propreties (https://github.com/nDmitry/grunt-autoprefixer) */
 
@@ -24,7 +35,7 @@ module.exports = function(grunt) {
 			},
 			deploy: {
 				files: {
-					'deploy/css/main.css': ['deploy/css/main.css']
+					'<%= hangar.deploy %>/css/main.css': ['<%= hangar.deploy %>/css/main.css']
 				}
 			}
 		},
@@ -42,7 +53,7 @@ module.exports = function(grunt) {
 			},
 			deploy: {
 				src: ['js/plugins/*.js', '!js/plugins/livereload.js', '!js/plugins/weinre.js'],
-				dest: 'deploy/js/plugins.js'
+				dest: '<%= hangar.deploy %>/js/plugins.js'
 			},
 			weinre: {
 				src: ['js/plugins/*.js'],
@@ -56,9 +67,9 @@ module.exports = function(grunt) {
 		cssmin: {
 			minify: {
 				expand: true,
-				cwd: 'deploy/css/',
+				cwd: '<%= hangar.deploy %>/css/',
 				src: ['main.css'],
-				dest: 'deploy/css/'
+				dest: '<%= hangar.deploy %>/css/'
 			}
 		},
 
@@ -70,13 +81,13 @@ module.exports = function(grunt) {
 				files: [{
 						expand: true,
 						src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js' ],
-						dest: 'deploy/',
+						dest: '<%= hangar.deploy %>/',
 						filter: 'isFile'
 					},
 					{
 						expand: true,
 						src: ['img/original/*.gif', 'img/original/*.GIF' ],
-						dest: 'deploy/img',
+						dest: '<%= hangar.deploy %>/img',
 						flatten: true,
 						filter: 'isFile'
 					}]
@@ -104,7 +115,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'img/original',
 					src: '*',
-					dest: 'deploy/img/'
+					dest: '<%= hangar.deploy %>/img/'
 				}]
 			}
 		},
@@ -123,7 +134,7 @@ module.exports = function(grunt) {
 				options: {
 					title: 'Minification',  // optional
 					message: 'Image minification done successfully', //required
-				}				
+				}
 			},
 			sass: {
 				options: {
@@ -160,7 +171,7 @@ module.exports = function(grunt) {
 			},
 			deploy: {
 				files: {
-					'deploy/css/main.css': 'scss/main.scss'
+					'<%= hangar.deploy %>/css/main.css': 'scss/main.scss'
 				},
 				options: {
 					style: 'compressed'
@@ -184,7 +195,7 @@ module.exports = function(grunt) {
 		uglify: {
 			dev: {
 				files: {
-					'js/plugins.js': ['deploy/js/plugins.js'],
+					'js/plugins.js': ['<%= hangar.deploy %>/js/plugins.js'],
 					'js/main.js': ['js/main.js']
 				}
 			},
@@ -194,8 +205,8 @@ module.exports = function(grunt) {
 					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> + <%= grunt.template.today("yyyy-mm-dd") %> */'
 				},
 				files: {
-					'deploy/js/plugins.js': ['deploy/js/plugins.js'],
-					'deploy/js/main.js': ['js/main.js']
+					'<%= hangar.deploy %>/js/plugins.js': ['<%= hangar.deploy %>/js/plugins.js'],
+					'<%= hangar.deploy %>/js/main.js': ['js/main.js']
 				}
 
 			}
@@ -236,25 +247,28 @@ module.exports = function(grunt) {
 
 	});
 
+	grunt.registerTask('default', [
+		'sass:dev',
+		'imagemin:dev',
+		'concat:dev',
+		'watch'
+	]);
 
-	/* Load tasks */
+	grunt.registerTask('deploy',[
+		'sass:deploy',
+		'autoprefixer:deploy',
+		'cssmin',
+		'imagemin:deploy',
+		'concat:deploy',
+		'uglify:deploy',
+		'copy:deploy'
+	]);
 
-	grunt.loadNpmTasks('grunt-autoprefixer');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-newer');
-	grunt.loadNpmTasks('grunt-notify');
-	grunt.loadNpmTasks('grunt-open');
-	grunt.loadNpmTasks('grunt-shell');
-
-	grunt.registerTask('default', [ 'sass:dev', 'imagemin:dev', 'concat:dev', 'watch']);
-	grunt.registerTask('deploy', [ 'sass:deploy', 'autoprefixer:deploy', 'cssmin', 'imagemin:deploy', 'concat:deploy','uglify:deploy', 'copy:deploy']);
-	grunt.registerTask('weinre', ['concat:weinre', 'open:weinre', 'notify:open', 'shell:weinre']);
-
+	grunt.registerTask('weinre', [
+		'concat:weinre',
+		'open:weinre',
+		'notify:open',
+		'shell:weinre'
+	]);
 
 };
