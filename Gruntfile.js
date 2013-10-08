@@ -19,18 +19,25 @@ module.exports = function(grunt) {
 		/* Hangar Config */
 
 		hangar: {
-			deploy: 'deploy'
+			dev: 'dev',			// Development folder
+			deploy: 'deploy'	// Deploy folder
 		},
+		
 
 		/* [ grunt autoprefixer ] Prefixes css3 propreties (https://github.com/nDmitry/grunt-autoprefixer) */
 
 		autoprefixer: {
 			options: {
-				browsers: ['last 3 version', '> 1%', 'ie 8', 'ie 7']
+				browsers: [
+					'last 3 version',
+					'> 1%',
+					'ie 8',
+					'ie 7'
+				]
 			},
 			dev: {
 				files: {
-					'css/main.css' : ['css/main.css']
+					'<%= hangar.dev %>/css/main.css' : ['<%= hangar.dev %>/css/main.css']
 				}
 			},
 			deploy: {
@@ -48,24 +55,26 @@ module.exports = function(grunt) {
 				separator: ';'
 			},
 			dev: {
-				src: ['js/plugins/*.js', '!js/plugins/weinre.js'],
-				dest: 'js/plugins.js'
+				//src: ['<%= hangar.dev %>/js/plugins/*.js', '!<%= hangar.dev %>/js/plugins/weinre.js'],
+				src: ['<%= hangar.dev %>/js/plugins/*.js'],
+				dest: '<%= hangar.dev %>/js/plugins.js'
 			},
 			deploy: {
-				src: ['js/plugins/*.js', '!js/plugins/livereload.js', '!js/plugins/weinre.js'],
+				//src: ['<%= hangar.dev %>/js/plugins/*.js', '!<%= hangar.dev %>/js/plugins/livereload.js', '!<%= hangar.dev %>/js/plugins/weinre.js'],
+				src: ['<%= hangar.dev %>/js/plugins/*.js'],
 				dest: '<%= hangar.deploy %>/js/plugins.js'
-			},
-			weinre: {
+			}
+			/*weinre: {
 				src: ['js/plugins/*.js'],
 				dest: 'js/plugins.js'
-			}
+			}*/
 		},
 
 
-		/* [ grunt cssmin:combine ] [ grunt cssmin:minify ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */
+		/* [ grunt cssmin:deploy ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */
 
 		cssmin: {
-			minify: {
+			deploy: {
 				expand: true,
 				cwd: '<%= hangar.deploy %>/css/',
 				src: ['main.css'],
@@ -79,18 +88,10 @@ module.exports = function(grunt) {
 		copy: {
 			deploy: {
 				files: [{
-						expand: true,
-						src: ['*.html','humans.txt', 'robots.txt', '.htaccess', 'js/vendor/*.js' ],
-						dest: '<%= hangar.deploy %>/',
-						filter: 'isFile'
-					},
-					{
-						expand: true,
-						src: ['img/original/*.gif', 'img/original/*.GIF' ],
-						dest: '<%= hangar.deploy %>/img',
-						flatten: true,
-						filter: 'isFile'
-					}]
+					expand: true,
+					src: ['<%= hangar.dev %>/*' ],
+					dest: '<%= hangar.deploy %>/'
+				}]
 			}
 		},
 
@@ -102,18 +103,10 @@ module.exports = function(grunt) {
 				optimizationLevel: 3,
 				progressive: true
 			},
-			dev: {
-				files: [{
-					expand: true,
-					cwd: 'img/original',
-					src: '*',
-					dest: 'img/'
-				}]
-			},
 			deploy: {
 				files: [{
 					expand: true,
-					cwd: 'img/original',
+					cwd: '<%= hangar.deploy %>/img/',
 					src: '*',
 					dest: '<%= hangar.deploy %>/img/'
 				}]
@@ -121,25 +114,25 @@ module.exports = function(grunt) {
 		},
 		
 
-		/* [grunt notify:open ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify) */
+		/* [grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify) */
 
 		notify: {
 			open:{
 				options: {
-					title: 'Browser',  // optional
-					message: 'Weinre server launched', //required
+					title: 'Browser',
+					message: 'Weinre server launched',
 				}
 			},
 			imagemin: {
 				options: {
-					title: 'Minification',  // optional
-					message: 'Image minification done successfully', //required
+					title: 'Minification',
+					message: 'Image minification done successfully',
 				}
 			},
 			sass: {
 				options: {
-					title: 'Sass',  // optional
-					message: 'SASS Compilation completed.', //required
+					title: 'Sass',
+					message: 'SASS Compilation completed.',
 				}
 			}
 		},
@@ -160,7 +153,7 @@ module.exports = function(grunt) {
 		sass: {
 			dev: {
 				files: {
-					'css/main.css': 'scss/main.scss'
+					'<%= hangar.dev %>/css/main.css': '<%= hangar.dev %>/scss/main.scss'
 				},
 				options: {
 					sourcemap: false,  // Requires Sass 3.3.0, which can be installed with gem install sass --pre
@@ -171,7 +164,7 @@ module.exports = function(grunt) {
 			},
 			deploy: {
 				files: {
-					'<%= hangar.deploy %>/css/main.css': 'scss/main.scss'
+					'<%= hangar.deploy %>/css/main.css': '<%= hangar.dev %>/scss/main.scss'
 				},
 				options: {
 					style: 'compressed'
@@ -193,22 +186,14 @@ module.exports = function(grunt) {
 		/* [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify) */
 
 		uglify: {
-			dev: {
-				files: {
-					'js/plugins.js': ['<%= hangar.deploy %>/js/plugins.js'],
-					'js/main.js': ['js/main.js']
-				}
-			},
 			deploy: {
 				options: {
 					sourceMapRoot: 'js/plugins/',
 					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> + <%= grunt.template.today("yyyy-mm-dd") %> */'
 				},
 				files: {
-					'<%= hangar.deploy %>/js/plugins.js': ['<%= hangar.deploy %>/js/plugins.js'],
-					'<%= hangar.deploy %>/js/main.js': ['js/main.js']
+					'<%= hangar.deploy %>/js/*.js': ['<%= hangar.deploy %>/js/*.js']
 				}
-
 			}
 		},
 
@@ -217,51 +202,54 @@ module.exports = function(grunt) {
 
 		watch: {
 			css: {
-				files: 'scss/*.scss',
-				tasks: ['sass:dev', 'autoprefixer:dev', 'notify:sass'],
+				files: '<%= hangar.dev %>/scss/*.scss',
+				tasks: [
+					'sass:dev',
+					'autoprefixer:dev',
+					'notify:sass'
+				],
 				options: {
 					livereload: true
 				}
 			},
 			src: {
-				files: ['*.html'],
+				files: ['<%= hangar.dev %>/*.html'],
 				options: {
 					livereload: true
 				}
 			},
 			plugins: {
-				files: 'js/plugins/*.js',
+				files: '<%= hangar.dev %>/js/plugins/*.js',
 				tasks: ['concat:dev']
 			},
 			scripts: {
-				files: ['js/main.js','js/plugins.js'],
+				files: ['<%= hangar.deploy %>/js/main.js','<%= hangar.deploy %>/js/plugins.js'],
 				options: {
 					livereload: true
 				}
-			},
-			images: {
-				files: ['img/original/*'],
-				tasks: ['newer:imagemin:dev', 'notify:imagemin']
 			}
 		}
 
 	});
 
+	
+	/* Register task */
+
 	grunt.registerTask('default', [
 		'sass:dev',
-		'imagemin:dev',
+		'autoprefixer:dev',
 		'concat:dev',
 		'watch'
 	]);
 
 	grunt.registerTask('deploy',[
+		'copy:deploy',
 		'sass:deploy',
 		'autoprefixer:deploy',
-		'cssmin',
+		'cssmin:deploy',
 		'imagemin:deploy',
 		'concat:deploy',
-		'uglify:deploy',
-		'copy:deploy'
+		'uglify:deploy'
 	]);
 
 	grunt.registerTask('weinre', [
