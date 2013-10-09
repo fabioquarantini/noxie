@@ -1,5 +1,6 @@
 @ECHO off
 cls
+IF not exist node_modules (npm install)
 :start
 ECHO.
 ECHO 1 Run Dev task
