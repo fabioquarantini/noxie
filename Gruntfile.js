@@ -4,6 +4,8 @@
 
 module.exports = function(grunt) {
 
+	'use strict';
+
 	/* Load all grunt task in package.json */
 
 	require('load-grunt-tasks')(grunt);
@@ -112,6 +114,17 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+
+
+		/* [ grunt jshint ] Validate files with JSHint (https://github.com/gruntjs/grunt-contrib-jshint) */
+
+		jshint: {
+			all: ['<%= hangar.dev %>/js/*.js'],
+			options: {
+				errorsOnly: true,		// only display errors
+				failOnError: false,		// defaults to true
+			}
+		},
 		
 
 		/* [grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify) */
@@ -127,6 +140,12 @@ module.exports = function(grunt) {
 				options: {
 					title: 'Minification',
 					message: 'Image minification done successfully',
+				}
+			},
+			jshint: {
+				options: {
+					title: 'JSHint',
+					message: 'Js validation done successfully',
 				}
 			},
 			sass: {

@@ -22,5 +22,7 @@
 		}
 	}
 }());;(function() {
-document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+})();;(function() {
+	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':8080/target/target-script-min.js#anonymous"></' + 'script>');
 })();
