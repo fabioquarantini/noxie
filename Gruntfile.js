@@ -2,9 +2,9 @@
 	Grunt configuration
 	==========================================================================  */
 
-module.exports = function(grunt) {
+'use strict';
 
-	'use strict';
+module.exports = function(grunt) {
 
 	/* Load all grunt task in package.json */
 
@@ -98,6 +98,30 @@ module.exports = function(grunt) {
 		},
 
 
+
+		connect: {
+			options: {
+				//port: 9000,
+				port: 9731,
+				livereload: 35729,
+				// change this to '0.0.0.0' to access the server from outside
+				hostname: 'localhost'
+			},
+			livereload: {
+				options: {
+					open: true,
+					base: '<%= hangar.dev %>'
+				}
+			}/*,
+			dev: {
+				options: {
+					open: true,
+					base: '<%= hangar.dev %>'
+				}
+			}*/
+		},
+
+
 		/* [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin) */
 
 		imagemin: {
@@ -119,11 +143,12 @@ module.exports = function(grunt) {
 		/* [ grunt jshint ] Validate files with JSHint (https://github.com/gruntjs/grunt-contrib-jshint) */
 
 		jshint: {
-			all: ['<%= hangar.dev %>/js/*.js'],
 			options: {
+				jshintrc: '.jshintrc',
 				errorsOnly: true,		// only display errors
-				failOnError: false,		// defaults to true
-			}
+				failOnError: false		// defaults to true
+			},
+			all: ['<%= hangar.dev %>/js/*.js']
 		},
 		
 
