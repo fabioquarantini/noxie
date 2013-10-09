@@ -21,10 +21,12 @@ module.exports = function(grunt) {
 		/* Hangar Config */
 
 		hangar: {
-			dev: 'dev',			// Development folder
-			deploy: 'deploy'	// Deploy folder
+			dev: 'dev', // Development folder
+			deploy: 'deploy', // Deploy folder
+			serverPort: 8000,
+			livereloadPort: 35729 // Port number of boolean
 		},
-		
+
 
 		/* [ grunt autoprefixer ] Prefixes css3 propreties (https://github.com/nDmitry/grunt-autoprefixer) */
 
@@ -39,7 +41,7 @@ module.exports = function(grunt) {
 			},
 			dev: {
 				files: {
-					'<%= hangar.dev %>/css/main.css' : ['<%= hangar.dev %>/css/main.css']
+					'<%= hangar.dev %>/css/main.css': ['<%= hangar.dev %>/css/main.css']
 				}
 			},
 			deploy: {
@@ -90,35 +92,28 @@ module.exports = function(grunt) {
 		copy: {
 			deploy: {
 				files: [{
+
 					expand: true,
-					src: ['<%= hangar.dev %>/*' ],
+					src: ['<%= hangar.dev %>/*'],
 					dest: '<%= hangar.deploy %>/'
 				}]
 			}
 		},
 
 
+		/* [ grunt connect ] */
 
 		connect: {
-			options: {
-				//port: 9000,
-				port: 9731,
-				livereload: 35729,
-				// change this to '0.0.0.0' to access the server from outside
-				hostname: 'localhost'
-			},
-			livereload: {
+			server: {
 				options: {
+					port: '<%= hangar.serverPort %>',
+					base: '<%= hangar.dev %>',
+					livereload: '<%= hangar.livereloadPort %>',
 					open: true,
-					base: '<%= hangar.dev %>'
+					keepalive: true,
+					hostname: 'localhost' // Set '*' to access the server from outside
 				}
-			}/*,
-			dev: {
-				options: {
-					open: true,
-					base: '<%= hangar.dev %>'
-				}
-			}*/
+			}
 		},
 
 
@@ -145,17 +140,17 @@ module.exports = function(grunt) {
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc',
-				errorsOnly: true,		// only display errors
-				failOnError: false		// defaults to true
+				errorsOnly: true, // only display errors
+				failOnError: false // defaults to true
 			},
 			all: ['<%= hangar.dev %>/js/*.js']
 		},
-		
+
 
 		/* [grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify) */
 
 		notify: {
-			open:{
+			open: {
 				options: {
 					title: 'Browser',
 					message: 'Weinre server launched',
@@ -185,11 +180,22 @@ module.exports = function(grunt) {
 		/* [grunt open:weinre ] Opens weinre url in default web browser (https://github.com/jsoverson/grunt-open) */
 
 		open: {
-			weinre : {
+			weinre: {
 				path: 'http://localhost:8080/'
 			}
 		},
 
+
+		/* [grunt parallel] */
+
+		parallel: {
+			server: {
+				options: {
+					grunt: true
+				},
+				tasks: ['connect', 'watch']
+			}
+		},
 
 		/* [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass) */
 		/* [ grunt sass:deploy ] Compiles main.scss in distribution mode */
@@ -200,7 +206,7 @@ module.exports = function(grunt) {
 					'<%= hangar.dev %>/css/main.css': '<%= hangar.dev %>/scss/main.scss'
 				},
 				options: {
-					sourcemap: false,  // Requires Sass 3.3.0, which can be installed with gem install sass --pre
+					sourcemap: false, // Requires Sass 3.3.0, which can be installed with gem install sass --pre
 					style: 'expanded',
 					lineNumbers: true,
 					debugInfo: true // enable if you want to use FireSass
@@ -251,42 +257,37 @@ module.exports = function(grunt) {
 					'sass:dev',
 					'autoprefixer:dev',
 					'notify:sass'
-				],
-				options: {
-					livereload: true
-				}
-			},
-			src: {
-				files: ['<%= hangar.dev %>/*.html'],
-				options: {
-					livereload: true
-				}
+				]
 			},
 			plugins: {
 				files: '<%= hangar.dev %>/js/plugins/*.js',
 				tasks: ['concat:dev']
 			},
-			scripts: {
-				files: ['<%= hangar.deploy %>/js/main.js','<%= hangar.deploy %>/js/plugins.js'],
+			livereload: {
 				options: {
-					livereload: true
-				}
+					livereload: '<%= hangar.livereloadPort %>'
+				},
+				files: [
+					'<%= hangar.dev %>/*.html',
+					'<%= hangar.dev %>/css/{,*/}*.css',
+					'<%= hangar.dev %>/js/{,*/}*.js',
+					'<%= hangar.dev %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+				]
 			}
 		}
-
 	});
 
-	
-	/* Register task */
+
+	/* Register tasks */
 
 	grunt.registerTask('default', [
 		'sass:dev',
 		'autoprefixer:dev',
 		'concat:dev',
-		'watch'
+		'parallel:server'
 	]);
 
-	grunt.registerTask('deploy',[
+	grunt.registerTask('deploy', [
 		'copy:deploy',
 		'sass:deploy',
 		'autoprefixer:deploy',
