@@ -21,10 +21,11 @@ module.exports = function(grunt) {
 		/* Hangar Config */
 
 		hangar: {
-			dev: 'dev', // Development folder
-			deploy: 'deploy', // Deploy folder
-			serverPort: 8000,
-			livereloadPort: 35729 // Port number of boolean
+			dev: 'dev',				// Development folder
+			deploy: 'deploy',		// Deploy folder
+			serverPort: 8000,		// Server port
+			livereloadPort: 35729,	// Port number of boolean
+			hostname: 'localhost'	// Set '*' or '0.0.0.0' to access the server from outside
 		},
 
 
@@ -92,7 +93,6 @@ module.exports = function(grunt) {
 		copy: {
 			deploy: {
 				files: [{
-
 					expand: true,
 					src: ['<%= hangar.dev %>/*'],
 					dest: '<%= hangar.deploy %>/'
@@ -102,18 +102,39 @@ module.exports = function(grunt) {
 
 
 		/* [ grunt connect ] */
-
+// http://www.brianchu.com/blog/2013/07/11/grunt-by-example-a-tutorial-for-javascripts-task-runner/
+// http://nodejs.org/api/http.html#http_response_setheader_name_value
+// http://www.senchalabs.org/connect/static.html
 		connect: {
 			server: {
 				options: {
 					port: '<%= hangar.serverPort %>',
 					base: '<%= hangar.dev %>',
-					livereload: '<%= hangar.livereloadPort %>',
+					livereload: false,
 					open: true,
 					keepalive: true,
-					hostname: 'localhost' // Set '*' to access the server from outside
+					hostname:  '<%= hangar.hostname %>',
+					middleware: function(connect, options) {
+						// Return array of whatever middlewares you want
+						// re
+						return [
+							require('connect-weinre')({ port: 8000 }),
+							connect.static(options.base),
+							function(req, res, next) {
+								//res.write();
+
+
+								//res.end();
+								//grunt.log.write(options);
+								//grunt.log.write(req);
+								//grunt.log.write(next);
+							}
+							//,connect.static(options.base)
+							//,connect.directory(options.base)
+						];
+					}
 				}
-			}
+			},
 		},
 
 
@@ -194,6 +215,9 @@ module.exports = function(grunt) {
 					grunt: true
 				},
 				tasks: ['connect', 'watch']
+			},
+			weinre: {
+				tasks: ['connect', 'watch', 'shell:weinre']
 			}
 		},
 
@@ -263,6 +287,10 @@ module.exports = function(grunt) {
 				files: '<%= hangar.dev %>/js/plugins/*.js',
 				tasks: ['concat:dev']
 			},
+			jshint: {
+				files: '<%= hangar.dev %>/js/*.js',
+				tasks: ['jshint']
+			},
 			livereload: {
 				options: {
 					livereload: '<%= hangar.livereloadPort %>'
@@ -281,6 +309,7 @@ module.exports = function(grunt) {
 	/* Register tasks */
 
 	grunt.registerTask('default', [
+		//'jshint',
 		'sass:dev',
 		'autoprefixer:dev',
 		'concat:dev',
@@ -288,6 +317,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('deploy', [
+		'jshint',
 		'copy:deploy',
 		'sass:deploy',
 		'autoprefixer:deploy',
@@ -301,7 +331,7 @@ module.exports = function(grunt) {
 		'concat:weinre',
 		'open:weinre',
 		'notify:open',
-		'shell:weinre'
+		'parallel:weinre'
 	]);
 
 };
