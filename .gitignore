@@ -2,7 +2,6 @@
 # Specific for project
 #########################################
 
-config.rb
 deploy/
 
 

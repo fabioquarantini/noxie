@@ -6,30 +6,30 @@
 
 module.exports = function(grunt) {
 
-	/* Load all grunt task in package.json */
+	// Load all grunt task in package.json
 
 	require('load-grunt-tasks')(grunt);
 
 
 	grunt.initConfig({
 
-		/* Reads dependencies from package.json */
+		// Reads dependencies from package.json
 
 		pkg: grunt.file.readJSON('package.json'),
 
 
-		/* Hangar Config */
+		// Hangar Config
 
 		hangar: {
-			dev: 'dev',				// Development folder
-			deploy: 'deploy',		// Deploy folder
-			serverPort: 8000,		// Server port
-			livereloadPort: 35729,	// Port number of boolean
-			hostname: 'localhost'	// Set '*' or '0.0.0.0' to access the server from outside
+			dev: 'app',					// Development folder
+			deploy: 'deploy',			// Deploy folder
+			hostname: 'localhost',		// Set '*' or '0.0.0.0' to access the server from outside
+			serverPort: 9000,			// Server port
+			livereloadPort: 35729,		// Port number of boolean
 		},
 
 
-		/* [ grunt autoprefixer ] Prefixes css3 propreties (https://github.com/nDmitry/grunt-autoprefixer) */
+		// [ grunt autoprefixer ] Prefixes css3 propreties (https://github.com/nDmitry/grunt-autoprefixer)
 
 		autoprefixer: {
 			options: {
@@ -53,30 +53,24 @@ module.exports = function(grunt) {
 		},
 
 
-		/* [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat) */
+		// [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat)
 
 		concat: {
 			options: {
 				separator: ';'
 			},
 			dev: {
-				//src: ['<%= hangar.dev %>/js/plugins/*.js', '!<%= hangar.dev %>/js/plugins/weinre.js'],
 				src: ['<%= hangar.dev %>/js/plugins/*.js'],
 				dest: '<%= hangar.dev %>/js/plugins.js'
 			},
 			deploy: {
-				//src: ['<%= hangar.dev %>/js/plugins/*.js', '!<%= hangar.dev %>/js/plugins/livereload.js', '!<%= hangar.dev %>/js/plugins/weinre.js'],
 				src: ['<%= hangar.dev %>/js/plugins/*.js'],
 				dest: '<%= hangar.deploy %>/js/plugins.js'
 			}
-			/*weinre: {
-				src: ['js/plugins/*.js'],
-				dest: 'js/plugins.js'
-			}*/
 		},
 
 
-		/* [ grunt cssmin:deploy ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin) */
+		// [ grunt cssmin:deploy ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin)
 
 		cssmin: {
 			deploy: {
@@ -88,57 +82,39 @@ module.exports = function(grunt) {
 		},
 
 
-		/* [ grunt copy ] Copies files for deployment (https://github.com/gruntjs/grunt-contrib-copy) */
+		// [ grunt copy ] Copies files for deployment (https://github.com/gruntjs/grunt-contrib-copy)
 
 		copy: {
 			deploy: {
 				files: [{
 					expand: true,
-					src: ['<%= hangar.dev %>/*'],
+					dot: true,
+					//, '!<%= hangar.dev %>/js/plugins/*.js'
+					cwd: '<%= hangar.dev %>',
+					src: ['**', '!scss/**', '!js/plugins/**'],
 					dest: '<%= hangar.deploy %>/'
 				}]
 			}
 		},
 
 
-		/* [ grunt connect ] */
-// http://www.brianchu.com/blog/2013/07/11/grunt-by-example-a-tutorial-for-javascripts-task-runner/
-// http://nodejs.org/api/http.html#http_response_setheader_name_value
-// http://www.senchalabs.org/connect/static.html
+		// [ grunt connect ]
+
 		connect: {
 			server: {
 				options: {
 					port: '<%= hangar.serverPort %>',
 					base: '<%= hangar.dev %>',
-					livereload: false,
+					//livereload: false,
 					open: true,
 					keepalive: true,
-					hostname:  '<%= hangar.hostname %>',
-					middleware: function(connect, options) {
-						// Return array of whatever middlewares you want
-						// re
-						return [
-							require('connect-weinre')({ port: 8000 }),
-							connect.static(options.base),
-							function(req, res, next) {
-								//res.write();
-
-
-								//res.end();
-								//grunt.log.write(options);
-								//grunt.log.write(req);
-								//grunt.log.write(next);
-							}
-							//,connect.static(options.base)
-							//,connect.directory(options.base)
-						];
-					}
+					hostname:  '<%= hangar.hostname %>'
 				}
 			},
 		},
 
 
-		/* [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin) */
+		// [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin)
 
 		imagemin: {
 			options: {
@@ -156,7 +132,7 @@ module.exports = function(grunt) {
 		},
 
 
-		/* [ grunt jshint ] Validate files with JSHint (https://github.com/gruntjs/grunt-contrib-jshint) */
+		// [ grunt jshint ] Validate files with JSHint (https://github.com/gruntjs/grunt-contrib-jshint)
 
 		jshint: {
 			options: {
@@ -164,11 +140,11 @@ module.exports = function(grunt) {
 				errorsOnly: true, // only display errors
 				failOnError: false // defaults to true
 			},
-			all: ['<%= hangar.dev %>/js/*.js']
+			all: ['<%= hangar.dev %>/js/main.js']
 		},
 
 
-		/* [grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify) */
+		// [grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify)
 
 		notify: {
 			open: {
@@ -187,27 +163,31 @@ module.exports = function(grunt) {
 				options: {
 					title: 'JSHint',
 					message: 'Js validation done successfully',
+					max_jshint_notifications: 5
 				}
 			},
 			sass: {
 				options: {
 					title: 'Sass',
-					message: 'SASS Compilation completed.',
+					message: 'SASS Compilation done successfully',
 				}
 			}
 		},
 
 
-		/* [grunt open:weinre ] Opens weinre url in default web browser (https://github.com/jsoverson/grunt-open) */
+		// [grunt open:weinre ] Opens weinre url in default web browser (https://github.com/jsoverson/grunt-open)
 
 		open: {
 			weinre: {
 				path: 'http://localhost:8080/'
+			},
+			server: {
+				path: 'http://localhost:<%= hangar.serverPort %>/'
 			}
 		},
 
 
-		/* [grunt parallel] */
+		// [grunt parallel]
 
 		parallel: {
 			server: {
@@ -221,8 +201,9 @@ module.exports = function(grunt) {
 			}
 		},
 
-		/* [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass) */
-		/* [ grunt sass:deploy ] Compiles main.scss in distribution mode */
+
+		// [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass)
+		// [ grunt sass:deploy ] Compiles main.scss in distribution mode
 
 		sass: {
 			dev: {
@@ -247,8 +228,8 @@ module.exports = function(grunt) {
 		},
 
 
-		/* [ grunt shell ] Run shell comand (https://github.com/sindresorhus/grunt-shell) */
-		/* First install weinre [ sudo npm -g install weinre ] (http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html) */
+		// [ grunt shell ] Run shell comand (https://github.com/sindresorhus/grunt-shell)
+		// First install weinre [ sudo npm -g install weinre ] (http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html)
 
 		shell: {
 			weinre: {
@@ -257,22 +238,21 @@ module.exports = function(grunt) {
 		},
 
 
-		/* [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify) */
+		// [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify)
 
 		uglify: {
 			deploy: {
 				options: {
-					sourceMapRoot: 'js/plugins/',
 					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> + <%= grunt.template.today("yyyy-mm-dd") %> */'
 				},
 				files: {
-					'<%= hangar.deploy %>/js/*.js': ['<%= hangar.deploy %>/js/*.js']
+					'<%= hangar.deploy %>/js/plugins.js': ['<%= hangar.deploy %>/js/*.js']
 				}
 			}
 		},
 
 
-		/* [ grunt watch ] Watches for file changes and optimizes images, concats and minifies scripts in plugins and also starts a livereload server (https://github.com/gruntjs/grunt-contrib-watch)*/
+		// [ grunt watch ] Watches for file changes and optimizes images, concats and minifies scripts in plugins and also starts a livereload server (https://github.com/gruntjs/grunt-contrib-watch)
 
 		watch: {
 			css: {
@@ -288,7 +268,7 @@ module.exports = function(grunt) {
 				tasks: ['concat:dev']
 			},
 			jshint: {
-				files: '<%= hangar.dev %>/js/*.js',
+				files: '<%= hangar.dev %>/js/main.js',
 				tasks: ['jshint']
 			},
 			livereload: {
@@ -306,14 +286,15 @@ module.exports = function(grunt) {
 	});
 
 
-	/* Register tasks */
+	// Register tasks
 
 	grunt.registerTask('default', [
 		//'jshint',
 		'sass:dev',
 		'autoprefixer:dev',
 		'concat:dev',
-		'parallel:server'
+		'connect:server',
+		'open:server'
 	]);
 
 	grunt.registerTask('deploy', [

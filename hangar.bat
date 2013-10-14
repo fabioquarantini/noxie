@@ -4,10 +4,10 @@ call npm install
 :start
 ECHO.
 ECHO Please select which tasks should Hangar run
-ECHO 1 Run Dev task
-ECHO 2 Run Build task
-ECHO 3 Run Weinre task
-set /p choice=Choose the task number and hit enter
+ECHO 1 - Run Dev task
+ECHO 2 - Run Build task
+ECHO 3 - Run Weinre task
+set /p choice=Choose the task number and hit enter: 
 if '%choice%'=='1' goto dev
 if '%choice%'=='2' goto build
 if '%choice%'=='3' goto weinre

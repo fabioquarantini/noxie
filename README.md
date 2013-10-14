@@ -26,7 +26,7 @@ You may need this project if you need a simple and powerful starting kit for you
 The basic structure of the project is given in the following way:
 
 ```
-├── dev
+├── app
 │   ├─── css/
 │   │	└── main.css
 │   ├── js/
@@ -68,7 +68,7 @@ The basic structure of the project is given in the following way:
 
 ## Credits
 
-[Fabio](http://www.fabioquarantini.com), [danielhq](https://twitter.com/ildaniel8)
+[Fabio Quarantini](http://www.fabioquarantini.com), [Daniel Duches](https://twitter.com/ildaniel8)
 
 
 ## License
