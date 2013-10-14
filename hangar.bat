@@ -1,11 +1,6 @@
 @ECHO off
 cls
-IF not exist node_modules (
-	echo node_modules folder is not present, I'm going to download packages
-	pause
-	call npm install
-	if errorlevel 1 goto errorNode
-)
+call npm install
 :start
 ECHO.
 ECHO Please select which tasks should Hangar run
@@ -27,7 +22,5 @@ goto end
 :weinre
 grunt weinre
 goto end
-:errorNode
-echo There are some errors in the package.json, download it again
 :end
 pause
