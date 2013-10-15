@@ -27,8 +27,10 @@ The basic structure of the project is given in the following way:
 
 ```
 ├── app
-│   ├─── css/
+│   ├── css/
 │   │	└── main.css
+│   ├── font/
+│   ├── img/
 │   ├── js/
 │   │ 	├── plugins
 │   │   │ 		├── console.js
