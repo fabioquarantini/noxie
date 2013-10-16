@@ -4,6 +4,11 @@
 
 'use strict';
 
+
+var weinreInject = require('connect-livereload') ({
+	src : "http://' + (location.host || 'localhost').split(':')[0] + ':8080/target/target-script-min.js#anonymous"
+});
+
 module.exports = function(grunt) {
 
 	// Load all grunt task in package.json
@@ -23,7 +28,7 @@ module.exports = function(grunt) {
 		hangar: {
 			dev: 'app',					// Development folder
 			deploy: 'deploy',			// Deploy folder
-			hostname: '*',				// Set '*' or '0.0.0.0' to access the server from outside
+			hostname: '0.0.0.0',		// Set '0.0.0.0' to access the server from outside
 			serverPort: 8000,			// Server port
 			livereloadPort: 35729,		// Port number or boolean
 			weinrePort: 8080,			// Weinre port
@@ -107,8 +112,24 @@ module.exports = function(grunt) {
 				options: {
 					port: '<%= hangar.serverPort %>',
 					base: '<%= hangar.dev %>',
-					livereload: true,
+					livereload: false,
 					hostname:  '<%= hangar.hostname %>'
+				}
+			},
+			weinre: {
+				options: {
+					port: '<%= hangar.serverPort %>',
+					base: '<%= hangar.dev %>',
+					livereload: true,
+					keepalive: true,
+					open:true,
+					hostname: '<%= hangar.hostname %>',
+					middleware: function(connect, options) {
+						return [
+							weinreInject,
+							connect.static(options.base)
+						];
+					}
 				}
 			}
 		},
@@ -320,11 +341,12 @@ module.exports = function(grunt) {
 		'uglify:deploy'
 	]);
 
-	grunt.registerTask('weinre', [
-		'notify:weinre',
-		'connect:weinre',
-		'open:weinre',
-		'watch'
-	]);
+    grunt.registerTask('weinre', [
+        'notify:weinre',
+        'connect:weinre',
+        'open:server',
+        'open:weinre',
+        'watch'
+    ]);
 
 };
