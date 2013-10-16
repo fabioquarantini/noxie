@@ -18,16 +18,16 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 
-		// Hangar Config
+		// Hangar config
 
 		hangar: {
 			dev: 'app',					// Development folder
 			deploy: 'deploy',			// Deploy folder
-			hostname: 'localhost',		// Set '*' or '0.0.0.0' to access the server from outside
+			hostname: '*',				// Set '*' or '0.0.0.0' to access the server from outside
 			serverPort: 8000,			// Server port
 			livereloadPort: 35729,		// Port number or boolean
-			weinrePort: 8080			// Weinre port
-
+			weinrePort: 8080,			// Weinre port
+			banner: '/*! <%= pkg.title %> v<%= pkg.version %> | (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> <%= pkg.author.url %> */\n'
 		},
 
 
@@ -217,10 +217,11 @@ module.exports = function(grunt) {
 					'<%= hangar.dev %>/css/main.css': '<%= hangar.dev %>/scss/main.scss'
 				},
 				options: {
-					sourcemap: false, // Requires Sass 3.3.0, which can be installed with gem install sass --pre
-					style: 'expanded',
+					banner: '<%= hangar.banner %>',
+					debugInfo: true,		// enable if you want to use FireSass
 					lineNumbers: true,
-					debugInfo: true // enable if you want to use FireSass
+					sourcemap: false,		// Requires Sass 3.3.0, which can be installed with gem install sass --pre
+					style: 'expanded'
 				}
 			},
 			deploy: {
@@ -228,6 +229,7 @@ module.exports = function(grunt) {
 					'<%= hangar.deploy %>/css/main.css': '<%= hangar.dev %>/scss/main.scss'
 				},
 				options: {
+					banner: '<%= hangar.banner %>',
 					style: 'compressed'
 				}
 			}
@@ -247,12 +249,13 @@ module.exports = function(grunt) {
 		// [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify)
 
 		uglify: {
+			options: {
+				banner: '<%= hangar.banner %>'
+			},
 			deploy: {
-				options: {
-					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> + <%= grunt.template.today("yyyy-mm-dd") %> */'
-				},
 				files: {
-					'<%= hangar.deploy %>/js/plugins.js': ['<%= hangar.deploy %>/js/*.js']
+					'<%= hangar.deploy %>/js/plugins.js': ['<%= hangar.deploy %>/js/plugins.js'],
+					'<%= hangar.deploy %>/js/main.js': ['<%= hangar.deploy %>/js/main.js']
 				}
 			}
 		},
