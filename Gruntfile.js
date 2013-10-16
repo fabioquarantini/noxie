@@ -24,8 +24,10 @@ module.exports = function(grunt) {
 			dev: 'app',					// Development folder
 			deploy: 'deploy',			// Deploy folder
 			hostname: 'localhost',		// Set '*' or '0.0.0.0' to access the server from outside
-			serverPort: 9000,			// Server port
-			livereloadPort: 35729,		// Port number of boolean
+			serverPort: 8000,			// Server port
+			livereloadPort: 35729,		// Port number or boolean
+			weinrePort: 8080			// Weinre port
+
 		},
 
 
@@ -105,12 +107,10 @@ module.exports = function(grunt) {
 				options: {
 					port: '<%= hangar.serverPort %>',
 					base: '<%= hangar.dev %>',
-					//livereload: false,
-					open: true,
-					keepalive: true,
+					livereload: true,
 					hostname:  '<%= hangar.hostname %>'
 				}
-			},
+			}
 		},
 
 
@@ -147,10 +147,16 @@ module.exports = function(grunt) {
 		// [grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify)
 
 		notify: {
-			open: {
+			weinre: {
 				options: {
 					title: 'Browser',
-					message: 'Weinre server launched',
+					message: 'Weinre server launched on http://<%= hangar.hostname %>:<%= hangar.weinrePort %>/',
+				}
+			},
+			server: {
+				options:{
+					title: 'Browser',
+					message:'Server started on http://<%= hangar.hostname %>:<%= hangar.serverPort %>/'
 				}
 			},
 			imagemin: {
@@ -179,10 +185,10 @@ module.exports = function(grunt) {
 
 		open: {
 			weinre: {
-				path: 'http://localhost:8080/'
+				path: 'http://<%= hangar.hostname %>:<%= hangar.weinrePort %>/'
 			},
 			server: {
-				path: 'http://localhost:<%= hangar.serverPort %>/'
+				path: 'http://<%= hangar.hostname %>:<%= hangar.serverPort %>/'
 			}
 		},
 
@@ -293,8 +299,11 @@ module.exports = function(grunt) {
 		'sass:dev',
 		'autoprefixer:dev',
 		'concat:dev',
+		'notify:server',
 		'connect:server',
-		'open:server'
+		'open:server',
+		'watch'
+
 	]);
 
 	grunt.registerTask('deploy', [
@@ -309,10 +318,10 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('weinre', [
-		'concat:weinre',
+		'notify:weinre',
+		'connect:weinre',
 		'open:weinre',
-		'notify:open',
-		'parallel:weinre'
+		'watch'
 	]);
 
 };
