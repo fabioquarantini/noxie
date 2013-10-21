@@ -5,8 +5,8 @@
 'use strict';
 
 
-var weinreInject = require('connect-livereload') ({
-	src : "http://' + (location.host || 'localhost').split(':')[0] + ':8080/target/target-script-min.js#anonymous"
+var inject = require('connect-inject') ({
+	snippet : "<script type='text/javascript' src='http://' + (location.host || 'localhost').split(':')[0] + ':8080/target/target-script-min.js#anonymous'></script>"
 });
 
 module.exports = function(grunt) {
@@ -112,7 +112,7 @@ module.exports = function(grunt) {
 				options: {
 					port: '<%= hangar.serverPort %>',
 					base: '<%= hangar.dev %>',
-					livereload: false,
+					livereload: true,
 					hostname:  '<%= hangar.hostname %>'
 				}
 			},
@@ -121,12 +121,12 @@ module.exports = function(grunt) {
 					port: '<%= hangar.serverPort %>',
 					base: '<%= hangar.dev %>',
 					livereload: true,
-					keepalive: true,
-					open:true,
+					open: false,
+					keepalive: false,
 					hostname: '<%= hangar.hostname %>',
 					middleware: function(connect, options) {
 						return [
-							weinreInject,
+							inject,
 							connect.static(options.base)
 						];
 					}
@@ -206,10 +206,10 @@ module.exports = function(grunt) {
 
 		open: {
 			weinre: {
-				path: 'http://<%= hangar.hostname %>:<%= hangar.weinrePort %>/'
+				path: 'http://localhost:<%= hangar.weinrePort %>/'
 			},
 			server: {
-				path: 'http://<%= hangar.hostname %>:<%= hangar.serverPort %>/'
+				path: 'http://localhost:<%= hangar.serverPort %>/'
 			}
 		},
 
@@ -327,7 +327,6 @@ module.exports = function(grunt) {
 		'connect:server',
 		'open:server',
 		'watch'
-
 	]);
 
 	grunt.registerTask('deploy', [
@@ -341,12 +340,12 @@ module.exports = function(grunt) {
 		'uglify:deploy'
 	]);
 
-    grunt.registerTask('weinre', [
-        'notify:weinre',
-        'connect:weinre',
-        'open:server',
-        'open:weinre',
-        'watch'
-    ]);
+	grunt.registerTask('weinre', [
+		'notify:weinre',
+		'connect:weinre',
+		'open:server',
+		'open:weinre',
+		'watch'
+	]);
 
 };
