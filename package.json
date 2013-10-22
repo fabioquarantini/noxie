@@ -26,8 +26,7 @@
     "url": "http://opensource.org/licenses/MIT"
   },
   "devDependencies": {
-  	"connect-inject" : "~0.1.0",
-  	"connect-livereload": "~0.3.0",
+  	"connect-inject" : "~0.3.1",
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-connect": "~0.5.0",

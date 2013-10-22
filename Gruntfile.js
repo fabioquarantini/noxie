@@ -4,11 +4,6 @@
 
 'use strict';
 
-
-var inject = require('connect-inject') ({
-	snippet : "<script type='text/javascript' src='http://' + (location.host || 'localhost').split(':')[0] + ':8080/target/target-script-min.js#anonymous'></script>"
-});
-
 module.exports = function(grunt) {
 
 	// Load all grunt task in package.json
@@ -28,7 +23,7 @@ module.exports = function(grunt) {
 		hangar: {
 			dev: 'app',					// Development folder
 			deploy: 'deploy',			// Deploy folder
-			hostname: '0.0.0.0',		// Set '0.0.0.0' to access the server from outside
+			hostname: '*',				// Set '*' or '0.0.0.0' to access the server from outside
 			serverPort: 8000,			// Server port
 			livereloadPort: 35729,		// Port number or boolean
 			weinrePort: 8080,			// Weinre port
@@ -96,7 +91,6 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					dot: true,
-					//, '!<%= hangar.dev %>/js/plugins/*.js'
 					cwd: '<%= hangar.dev %>',
 					src: ['**', '!scss/**', '!js/plugins/**'],
 					dest: '<%= hangar.deploy %>/'
@@ -120,20 +114,21 @@ module.exports = function(grunt) {
 				options: {
 					port: '<%= hangar.serverPort %>',
 					base: '<%= hangar.dev %>',
-					livereload: true,
+					livereload: false,	// Not change it
 					open: false,
 					keepalive: false,
 					hostname: '<%= hangar.hostname %>',
 					middleware: function(connect, options) {
 						return [
-							inject,
+							require('connect-inject') ({
+								inject : "\n<script type=\"text/javascript\">document.write('<script src=\"" + "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':8080/target/target-script-min.js#anonymous" + "\" type=\"text/javascript\"><\\/script>')</script><script type=\"text/javascript\">document.write('<script src=\"" + "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1" + "\" type=\"text/javascript\"><\\/script>')</script>\n"
+							}),
 							connect.static(options.base)
 						];
 					}
 				}
 			}
 		},
-
 
 		// [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin)
 
@@ -224,7 +219,8 @@ module.exports = function(grunt) {
 				tasks: ['connect', 'watch']
 			},
 			weinre: {
-				tasks: ['connect', 'watch', 'shell:weinre']
+				//tasks: ['connect', 'watch', 'shell:weinre']
+				tasks: ['connect:weinre', 'open', 'watch']
 			}
 		},
 
@@ -286,7 +282,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			css: {
-				files: '<%= hangar.dev %>/scss/*.scss',
+				files: '<%= hangar.dev %>/scss/**/*.scss',
 				tasks: [
 					'sass:dev',
 					'autoprefixer:dev',
@@ -306,7 +302,7 @@ module.exports = function(grunt) {
 					livereload: '<%= hangar.livereloadPort %>'
 				},
 				files: [
-					'<%= hangar.dev %>/*.html',
+					'<%= hangar.dev %>/**/*.html',
 					'<%= hangar.dev %>/css/{,*/}*.css',
 					'<%= hangar.dev %>/js/{,*/}*.js',
 					'<%= hangar.dev %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -341,11 +337,18 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('weinre', [
+		// 'notify:weinre',
+		// 'connect:weinre',
+		// 'open',
+		// 'watch'
+
+		//'parallel:weinre'
+
 		'notify:weinre',
 		'connect:weinre',
-		'open:server',
-		'open:weinre',
-		'watch'
+		'open',
+		'shell'
+		// 'watch'
 	]);
 
 };
