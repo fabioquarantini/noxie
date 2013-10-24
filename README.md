@@ -3,7 +3,7 @@
 ## A web development starter kit  ##
 
 **Hangar** is a web development starter kit, provides project architecture, it's goal is to ease the web developers job.
-**Hangar** also provides useful [Grunt]("http://gruntjs.com/") tasks specifically made for performance optimization.
+
 
 
 ## Who needs this ##
@@ -20,6 +20,42 @@ You may need this project if you need a simple and powerful starting kit for you
 - [Sass](http://sass-lang.com/)
 - [Weinre](http://people.apache.org/~pmuellr/weinre/docs/latest/)
 
+## Installation ##
+
+Download [zip file](https://github.com/fabioquarantini/hangar/archive/master.zip)
+
+or 
+
+```
+git clone https://github.com/fabioquarantini/hangar.git
+```
+
+## Requirements 
+
+- [Nodejs](http://nodejs.org/)
+- [Gruntjs](http://gruntjs.com/)
+
+Make sure you have the latest versions of these software. 
+
+## Usage 
+
+
+#### Manual install
+With your terminal of choice go to your directory where you have downloaded Hangar and:
+```
+npm install
+```
+
+#### Automatic install
+If you're on Windows run:
+```
+hangar.bat
+```
+
+If you're on OSX then run:
+```
+hangar.command
+```
 
 ## Structure
 
