@@ -99,6 +99,24 @@ module.exports = function(grunt) {
 		},
 
 
+		// [grunt concurrent:mobile ] Runs multiple tasks (https://github.com/sindresorhus/grunt-concurrent)
+
+		concurrent: {
+			mobile: {
+				tasks: [
+					'notify:weinre',
+					'shell:weinre',
+					'connect:weinre',
+					'open',
+					'watch'
+				],
+				options: {
+					logConcurrentOutput: true
+				}
+			}
+		},
+
+
 		// [ grunt connect ]
 
 		connect: {
@@ -114,14 +132,17 @@ module.exports = function(grunt) {
 				options: {
 					port: '<%= hangar.serverPort %>',
 					base: '<%= hangar.dev %>',
-					livereload: false,	// Not change it
+					livereload: false, //Do not touch this. We implement the script below
 					open: false,
-					keepalive: false,
+					keepalive: true,
 					hostname: '<%= hangar.hostname %>',
 					middleware: function(connect, options) {
 						return [
 							require('connect-inject') ({
-								inject : "\n<script type=\"text/javascript\">document.write('<script src=\"" + "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':8080/target/target-script-min.js#anonymous" + "\" type=\"text/javascript\"><\\/script>')</script><script type=\"text/javascript\">document.write('<script src=\"" + "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1" + "\" type=\"text/javascript\"><\\/script>')</script>\n"
+								snippet : [
+									"\n<script type=\"text/javascript\">document.write('<script src=\"" + "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':8080/target/target-script-min.js#anonymous" + "\" type=\"text/javascript\"><\\/script>')</script>\n",
+									"\n<script type=\"text/javascript\">document.write('<script src=\"" + "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1" + "\" type=\"text/javascript\"><\\/script>')</script>\n"
+								]
 							}),
 							connect.static(options.base)
 						];
@@ -201,26 +222,10 @@ module.exports = function(grunt) {
 
 		open: {
 			weinre: {
-				path: 'http://localhost:<%= hangar.weinrePort %>/'
+				path: 'http://localhost:<%= hangar.weinrePort %>/client/#anonymous'
 			},
 			server: {
 				path: 'http://localhost:<%= hangar.serverPort %>/'
-			}
-		},
-
-
-		// [grunt parallel]
-
-		parallel: {
-			server: {
-				options: {
-					grunt: true
-				},
-				tasks: ['connect', 'watch']
-			},
-			weinre: {
-				//tasks: ['connect', 'watch', 'shell:weinre']
-				tasks: ['connect:weinre', 'open', 'watch']
 			}
 		},
 
@@ -315,7 +320,7 @@ module.exports = function(grunt) {
 	// Register tasks
 
 	grunt.registerTask('default', [
-		//'jshint',
+		'jshint',
 		'sass:dev',
 		'autoprefixer:dev',
 		'concat:dev',
@@ -336,19 +341,8 @@ module.exports = function(grunt) {
 		'uglify:deploy'
 	]);
 
-	grunt.registerTask('weinre', [
-		// 'notify:weinre',
-		// 'connect:weinre',
-		// 'open',
-		// 'watch'
-
-		//'parallel:weinre'
-
-		'notify:weinre',
-		'connect:weinre',
-		'open',
-		'shell'
-		// 'watch'
+	grunt.registerTask('mobile', [
+		'concurrent:mobile'
 	]);
 
 };
