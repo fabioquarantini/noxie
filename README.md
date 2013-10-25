@@ -65,7 +65,7 @@ The basic structure of the project is given in the following way:
 ├── app
 │   ├── css/
 │   │	└── main.css
-│   ├── font/
+│   ├── fonts/
 │   ├── img/
 │   ├── js/
 │   │ 	├── plugins

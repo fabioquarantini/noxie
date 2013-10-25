@@ -54,6 +54,14 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// [grunt bower ] Installs dependency into the project
+
+		bower: {
+			dev: {
+				dest: 'app/components'
+			}
+		},
+
 
 		// [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat)
 
@@ -142,7 +150,6 @@ module.exports = function(grunt) {
 								snippet : [
 									'<script type=\"text\/javascript\">document.write(\'<script src=\"\' + (location.protocol || \'http:\') + \'\/\/\' + (location.hostname || \'localhost\') + \':8080\/target\/target-script-min.js#anonymous\" type=\"text\/javascript\"><\\\/script>\')<\/script>\n',
 									'<script type=\"text\/javascript\">document.write(\'<script src=\"\' + (location.protocol || \'http:\') + \'\/\/\' + (location.hostname || \'localhost\') + \':35729\/livereload.js?snipver=1\" type=\"text\/javascript\"><\\\/script>\')<\/script>\n'
-
 								]
 							}),
 							connect.static(options.base)
@@ -151,6 +158,7 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
 
 		// [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin)
 
@@ -315,6 +323,7 @@ module.exports = function(grunt) {
 				]
 			}
 		}
+
 	});
 
 
