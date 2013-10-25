@@ -140,8 +140,9 @@ module.exports = function(grunt) {
 						return [
 							require('connect-inject') ({
 								snippet : [
-									"\n<script type=\"text/javascript\">document.write('<script src=\"" + "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':8080/target/target-script-min.js#anonymous" + "\" type=\"text/javascript\"><\\/script>')</script>\n",
-									"\n<script type=\"text/javascript\">document.write('<script src=\"" + "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1" + "\" type=\"text/javascript\"><\\/script>')</script>\n"
+									'<script type=\"text\/javascript\">document.write(\'<script src=\"\' + (location.protocol || \'http:\') + \'\/\/\' + (location.hostname || \'localhost\') + \':8080\/target\/target-script-min.js#anonymous\" type=\"text\/javascript\"><\\\/script>\')<\/script>\n',
+									'<script type=\"text\/javascript\">document.write(\'<script src=\"\' + (location.protocol || \'http:\') + \'\/\/\' + (location.hostname || \'localhost\') + \':35729\/livereload.js?snipver=1\" type=\"text\/javascript\"><\\\/script>\')<\/script>\n'
+
 								]
 							}),
 							connect.static(options.base)
