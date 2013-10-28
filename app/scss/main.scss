@@ -6,6 +6,7 @@
 @import "partials/base";
 @import "partials/typography";
 @import "partials/grids";
+@import "partials/forms";
 @import "partials/helpers";
 
 
@@ -34,5 +35,5 @@ h1 {
 	========================================================================== */
 
 @media print {
-	@import "print";
+	@import "partials/print";
 }
