@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 
 		bower: {
 			dev: {
-				dest: 'app/components'
+				dest: 'bower_components/main/'
 			}
 		},
 
@@ -184,7 +184,8 @@ module.exports = function(grunt) {
 			options: {
 				jshintrc: '.jshintrc',
 				errorsOnly: true, // only display errors
-				failOnError: false // defaults to true
+				failOnError: false, // defaults to true
+				reporter: require('jshint-stylish')
 			},
 			all: ['<%= hangar.dev %>/js/main.js']
 		},
@@ -296,11 +297,17 @@ module.exports = function(grunt) {
 
 		watch: {
 			css: {
-				files: '<%= hangar.dev %>/scss/**/*.scss',
+				files: '<%= hangar.dev %>/scss/{,*/}*.{scss,sass}',
 				tasks: [
 					'sass:dev',
 					'autoprefixer:dev',
 					'notify:sass'
+				]
+			},
+			bower: {
+				files: 'bower_components/{,*/}*.*',
+				tasks: [
+					'bower:dev'
 				]
 			},
 			plugins: {
@@ -331,6 +338,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', [
 		'jshint',
+		'bower:dev',
 		'sass:dev',
 		'autoprefixer:dev',
 		'concat:dev',
