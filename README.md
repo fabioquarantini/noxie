@@ -15,10 +15,11 @@ You may need this project if you need a simple and powerful starting kit for you
 
 **Hangar** in it's core uses:
 
-- [Grunt](http://gruntjs.com/)
-- [Html5Boilerplate](http://html5boilerplate.com/)
-- [Sass](http://sass-lang.com/)
-- [Weinre](http://people.apache.org/~pmuellr/weinre/docs/latest/)
+- [Grunt](http://gruntjs.com)
+- [Html5Boilerplate](http://html5boilerplate.com)
+- [Sass](http://sass-lang.com)
+- [Bower](http://bower.io)
+- [Weinre](http://people.apache.org/~pmuellr/weinre/docs/latest)
 
 ## Installation ##
 
