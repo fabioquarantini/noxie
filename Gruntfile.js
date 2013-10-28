@@ -194,6 +194,12 @@ module.exports = function(grunt) {
 		// [grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify)
 
 		notify: {
+			bower: {
+				options: {
+					title: 'Bower',
+					message: 'New package added in bower_components/main/',
+				}
+			},
 			weinre: {
 				options: {
 					title: 'Browser',
@@ -307,7 +313,8 @@ module.exports = function(grunt) {
 			bower: {
 				files: 'bower_components/{,*/}*.*',
 				tasks: [
-					'bower:dev'
+					'bower:dev',
+					'notify:bower'
 				]
 			},
 			plugins: {
