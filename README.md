@@ -69,9 +69,7 @@ The basic structure of the project is given in the following way:
 │   ├── img/
 │   ├── js/
 │   │ 	├── plugins
-│   │   │ 		├── console.js
-│   │   │ 	 	├── livereload.js
-│   │   │		└── weinre.js
+│   │   │ 		└── console.js
 │   │	├──vendor
 │   │   │	├── jquery-1.10.2.min.js
 │   │   │	└── modernizr-2.6.2.min.js
@@ -81,24 +79,27 @@ The basic structure of the project is given in the following way:
 │	├── scss/
 │   │	├─ partials/
 │   │   │	├── _base.scss
+│   │   │	├── _forms.scss
 │   │   │	├── _grids.scss
 │   │   │	├── _helpers.scss
 │   │   │	├── _normalize.scss
-│   │   │	├── _forms.scss
 │   │   │	└── _typography.scss
 │   │	├── vendor/
 │   │	├── main.scss
 │   │	└── print.scss
-│	├── robots.txt
 │	├── .htaccess
+│	├── apple-touch-icon-precomposed.png
 │	├── favicon.ico
-│	├── humans.txt
 │	└── index.html
+│	└── robots.txt
+├── .bowerrc
 ├── .editorconfig
 ├── .gitignore
 ├── .jshintrc
+├── bower.json
 ├── Gruntfile.js
 ├── hangar.bat
+├── hangar.command
 ├── LICENSE.md
 ├── package.json
 └── README.md
