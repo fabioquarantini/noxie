@@ -54,14 +54,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// [grunt bower ] Installs dependency into the project
-
-		bower: {
-			dev: {
-				dest: 'bower_components/main/'
-			}
-		},
-
 
 		// [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat)
 
