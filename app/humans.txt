@@ -1,5 +1,15 @@
-/* TEAM */
+# humanstxt.org/
+# The humans responsible & technology colophon
 
-Web designer: Fabio Quarantini
-Twitter: @febba
-From: Italy
+# TEAM
+
+    <name> -- <role> -- <twitter>
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Normalize.css, jQuery, Modernizr
