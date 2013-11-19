@@ -18,12 +18,12 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 
-		// Hangar config
+		// noxie config
 
-		hangar: {
+		noxie: {
 			dev: 'app',					// Development folder
 			deploy: 'deploy',			// Deploy folder
-			hostname: '*',				// Set '*' or '0.0.0.0' to access the server from outside
+			hostname: '10.0.0.78',		// Set '*' or '0.0.0.0' to access the server from outside
 			serverPort: 8000,			// Server port
 			livereloadPort: 35729,		// Port number or boolean
 			weinrePort: 8080,			// Weinre port
@@ -44,12 +44,12 @@ module.exports = function(grunt) {
 			},
 			dev: {
 				files: {
-					'<%= hangar.dev %>/css/main.css': ['<%= hangar.dev %>/css/main.css']
+					'<%= noxie.dev %>/css/main.css': ['<%= noxie.dev %>/css/main.css']
 				}
 			},
 			deploy: {
 				files: {
-					'<%= hangar.deploy %>/css/main.css': ['<%= hangar.deploy %>/css/main.css']
+					'<%= noxie.deploy %>/css/main.css': ['<%= noxie.deploy %>/css/main.css']
 				}
 			}
 		},
@@ -62,12 +62,12 @@ module.exports = function(grunt) {
 				separator: ';'
 			},
 			dev: {
-				src: ['<%= hangar.dev %>/js/plugins/*.js'],
-				dest: '<%= hangar.dev %>/js/plugins.js'
+				src: ['<%= noxie.dev %>/js/plugins/*.js'],
+				dest: '<%= noxie.dev %>/js/plugins.js'
 			},
 			deploy: {
-				src: ['<%= hangar.dev %>/js/plugins/*.js'],
-				dest: '<%= hangar.deploy %>/js/plugins.js'
+				src: ['<%= noxie.dev %>/js/plugins/*.js'],
+				dest: '<%= noxie.deploy %>/js/plugins.js'
 			}
 		},
 
@@ -77,9 +77,9 @@ module.exports = function(grunt) {
 		cssmin: {
 			deploy: {
 				expand: true,
-				cwd: '<%= hangar.deploy %>/css/',
+				cwd: '<%= noxie.deploy %>/css/',
 				src: ['main.css'],
-				dest: '<%= hangar.deploy %>/css/'
+				dest: '<%= noxie.deploy %>/css/'
 			}
 		},
 
@@ -91,9 +91,9 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					dot: true,
-					cwd: '<%= hangar.dev %>',
+					cwd: '<%= noxie.dev %>',
 					src: ['**', '!scss/**', '!js/plugins/**'],
-					dest: '<%= hangar.deploy %>/'
+					dest: '<%= noxie.deploy %>/'
 				}]
 			}
 		},
@@ -122,20 +122,20 @@ module.exports = function(grunt) {
 		connect: {
 			server: {
 				options: {
-					port: '<%= hangar.serverPort %>',
-					base: '<%= hangar.dev %>',
+					port: '<%= noxie.serverPort %>',
+					base: '<%= noxie.dev %>',
 					livereload: true,
-					hostname:  '<%= hangar.hostname %>'
+					hostname:  '<%= noxie.hostname %>'
 				}
 			},
 			weinre: {
 				options: {
-					port: '<%= hangar.serverPort %>',
-					base: '<%= hangar.dev %>',
+					port: '<%= noxie.serverPort %>',
+					base: '<%= noxie.dev %>',
 					livereload: false, //Do not touch this. We implement the script below
 					open: false,
 					keepalive: true,
-					hostname: '<%= hangar.hostname %>',
+					hostname: '<%= noxie.hostname %>',
 					middleware: function(connect, options) {
 						return [
 							require('connect-inject') ({
@@ -162,9 +162,9 @@ module.exports = function(grunt) {
 			deploy: {
 				files: [{
 					expand: true,
-					cwd: '<%= hangar.deploy %>/img/',
+					cwd: '<%= noxie.deploy %>/img/',
 					src: '*',
-					dest: '<%= hangar.deploy %>/img/'
+					dest: '<%= noxie.deploy %>/img/'
 				}]
 			}
 		},
@@ -179,7 +179,7 @@ module.exports = function(grunt) {
 				failOnError: false, // defaults to true
 				reporter: require('jshint-stylish')
 			},
-			all: ['<%= hangar.dev %>/js/main.js']
+			all: ['<%= noxie.dev %>/js/main.js']
 		},
 
 
@@ -195,13 +195,13 @@ module.exports = function(grunt) {
 			weinre: {
 				options: {
 					title: 'Browser',
-					message: 'Weinre server launched on http://<%= hangar.hostname %>:<%= hangar.weinrePort %>/',
+					message: 'Weinre server launched on http://<%= noxie.hostname %>:<%= noxie.weinrePort %>/',
 				}
 			},
 			server: {
 				options:{
 					title: 'Browser',
-					message:'Server started on http://<%= hangar.hostname %>:<%= hangar.serverPort %>/'
+					message:'Server started on http://<%= noxie.hostname %>:<%= noxie.serverPort %>/'
 				}
 			},
 			imagemin: {
@@ -230,10 +230,10 @@ module.exports = function(grunt) {
 
 		open: {
 			weinre: {
-				path: 'http://localhost:<%= hangar.weinrePort %>/client/#anonymous'
+				path: 'http://localhost:<%= noxie.weinrePort %>/client/#anonymous'
 			},
 			server: {
-				path: 'http://localhost:<%= hangar.serverPort %>/'
+				path: 'http://localhost:<%= noxie.serverPort %>/'
 			}
 		},
 
@@ -244,10 +244,10 @@ module.exports = function(grunt) {
 		sass: {
 			dev: {
 				files: {
-					'<%= hangar.dev %>/css/main.css': '<%= hangar.dev %>/scss/main.scss'
+					'<%= noxie.dev %>/css/main.css': '<%= noxie.dev %>/scss/main.scss'
 				},
 				options: {
-					banner: '<%= hangar.banner %>',
+					banner: '<%= noxie.banner %>',
 					debugInfo: true,		// enable if you want to use FireSass
 					lineNumbers: true,
 					sourcemap: false,		// Requires Sass 3.3.0, which can be installed with gem install sass --pre
@@ -256,10 +256,10 @@ module.exports = function(grunt) {
 			},
 			deploy: {
 				files: {
-					'<%= hangar.deploy %>/css/main.css': '<%= hangar.dev %>/scss/main.scss'
+					'<%= noxie.deploy %>/css/main.css': '<%= noxie.dev %>/scss/main.scss'
 				},
 				options: {
-					banner: '<%= hangar.banner %>',
+					banner: '<%= noxie.banner %>',
 					style: 'compressed'
 				}
 			}
@@ -280,12 +280,12 @@ module.exports = function(grunt) {
 
 		uglify: {
 			options: {
-				banner: '<%= hangar.banner %>'
+				banner: '<%= noxie.banner %>'
 			},
 			deploy: {
 				files: {
-					'<%= hangar.deploy %>/js/plugins.js': ['<%= hangar.deploy %>/js/plugins.js'],
-					'<%= hangar.deploy %>/js/main.js': ['<%= hangar.deploy %>/js/main.js']
+					'<%= noxie.deploy %>/js/plugins.js': ['<%= noxie.deploy %>/js/plugins.js'],
+					'<%= noxie.deploy %>/js/main.js': ['<%= noxie.deploy %>/js/main.js']
 				}
 			}
 		},
@@ -295,7 +295,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			css: {
-				files: '<%= hangar.dev %>/scss/{,*/}*.{scss,sass}',
+				files: '<%= noxie.dev %>/scss/{,*/}*.{scss,sass}',
 				tasks: [
 					'sass:dev',
 					'autoprefixer:dev',
@@ -310,22 +310,22 @@ module.exports = function(grunt) {
 				]
 			},
 			plugins: {
-				files: '<%= hangar.dev %>/js/plugins/*.js',
+				files: '<%= noxie.dev %>/js/plugins/*.js',
 				tasks: ['concat:dev']
 			},
 			jshint: {
-				files: '<%= hangar.dev %>/js/main.js',
+				files: '<%= noxie.dev %>/js/main.js',
 				tasks: ['jshint']
 			},
 			livereload: {
 				options: {
-					livereload: '<%= hangar.livereloadPort %>'
+					livereload: '<%= noxie.livereloadPort %>'
 				},
 				files: [
-					'<%= hangar.dev %>/**/*.html',
-					'<%= hangar.dev %>/css/{,*/}*.css',
-					'<%= hangar.dev %>/js/{,*/}*.js',
-					'<%= hangar.dev %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+					'<%= noxie.dev %>/**/*.html',
+					'<%= noxie.dev %>/css/{,*/}*.css',
+					'<%= noxie.dev %>/js/{,*/}*.js',
+					'<%= noxie.dev %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
 				]
 			}
 		}
@@ -337,7 +337,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', [
 		'jshint',
-		'bower:dev',
+		//'bower:dev',
 		'sass:dev',
 		'autoprefixer:dev',
 		'concat:dev',

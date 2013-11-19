@@ -1,8 +1,8 @@
-# Hangar #
+# Noxie #
 
 ## A web development starter kit  ##
 
-**Hangar** is a web development starter kit, provides project architecture, it's goal is to ease the web developers job.
+**Noxie** is a web development starter kit, provides project architecture, it's goal is to ease the web developers job.
 
 
 
@@ -11,9 +11,9 @@
 You may need this project if you need a simple and powerful starting kit for your web projects.
 
 
-## What is hangar made of ##
+## What is noxie made of ##
 
-**Hangar** in it's core uses:
+**Noxie** in it's core uses:
 
 - [Grunt](http://gruntjs.com)
 - [Html5Boilerplate](http://html5boilerplate.com)
@@ -23,12 +23,12 @@ You may need this project if you need a simple and powerful starting kit for you
 
 ## Installation ##
 
-Download [zip file](https://github.com/fabioquarantini/hangar/archive/master.zip)
+Download [zip file](https://github.com/noxie/noxie/archive/master.zip)
 
 or 
 
 ```
-git clone https://github.com/fabioquarantini/hangar.git
+git clone https://github.com/noxie/noxie.git
 ```
 
 ## Requirements 
@@ -42,7 +42,7 @@ Make sure you have the latest versions of these software.
 
 
 #### Manual install
-With your terminal of choice go to your directory where you have downloaded Hangar and:
+With your terminal of choice go to your directory where you have downloaded Noxie and:
 ```
 npm install
 ```
@@ -50,12 +50,12 @@ npm install
 #### Automatic install
 If you're on Windows run:
 ```
-hangar.bat
+noxie.bat
 ```
 
 If you're on OSX then run:
 ```
-hangar.command
+noxie.command
 ```
 
 ## Structure
@@ -99,8 +99,8 @@ The basic structure of the project is given in the following way:
 ├── .jshintrc
 ├── bower.json
 ├── Gruntfile.js
-├── hangar.bat
-├── hangar.command
+├── noxie.bat
+├── noxie.command
 ├── LICENSE.md
 ├── package.json
 └── README.md

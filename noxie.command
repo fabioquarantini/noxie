@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 sudo npm install
 
-echo "Please select which tasks should Hangar run"
+echo "Please select which tasks Noxie should run"
 
 PS3='Choose the task number and hit enter:'
 

@@ -1,14 +1,14 @@
 {
-  "name": "hangar",
-  "title": "Hangar",
+  "name": "Noxie",
+  "title": "Noxie",
   "description": "A web development starter kit",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fabioquarantini/hangar.git"
+    "url": "https://github.com/noxie/noxie.git"
   },
   "author": {
-    "name": "Hangar",
+    "name": "Noxie",
     "url": ""
   },
   "contributors": [
