@@ -11,7 +11,6 @@ PS3='Choose the task number and hit enter:'
 options=(
 	"Run Dev task"
 	"Run Build task"
-	"Run Mobile task"
 	"Quit"
 )
 
@@ -24,9 +23,6 @@ do
 			;;
 		"Run Build task")
 			grunt build
-			;;
-		"Run Weinre task")
-			grunt mobile
 			;;
 		 "Quit")
 			killall Terminal
