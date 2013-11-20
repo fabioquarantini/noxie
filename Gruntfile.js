@@ -4,6 +4,24 @@
 
 'use strict';
 
+function getIP() {
+
+	var os = require('os');
+	var interfaces = os.networkInterfaces();
+	var addresses = [];
+	for (var k in interfaces) {
+		for (var k2 in interfaces[k]) {
+			var address = interfaces[k][k2];
+			if (address.family === 'IPv4' && !address.internal) {
+				addresses.push(address.address);
+			}
+		}
+	}
+	return addresses[0];
+
+}
+
+
 module.exports = function(grunt) {
 
 	// Load all grunt task in package.json
@@ -23,7 +41,7 @@ module.exports = function(grunt) {
 		noxie: {
 			dev: 'app',					// Development folder
 			deploy: 'deploy',			// Deploy folder
-			hostname: '10.0.0.78',		// Set '*' or '0.0.0.0' to access the server from outside
+			hostname: getIP(),				// Set '*' or '0.0.0.0' to access the server from outside
 			serverPort: 8000,			// Server port
 			livereloadPort: 35729,		// Port number or boolean
 			weinrePort: 8080,			// Weinre port
@@ -102,11 +120,15 @@ module.exports = function(grunt) {
 		// [grunt concurrent:mobile ] Runs multiple tasks (https://github.com/sindresorhus/grunt-concurrent)
 
 		concurrent: {
-			mobile: {
+			dev: {
 				tasks: [
-					'notify:weinre',
-					'shell:weinre',
-					'connect:weinre',
+					'jshint',
+					'sass:dev',
+					'autoprefixer:dev',
+					'concat:dev',
+					'weinre',
+					'notify:server',
+					'connect:server',
 					'open',
 					'watch'
 				],
@@ -121,14 +143,6 @@ module.exports = function(grunt) {
 
 		connect: {
 			server: {
-				options: {
-					port: '<%= noxie.serverPort %>',
-					base: '<%= noxie.dev %>',
-					livereload: true,
-					hostname:  '<%= noxie.hostname %>'
-				}
-			},
-			weinre: {
 				options: {
 					port: '<%= noxie.serverPort %>',
 					base: '<%= noxie.dev %>',
@@ -230,10 +244,10 @@ module.exports = function(grunt) {
 
 		open: {
 			weinre: {
-				path: 'http://localhost:<%= noxie.weinrePort %>/client/#anonymous'
+				path: 'http://<%= noxie.hostname %>:<%= noxie.weinrePort %>/client/#anonymous'
 			},
 			server: {
-				path: 'http://localhost:<%= noxie.serverPort %>/'
+				path: 'http://<%= noxie.hostname %>:<%= noxie.serverPort %>/'
 			}
 		},
 
@@ -262,16 +276,6 @@ module.exports = function(grunt) {
 					banner: '<%= noxie.banner %>',
 					style: 'compressed'
 				}
-			}
-		},
-
-
-		// [ grunt shell ] Run shell comand (https://github.com/sindresorhus/grunt-shell)
-		// First install weinre [ sudo npm -g install weinre ] (http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html)
-
-		shell: {
-			weinre: {
-				command: 'weinre --boundHost -all-'
 			}
 		},
 
@@ -328,7 +332,24 @@ module.exports = function(grunt) {
 					'<%= noxie.dev %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
 				]
 			}
+		},
+
+
+		// [grunt weinre ]
+
+		weinre: {
+			dev: {
+				options: {
+					httpPort: '<%= noxie.weinrePort %>',
+					boundHost: '-all-',
+					verbose: false,
+					debug: false,
+					readTimeout: 5,
+					deathTimeout: 15
+				}
+			}
 		}
+
 
 	});
 
@@ -336,15 +357,7 @@ module.exports = function(grunt) {
 	// Register tasks
 
 	grunt.registerTask('default', [
-		'jshint',
-		//'bower:dev',
-		'sass:dev',
-		'autoprefixer:dev',
-		'concat:dev',
-		'notify:server',
-		'connect:server',
-		'open:server',
-		'watch'
+		'concurrent:dev'
 	]);
 
 	grunt.registerTask('deploy', [
@@ -356,10 +369,6 @@ module.exports = function(grunt) {
 		'imagemin:deploy',
 		'concat:deploy',
 		'uglify:deploy'
-	]);
-
-	grunt.registerTask('mobile', [
-		'concurrent:mobile'
 	]);
 
 };

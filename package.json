@@ -9,7 +9,7 @@
   },
   "author": {
     "name": "Noxie",
-    "url": ""
+    "url": "http://www.noxie.io"
   },
   "contributors": [
     {
@@ -38,12 +38,11 @@
     "grunt-contrib-sass": "~0.5.0",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-shell": "~0.4.0",
     "grunt-autoprefixer": "~0.3.0",
     "grunt-notify": "~0.2.13",
     "grunt-open": "~0.2.2",
+    "grunt-weinre": "~0.0.1",
     "jshint-stylish": "~0.1.3",
-    "load-grunt-tasks": "~0.1.0",
-    "weinre": "~2.0.0"
+    "load-grunt-tasks": "~0.1.0"
   }
 }
