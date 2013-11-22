@@ -2,48 +2,30 @@
 	Imports
 	========================================================================== */
 
+@import "partials/variables";
+@import "partials/mixins";
 @import "partials/normalize";
 @import "partials/base";
 @import "partials/typography";
 @import "partials/grids";
 @import "partials/forms";
+@import "partials/buttons";
 @import "partials/helpers";
 
 
 /*  ==========================================================================
-	Variables (http://sachagreif.com/sass-color-variables/)
-	========================================================================== */
-
-$black: #000;
-$white: #fff;
-
-$color-text:$black;
-$color-link: $white;
-
-
-/*  ==========================================================================
-	Mixin
-	========================================================================== */
-
-
-/*  ==========================================================================
-	Browse Happy prompt
-	========================================================================== */
-
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-
-/*  ==========================================================================
-	Author's custom styles
+	My styles
 	========================================================================== */
 
 h1 {
-	color:black;
+	color: $color-text;
+}
+
+.browsehappy {
+	margin: 0.2em 0;
+	padding: 0.2em 0;
+	background: #ccc;
+	color: #000;
 }
 
 
