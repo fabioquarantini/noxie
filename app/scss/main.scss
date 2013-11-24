@@ -5,7 +5,6 @@
 @import "partials/variables";
 @import "partials/mixins";
 @import "partials/normalize";
-@import "partials/base";
 @import "partials/typography";
 @import "partials/grids";
 @import "partials/forms";
@@ -17,8 +16,41 @@
 	My styles
 	========================================================================== */
 
-h1 {
+html,
+button,
+input,
+select,
+textarea {
 	color: $color-text;
+}
+
+html {
+	font-size: 1em;
+	line-height: 1.4;
+}
+
+
+/* Remove text-shadow in selection highlight */
+
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+::selection {
+ 	background: #b3d4fc;
+	text-shadow: none;
+}
+
+
+/* Remove the gap between images, videos, audio and canvas and the bottom of their containers */
+
+audio,
+canvas,
+img,
+svg,
+video {
+	vertical-align: middle;
 }
 
 .browsehappy {
@@ -30,7 +62,7 @@ h1 {
 
 
 /*  ==========================================================================
-	Print style
+	Print styles
 	========================================================================== */
 
 @media print {

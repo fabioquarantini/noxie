@@ -1,0 +1,18 @@
+{
+  "name": "noxie",
+  "version": "0.1.0",
+  "homepage": "http://www.noxie.io",
+  "authors": [
+    "Fabio Quarantini",
+    "Daniel Duches"
+  ],
+  "description": "A web development starter kit",
+  "keywords": [
+    "grunt"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+  ]
+}
