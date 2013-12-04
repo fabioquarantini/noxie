@@ -117,7 +117,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [grunt concurrent:mobile ] Runs multiple tasks (https://github.com/sindresorhus/grunt-concurrent)
+		// [ grunt concurrent ] Runs multiple tasks (https://github.com/sindresorhus/grunt-concurrent)
 
 		concurrent: {
 			dev: {
@@ -139,7 +139,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt connect ]
+		// [ grunt connect ] Fires a webserver (https://github.com/gruntjs/grunt-contrib-connect)
 
 		connect: {
 			server: {
@@ -197,7 +197,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify)
+		// [ grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify)
 
 		notify: {
 			bower: {
