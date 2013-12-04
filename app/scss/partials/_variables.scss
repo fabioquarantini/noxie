@@ -1,9 +1,48 @@
 /*  ==========================================================================
-	Variables (http://sachagreif.com/sass-color-variables/)
+	Variables 
+	1 - Colors
+	2 - Type Scale
+	3 - Font weights
 	========================================================================== */
+
+
+/*
+* 1 - Colors 
+* Some tips on using color varaiables: http://sachagreif.com/sass-color-variables/
+*
+*/
 
 $black: #000;
 $white: #fff;
 
 $color-text:$black;
 $color-link: $white;
+
+
+/*
+* 2 - Type scale 
+* http://blog.8thlight.com/billy-whited/2011/10/28/r-a-ela-tional-design.html#tips
+* Generate your scale using: http://type-scale.com/
+*/
+
+$tera: 117;
+$giga: 90;
+$mega: 72;
+$alpha: 60;
+$beta: 48;
+$gamma: 36;
+$delta: 24;
+$epsilon: 21;
+$zeta: 18;
+
+
+/*
+* 3 - Fonts weights
+* Adjust according to your type settings.
+*/
+
+$font-extra-light: 100;
+$font-light:200;
+$font-regular: 400;
+$font-medium:500;
+$font-bold: 700;
