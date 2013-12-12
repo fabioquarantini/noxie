@@ -1,8 +1,10 @@
+<<<<<<< HEAD
 /* Convert pixel to em */
 
 @function em($pixels, $context: $font-base) {
 	@return #{$pixels/$context}em
 }
+=======
 @mixin unordered {
 	 list-style-position: outside;
 	 list-style-type: disc;
@@ -22,3 +24,4 @@
 	list-style-position: inside;
 	list-style-type: decimal;
 }
+>>>>>>> ac3f3ab3273919639616dd66785fc7866d243ae4

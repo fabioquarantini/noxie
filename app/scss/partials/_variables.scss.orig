@@ -1,3 +1,26 @@
+<<<<<<< HEAD
+/* Typography */
+
+$line-height: 1.4;
+$font-base: 16;
+$font-family: sans-serif;
+
+
+/* Colors */
+
+$black: #000;
+$grey: #585858;
+
+$color-text:$grey;
+$color-link:$grey;
+$color-hover:$black;
+
+
+/* Media query*/
+
+$mq-large: 960;
+$mq-small: 640;
+=======
 /*  ==========================================================================
 	Variables 
 	1 - Colors
@@ -5,8 +28,8 @@
 	3 - Font weights
 	========================================================================== */
 
-/* Colors */
 
+/*
 * 1 - Colors 
 * Some tips on using color varaiables: http://sachagreif.com/sass-color-variables/
 *
@@ -15,20 +38,15 @@
 $black: #000;
 $white: #fff;
 
-$color-text:$grey;
-$color-link:$grey;
-$color-hover:$black;
+$color-text:$black;
+$color-link: $white;
+
 
 /*
 * 2 - Type scale 
 * http://blog.8thlight.com/billy-whited/2011/10/28/r-a-ela-tional-design.html#tips
 * Generate your scale using: http://type-scale.com/
 */
-
-/* Media query*/
-
-$mq-large: 960;
-$mq-small: 640;
 
 $tera: 117;
 $giga: 90;
@@ -51,3 +69,4 @@ $font-light:200;
 $font-regular: 400;
 $font-medium:500;
 $font-bold: 700;
+>>>>>>> ac3f3ab3273919639616dd66785fc7866d243ae4
