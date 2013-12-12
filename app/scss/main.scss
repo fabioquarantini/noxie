@@ -25,17 +25,12 @@ textarea {
 }
 
 html {
-	font-size: 1em;
-	line-height: 1.4;
+	font-size: em($font-base);
+	line-height: $line-height;
 }
 
 
 /* Remove text-shadow in selection highlight */
-
-::-moz-selection {
-	background: #b3d4fc;
-	text-shadow: none;
-}
 
 ::selection {
  	background: #b3d4fc;

@@ -1,3 +1,21 @@
-$black: #000;
+/* Typography */
 
-$color-text:$black;
+$line-height: 1.4;
+$font-base: 16;
+$font-family: sans-serif;
+
+
+/* Colors */
+
+$black: #000;
+$grey: #585858;
+
+$color-text:$grey;
+$color-link:$grey;
+$color-hover:$black;
+
+
+/* Media query*/
+
+$mq-large: 960;
+$mq-small: 640;
