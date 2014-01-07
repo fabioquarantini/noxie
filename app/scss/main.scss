@@ -15,8 +15,8 @@
 /*  ==========================================================================
 	My styles
 	========================================================================== */
+
 * {
-	-moz-box-sizing:border-box;
 	box-sizing:border-box;
 }
 
@@ -29,6 +29,7 @@ textarea {
 }
 
 html {
+	font-family: $font-family;
 	font-size: em($font-base);
 	line-height: $line-height;
 }
