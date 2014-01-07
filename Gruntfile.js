@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
 	// Load all grunt task in package.json
 
-	require('load-grunt-tasks')(grunt);
+	require('jit-grunt')(grunt);
 
 
 	grunt.initConfig({
