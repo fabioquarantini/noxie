@@ -383,10 +383,6 @@ module.exports = function(grunt) {
 		'concat:deploy',
 		'uglify:deploy'
 	]);
-	grunt.registerTask('test', [
-		'browser_sync',
-		'watch'
-	]);
 
 
 };
