@@ -230,7 +230,7 @@ module.exports = function(grunt) {
 			bower: {
 				options: {
 					title: 'Bower',
-					message: 'New package added in bower_components/main/',
+					message: 'New package added in bower_components/',
 				}
 			},
 			weinre: {
@@ -333,7 +333,6 @@ module.exports = function(grunt) {
 			bower: {
 				files: 'bower_components/{,*/}*.*',
 				tasks: [
-					'bower:dev',
 					'notify:bower'
 				]
 			},
