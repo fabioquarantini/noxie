@@ -165,34 +165,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-
-		// [ grunt connect ] Fires a webserver (https://github.com/gruntjs/grunt-contrib-connect)
-
-		// connect: {
-		// 	server: {
-		// 		options: {
-		// 			port: '<%= noxie.serverPort %>',
-		// 			base: '<%= noxie.dev %>',
-		// 			livereload: false, //Do not touch this. We implement the script below
-		// 			open: false,
-		// 			keepalive: true,
-		// 			hostname: '<%= noxie.hostname %>',
-		// 			middleware: function(connect, options) {
-		// 				return [
-		// 					require('connect-inject') ({
-		// 						snippet : [
-		// 							'<script type=\"text\/javascript\">document.write(\'<script src=\"\' + (location.protocol || \'http:\') + \'\/\/\' + (location.hostname || \'localhost\') + \':8080\/target\/target-script-min.js#anonymous\" type=\"text\/javascript\"><\\\/script>\')<\/script>\n',
-		// 							'<script type=\"text\/javascript\">document.write(\'<script src=\"\' + (location.protocol || \'http:\') + \'\/\/\' + (location.hostname || \'localhost\') + \':35729\/livereload.js?snipver=1\" type=\"text\/javascript\"><\\\/script>\')<\/script>\n'
-		// 						]
-		// 					}),
-		// 					connect.static(options.base)
-		// 				];
-		// 			}
-		// 		}
-		// 	}
-		// },
-
-
 		// [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin)
 
 		imagemin: {
