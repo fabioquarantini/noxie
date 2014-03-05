@@ -75,6 +75,7 @@ module.exports = function(grunt) {
 		},
 
 
+		// [ browser sync ] Keeps multiple devices ( https://github.com/shakyShane/grunt-browser-sync )
 
 		browser_sync: {
 			options: {
@@ -99,6 +100,16 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+
+
+		// [ grunt clean ] Cleans deploy direcory (https://github.com/gruntjs/grunt-contrib-clean)
+
+		clean: {
+			deploy: {
+				src: [ '<%= noxie.deploy %>']
+			}
+		},
+
 
 		// [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat)
 
@@ -346,6 +357,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('deploy', [
 		'jshint',
+		'clean:deploy',
 		'copy:deploy',
 		'sass:deploy',
 		'autoprefixer:deploy',
