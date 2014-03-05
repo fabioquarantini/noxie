@@ -187,7 +187,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: '<%= noxie.deploy %>/img/',
-					src: '*',
+					src: ['**/*.{png,jpg,gif}'],
 					dest: '<%= noxie.deploy %>/img/'
 				}]
 			}
