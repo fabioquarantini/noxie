@@ -302,6 +302,20 @@ module.exports = function(grunt) {
 		},
 
 
+		// [ grunt svgmin ] Svg compressor (https://github.com/sindresorhus/grunt-svgmin)
+
+		svgmin: {
+			deploy: {
+				files: [{
+					expand: true,
+					cwd: '<%= noxie.deploy %>/img',
+					src: ['**/*.svg'],
+					dest: '<%= noxie.deploy %>/img/',
+				}]
+			}
+		},
+
+
 		// [ grunt watch ] Watches for file changes and optimizes images, concats and minifies scripts in plugins and also starts a livereload server (https://github.com/gruntjs/grunt-contrib-watch)
 
 		watch: {
@@ -364,6 +378,7 @@ module.exports = function(grunt) {
 		'cssmin:deploy',
 		'imagemin:deploy',
 		'concat:deploy',
+		'svgmin:deploy',
 		'uglify:deploy'
 	]);
 
