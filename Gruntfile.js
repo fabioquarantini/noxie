@@ -26,7 +26,9 @@ module.exports = function(grunt) {
 
 	// Load all grunt task in package.json
 
-	require('jit-grunt')(grunt);
+	require('jit-grunt')(grunt, {
+		browser_sync : 'grunt-browser-sync'
+	});
 
 
 	grunt.initConfig({
@@ -41,7 +43,7 @@ module.exports = function(grunt) {
 		noxie: {
 			dev: 'app',					// Development folder
 			deploy: 'deploy',			// Deploy folder
-			hostname: getIP(),				// Set '*' or '0.0.0.0' to access the server from outside
+			hostname: getIP(),			// Set '*' or '0.0.0.0' to access the server from outside
 			serverPort: 8000,			// Server port
 			livereloadPort: 35729,		// Port number or boolean
 			weinrePort: 8080,			// Weinre port
@@ -72,6 +74,31 @@ module.exports = function(grunt) {
 			}
 		},
 
+
+
+		browser_sync: {
+			options: {
+				debugInfo: true,
+				ghostMode: {
+					clicks: true,
+					scroll: true,
+					links: true,
+					forms: true
+				},
+				host: '<%= noxie.hostname %>',
+				server: {
+					baseDir: '<%= noxie.dev %>'
+				}
+			},
+			bsFiles: {
+				src : [
+					'<%= noxie.dev %>/css/{,*/}*.css',
+					'<%= noxie.dev %>/**/*.html',
+					'<%= noxie.dev %>/js/{,*/}*.js',
+					'<%= noxie.dev %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+				]
+			}
+		},
 
 		// [ grunt concat ] Concatenate javascript files (https://github.com/gruntjs/grunt-contrib-concat)
 
@@ -128,43 +155,15 @@ module.exports = function(grunt) {
 					'concat:dev',
 					'weinre',
 					'notify:server',
-					'connect:server',
 					'open',
-					'watch'
+					'watch',
+					'browser_sync'
 				],
 				options: {
 					logConcurrentOutput: true
 				}
 			}
 		},
-
-
-		// [ grunt connect ] Fires a webserver (https://github.com/gruntjs/grunt-contrib-connect)
-
-		connect: {
-			server: {
-				options: {
-					port: '<%= noxie.serverPort %>',
-					base: '<%= noxie.dev %>',
-					livereload: false, //Do not touch this. We implement the script below
-					open: false,
-					keepalive: true,
-					hostname: '<%= noxie.hostname %>',
-					middleware: function(connect, options) {
-						return [
-							require('connect-inject') ({
-								snippet : [
-									'<script type=\"text\/javascript\">document.write(\'<script src=\"\' + (location.protocol || \'http:\') + \'\/\/\' + (location.hostname || \'localhost\') + \':8080\/target\/target-script-min.js#anonymous\" type=\"text\/javascript\"><\\\/script>\')<\/script>\n',
-									'<script type=\"text\/javascript\">document.write(\'<script src=\"\' + (location.protocol || \'http:\') + \'\/\/\' + (location.hostname || \'localhost\') + \':35729\/livereload.js?snipver=1\" type=\"text\/javascript\"><\\\/script>\')<\/script>\n'
-								]
-							}),
-							connect.static(options.base)
-						];
-					}
-				}
-			}
-		},
-
 
 		// [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin)
 
@@ -245,9 +244,6 @@ module.exports = function(grunt) {
 		open: {
 			weinre: {
 				path: 'http://<%= noxie.hostname %>:<%= noxie.weinrePort %>/client/#anonymous'
-			},
-			server: {
-				path: 'http://<%= noxie.hostname %>:<%= noxie.serverPort %>/'
 			}
 		},
 
@@ -319,17 +315,6 @@ module.exports = function(grunt) {
 			jshint: {
 				files: '<%= noxie.dev %>/js/main.js',
 				tasks: ['jshint']
-			},
-			livereload: {
-				options: {
-					livereload: '<%= noxie.livereloadPort %>'
-				},
-				files: [
-					'<%= noxie.dev %>/**/*.html',
-					'<%= noxie.dev %>/css/{,*/}*.css',
-					'<%= noxie.dev %>/js/{,*/}*.js',
-					'<%= noxie.dev %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-				]
 			}
 		},
 
@@ -369,5 +354,6 @@ module.exports = function(grunt) {
 		'concat:deploy',
 		'uglify:deploy'
 	]);
+
 
 };
