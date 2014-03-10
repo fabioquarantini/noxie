@@ -19,14 +19,11 @@ select opt in "${options[@]}"
 do
 	case $opt in
 		"Run Dev task")
-			grunt
-			;;
+			grunt;;
 		"Run Build task")
-			grunt build
-			;;
+			grunt deploy;;
 		 "Quit")
-			killall Terminal
-			;;
+			exit;;
 		*) echo Invalid option;;
 	esac
 done
