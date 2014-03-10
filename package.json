@@ -43,6 +43,7 @@
     "grunt-autoprefixer": "~0.7.2",
     "grunt-notify": "~0.2.13",
     "grunt-open": "~0.2.3",
+    "grunt-svgmin" : "~0.4.0",
     "grunt-weinre": "~0.0.2",
     "jit-grunt": "~0.2.3",
     "jshint-stylish": "~0.1.5"
