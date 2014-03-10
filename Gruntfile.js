@@ -176,6 +176,26 @@ module.exports = function(grunt) {
 			}
 		},
 
+
+		// [ grunt htmlmin ] Compresses html ( https://github.com/gruntjs/grunt-contrib-htmlmin )
+
+		htmlmin: {
+			deploy: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true
+				},
+				files: [{
+					expand: true,        // Enable dynamic expansion.
+					cwd: '<%= noxie.deploy %>',  // Src matches are relative to this path.
+					src: ['*.html'],     // Actual pattern(s) to match.
+					dest: '<%= noxie.deploy %>'  // Destination path prefix.
+			}]
+			}
+		},
+
+
+
 		// [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin)
 
 		imagemin: {
@@ -359,6 +379,7 @@ module.exports = function(grunt) {
 		'jshint',
 		'clean:deploy',
 		'copy:deploy',
+		'htmlmin:deploy',
 		'sass:deploy',
 		'autoprefixer:deploy',
 		'cssmin:deploy',
