@@ -1,24 +1,3 @@
-%is-hidden, .is-hidden {
-	display: none;
-}
-
-%is-shown, %is-block, .is-block {
-	display: block;
-}
-
-%is-inline-block {
-	display: inline-block;
-}
-
-%is-uppercase {
-	text-transform: uppercase;
-	letter-spacing: 1px;
-}
-
-%is-lowercase {
-	text-transform: lowercase;
-}
-
 /* Image replacement */
 
 .ir {
