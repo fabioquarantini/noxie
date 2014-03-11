@@ -3,23 +3,3 @@
 @function em($pixels, $context: $font-base) {
 	@return #{$pixels/$context}em;
 }
-/* Since these take no argument, it's better to use placeholders which you can reuse in your code with @extend rule */
-%unordered {
-	 list-style-position: outside;
-	 list-style-type: disc;
-}
-
-%unordered-inside {
-	 list-style-position: inside;
-	 list-style-type: disc;
-}
-
-%ordered {
-	list-style-position: outside;
-	list-style-type: decimal;
-}
-
-%ordered-inside {
-	list-style-position: inside;
-	list-style-type: decimal;
-}
