@@ -78,26 +78,43 @@ module.exports = function(grunt) {
 		// [ browser sync ] Keeps multiple devices ( https://github.com/shakyShane/grunt-browser-sync )
 
 		browser_sync: {
-			options: {
-				debugInfo: true,
-				ghostMode: {
-					clicks: true,
-					scroll: true,
-					links: true,
-					forms: true
+			dev: {
+				options: {
+					debugInfo: true,
+					ghostMode: {
+						clicks: true,
+						scroll: true,
+						links: true,
+						forms: true
+					},
+					host: '<%= noxie.hostname %>',
+					server: {
+						baseDir: '<%= noxie.dev %>'
+					}
 				},
-				host: '<%= noxie.hostname %>',
-				server: {
-					baseDir: '<%= noxie.dev %>'
+				bsFiles: {
+					src : [
+						'<%= noxie.dev %>/css/{,*/}*.css',
+						'<%= noxie.dev %>/**/*.html',
+						'<%= noxie.dev %>/js/{,*/}*.js',
+						'<%= noxie.dev %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+					]
 				}
 			},
-			bsFiles: {
-				src : [
-					'<%= noxie.dev %>/css/{,*/}*.css',
-					'<%= noxie.dev %>/**/*.html',
-					'<%= noxie.dev %>/js/{,*/}*.js',
-					'<%= noxie.dev %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-				]
+			deploy: {
+				options: {
+					debugInfo: false,
+					ghostMode: {
+						clicks: true,
+						scroll: true,
+						links: true,
+						forms: true
+					},
+					host: '<%= noxie.hostname %>',
+					server: {
+						baseDir: '<%= noxie.deploy %>'
+					}
+				},
 			}
 		},
 
@@ -400,7 +417,8 @@ module.exports = function(grunt) {
 		'imagemin:deploy',
 		'concat:deploy',
 		'svgmin:deploy',
-		'uglify:deploy'
+		'uglify:deploy',
+		'browser_sync:deploy'
 	]);
 
 
