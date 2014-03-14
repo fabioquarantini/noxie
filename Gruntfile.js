@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 
 		// [ browser sync ] Keeps multiple devices ( https://github.com/shakyShane/grunt-browser-sync )
 
-		browser_sync: {
+		browserSync: {
 			dev: {
 				options: {
 					debugInfo: true,
@@ -185,7 +185,7 @@ module.exports = function(grunt) {
 					'notify:server',
 					'open',
 					'watch',
-					'browser_sync'
+					'browserSync'
 				],
 				options: {
 					logConcurrentOutput: true
@@ -417,7 +417,7 @@ module.exports = function(grunt) {
 		'concat:deploy',
 		'svgmin:deploy',
 		'uglify:deploy',
-		'browser_sync:deploy'
+		'browserSync:deploy'
 	]);
 
 
