@@ -236,8 +236,7 @@ module.exports = function(grunt) {
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc',
-				errorsOnly: true, // only display errors
-				failOnError: false, // defaults to true
+				force: true,
 				reporter: require('jshint-stylish')
 			},
 			all: ['<%= noxie.dev %>/js/main.js']
