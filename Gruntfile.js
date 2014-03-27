@@ -81,6 +81,7 @@ module.exports = function(grunt) {
 			dev: {
 				options: {
 					debugInfo: true,
+					injectChanges: false,
 					ghostMode: {
 						clicks: true,
 						scroll: true,
