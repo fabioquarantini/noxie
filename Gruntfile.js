@@ -80,6 +80,10 @@ module.exports = function(grunt) {
 		browserSync: {
 			dev: {
 				options: {
+					ports: {
+						min: 6000,
+						max: 6100
+					},
 					debugInfo: true,
 					injectChanges: false,
 					ghostMode: {
