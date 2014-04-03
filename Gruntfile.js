@@ -150,14 +150,24 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt cssmin:deploy ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin)
+		// [ grunt concurrent ] Runs multiple tasks (https://github.com/sindresorhus/grunt-concurrent)
 
-		cssmin: {
-			deploy: {
-				expand: true,
-				cwd: '<%= noxie.deploy %>/css/',
-				src: ['main.css'],
-				dest: '<%= noxie.deploy %>/css/'
+		concurrent: {
+			dev: {
+				tasks: [
+					'jshint',
+					'sass:dev',
+					'autoprefixer:dev',
+					'concat:dev',
+					'weinre',
+					'notify:server',
+					'open',
+					'watch',
+					'browserSync:dev'
+				],
+				options: {
+					logConcurrentOutput: true
+				}
 			}
 		},
 
@@ -177,24 +187,14 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt concurrent ] Runs multiple tasks (https://github.com/sindresorhus/grunt-concurrent)
+		// [ grunt cssmin:deploy ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin)
 
-		concurrent: {
-			dev: {
-				tasks: [
-					'jshint',
-					'sass:dev',
-					'autoprefixer:dev',
-					'concat:dev',
-					'weinre',
-					'notify:server',
-					'open',
-					'watch',
-					'browserSync:dev'
-				],
-				options: {
-					logConcurrentOutput: true
-				}
+		cssmin: {
+			deploy: {
+				expand: true,
+				cwd: '<%= noxie.deploy %>/css/',
+				src: ['main.css'],
+				dest: '<%= noxie.deploy %>/css/'
 			}
 		},
 
