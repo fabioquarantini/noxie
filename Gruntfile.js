@@ -44,14 +44,12 @@ module.exports = function(grunt) {
 			dev: 'app',					// Development folder
 			deploy: 'deploy',			// Deploy folder
 			hostname: getIP(),			// Set '*' or '0.0.0.0' to access the server from outside
-			serverPort: 8000,			// Server port
-			livereloadPort: 35729,		// Port number or boolean
 			weinrePort: 8080,			// Weinre port
 			banner: '/*! <%= pkg.title %> v<%= pkg.version %> | (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> <%= pkg.author.url %> */\n'
 		},
 
 
-		// [ grunt autoprefixer ] Prefixes css3 propreties (https://github.com/nDmitry/grunt-autoprefixer)
+		// [ grunt autoprefixer ] Parses CSS and adds vendor-prefixed CSS properties using the Can I Use database (https://github.com/nDmitry/grunt-autoprefixer)
 
 		autoprefixer: {
 			options: {
@@ -75,7 +73,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ browser sync ] Keeps multiple devices ( https://github.com/shakyShane/grunt-browser-sync )
+		// [ browser sync ] Keep multiple browsers & devices in sync when building websites ( https://github.com/shakyShane/grunt-browser-sync )
 
 		browserSync: {
 			dev: {
@@ -124,7 +122,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt clean ] Cleans deploy direcory (https://github.com/gruntjs/grunt-contrib-clean)
+		// [ grunt clean ] Clean deploy files and folders (https://github.com/gruntjs/grunt-contrib-clean)
 
 		clean: {
 			deploy: {
@@ -150,20 +148,23 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt concurrent ] Runs multiple tasks (https://github.com/sindresorhus/grunt-concurrent)
+		// [ grunt concurrent ] Run grunt tasks concurrently (https://github.com/sindresorhus/grunt-concurrent)
 
 		concurrent: {
 			dev: {
 				tasks: [
 					'jshint',
+					'notify:jshint',
 					'sass:dev',
+					'notify:sass',
 					'autoprefixer:dev',
 					'concat:dev',
 					'weinre',
-					'notify:server',
+					'notify:weinre',
 					'open',
 					'watch',
-					'browserSync:dev'
+					'browserSync:dev',
+					'notify:server'
 				],
 				options: {
 					logConcurrentOutput: true
@@ -172,7 +173,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt copy ] Copies files for deployment (https://github.com/gruntjs/grunt-contrib-copy)
+		// [ grunt copy ] Copy files and folders for deployment (https://github.com/gruntjs/grunt-contrib-copy)
 
 		copy: {
 			deploy: {
@@ -187,7 +188,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt cssmin:deploy ] Combines and minifies css (https://github.com/gruntjs/grunt-contrib-cssmin)
+		// [ grunt cssmin ] Combines and minifies css files (https://github.com/gruntjs/grunt-contrib-cssmin)
 
 		cssmin: {
 			deploy: {
@@ -199,7 +200,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt htmlmin ] Compresses html ( https://github.com/gruntjs/grunt-contrib-htmlmin )
+		// [ grunt htmlmin ] Minify HTML ( https://github.com/gruntjs/grunt-contrib-htmlmin )
 
 		htmlmin: {
 			deploy: {
@@ -218,7 +219,7 @@ module.exports = function(grunt) {
 
 
 
-		// [ grunt imagemin ] Images optimization (https://github.com/gruntjs/grunt-contrib-imagemin)
+		// [ grunt imagemin ] Minify PNG, JPEG and GIF images (https://github.com/gruntjs/grunt-contrib-imagemin)
 
 		imagemin: {
 			options: {
@@ -248,25 +249,13 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt notify ] Desktop notifications for Grunt errors and warnings using Growl for OS X or Windows, Mountain Lion Notification Center, Snarl, and Notify-Send (https://github.com/dylang/grunt-notify)
+		// [ grunt notify ] Desktop notifications for Grunt errors and warnings (https://github.com/dylang/grunt-notify)
 
 		notify: {
 			bower: {
 				options: {
 					title: 'Bower',
 					message: 'New package added in bower_components/',
-				}
-			},
-			weinre: {
-				options: {
-					title: 'Browser',
-					message: 'Weinre server launched on http://<%= noxie.hostname %>:<%= noxie.weinrePort %>/',
-				}
-			},
-			server: {
-				options:{
-					title: 'Browser',
-					message:'Server started on http://<%= noxie.hostname %>:<%= noxie.serverPort %>/'
 				}
 			},
 			imagemin: {
@@ -285,13 +274,25 @@ module.exports = function(grunt) {
 			sass: {
 				options: {
 					title: 'Sass',
-					message: 'SASS Compilation done successfully',
+					message: 'Compilation done successfully',
+				}
+			},
+			server: {
+				options:{
+					title: 'Local server',
+					message:'Server started'
+				}
+			},
+			weinre: {
+				options: {
+					title: 'Weinre',
+					message: 'Server started',
 				}
 			}
 		},
 
 
-		// [grunt open:weinre ] Opens weinre url in default web browser (https://github.com/jsoverson/grunt-open)
+		// [grunt open ] Open urls and files from a grunt task (https://github.com/jsoverson/grunt-open)
 
 		open: {
 			weinre: {
@@ -300,8 +301,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt sass:dev ] Compiles main.scss in development mode (https://github.com/gruntjs/grunt-contrib-sass)
-		// [ grunt sass:deploy ] Compiles main.scss in distribution mode
+		// [ grunt sass ] Compile Sass to CSS (https://github.com/gruntjs/grunt-contrib-sass)
 
 		sass: {
 			dev: {
@@ -328,7 +328,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt uglify ] Javascript plugins compressor (https://github.com/gruntjs/grunt-contrib-uglify)
+		// [ grunt uglify ] Minify files with UglifyJS (https://github.com/gruntjs/grunt-contrib-uglify)
 
 		uglify: {
 			options: {
@@ -343,7 +343,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt svgmin ] Svg compressor (https://github.com/sindresorhus/grunt-svgmin)
+		// [ grunt svgmin ] Minify SVG using SVGO (https://github.com/sindresorhus/grunt-svgmin)
 
 		svgmin: {
 			deploy: {
@@ -357,7 +357,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [ grunt watch ] Watches for file changes and optimizes images, concats and minifies scripts in plugins and also starts a livereload server (https://github.com/gruntjs/grunt-contrib-watch)
+		// [ grunt watch ] Run predefined tasks whenever watched file patterns are added, changed or deleted (https://github.com/gruntjs/grunt-contrib-watch)
 
 		watch: {
 			css: {
@@ -385,7 +385,7 @@ module.exports = function(grunt) {
 		},
 
 
-		// [grunt weinre ]
+		// [ grunt weinre ] Run weinre as a grunt task (https://github.com/ChrisWren/grunt-weinre)
 
 		weinre: {
 			dev: {
@@ -424,6 +424,5 @@ module.exports = function(grunt) {
 		'uglify:deploy',
 		'browserSync:deploy'
 	]);
-
 
 };
