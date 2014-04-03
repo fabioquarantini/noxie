@@ -186,7 +186,7 @@ module.exports = function(grunt) {
 					'notify:server',
 					'open',
 					'watch',
-					'browserSync'
+					'browserSync:dev'
 				],
 				options: {
 					logConcurrentOutput: true
