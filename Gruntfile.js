@@ -140,7 +140,7 @@ module.exports = function(grunt) {
 				dest: '<%= noxie.dev %>/js/plugins.js'
 			},
 			deploy: {
-				src: ['<%= noxie.dev %>/js/plugins/*.js'],
+				src: ['<%= noxie.dev %>/js/plugins/*.js', '!<%= noxie.dev %>/js/plugins/weinre.js' ],
 				dest: '<%= noxie.deploy %>/js/plugins.js'
 			}
 		},
@@ -208,7 +208,7 @@ module.exports = function(grunt) {
 					cwd: '<%= noxie.deploy %>',  // Src matches are relative to this path.
 					src: ['*.html'],     // Actual pattern(s) to match.
 					dest: '<%= noxie.deploy %>'  // Destination path prefix.
-			}]
+				}]
 			}
 		},
 
