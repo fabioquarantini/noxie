@@ -4,6 +4,8 @@
 
 'use strict';
 
+// Get local IP
+
 function getIP() {
 
 	var os = require('os');
@@ -78,10 +80,6 @@ module.exports = function(grunt) {
 		browserSync: {
 			dev: {
 				options: {
-					ports: {
-						min: 6000,
-						max: 6100
-					},
 					debugInfo: true,
 					injectChanges: false,
 					ghostMode: {
@@ -258,23 +256,29 @@ module.exports = function(grunt) {
 					message: 'New package added in bower_components/',
 				}
 			},
+			concat: {
+				options: {
+					title: 'Concat',
+					message: 'Js concatenation done',
+				}
+			},
 			imagemin: {
 				options: {
 					title: 'Minification',
-					message: 'Image minification done successfully',
+					message: 'Image minification done',
 				}
 			},
 			jshint: {
 				options: {
 					title: 'JSHint',
-					message: 'Js validation done successfully',
+					message: 'Js validation done',
 					max_jshint_notifications: 5
 				}
 			},
 			sass: {
 				options: {
 					title: 'Sass',
-					message: 'Compilation done successfully',
+					message: 'Compilation done',
 				}
 			},
 			server: {
@@ -376,11 +380,17 @@ module.exports = function(grunt) {
 			},
 			plugins: {
 				files: '<%= noxie.dev %>/js/plugins/*.js',
-				tasks: ['concat:dev']
+				tasks: [
+					'concat:dev',
+					'notify:concat'
+				]
 			},
 			jshint: {
 				files: '<%= noxie.dev %>/js/main.js',
-				tasks: ['jshint']
+				tasks: [
+					'jshint',
+					'notify:jshint'
+				]
 			}
 		},
 
@@ -404,11 +414,14 @@ module.exports = function(grunt) {
 	});
 
 
-	// Register tasks
+	// Registered default tasks
 
 	grunt.registerTask('default', [
 		'concurrent:dev'
 	]);
+
+
+	// Registered deploy tasks
 
 	grunt.registerTask('deploy', [
 		'jshint',
@@ -424,5 +437,6 @@ module.exports = function(grunt) {
 		'uglify:deploy',
 		'browserSync:deploy'
 	]);
+
 
 };
