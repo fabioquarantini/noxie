@@ -414,8 +414,7 @@ module.exports = function(grunt) {
 
 
 
-	// Registered default tasks,  no mobile debugging (weinre)
-
+	// Registered default tasks
 	grunt.registerTask('default', [
 		'concurrent:dev'
 	]);
