@@ -148,7 +148,7 @@ module.exports = function(grunt) {
 
 		// [ grunt concurrent ] Run grunt tasks concurrently (https://github.com/sindresorhus/grunt-concurrent)
 		concurrent: {
-			mobile: {
+			dev: {
 				tasks: [
 					'jshint',
 					'notify:jshint',
@@ -159,22 +159,6 @@ module.exports = function(grunt) {
 					'weinre',
 					'notify:weinre',
 					'open',
-					'watch',
-					'browserSync:dev',
-					'notify:server'
-				],
-				options: {
-					logConcurrentOutput: true
-				}
-			},
-			dev: {
-				tasks: [
-					'jshint',
-					'notify:jshint',
-					'sass:dev',
-					'notify:sass',
-					'autoprefixer:dev',
-					'concat:dev',
 					'watch',
 					'browserSync:dev',
 					'notify:server'
@@ -435,14 +419,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [
 		'concurrent:dev'
 	]);
-
-
-	// Register dev task with mobile debugging
-
-	grunt.registerTask('mobile', [
-		'concurrent:mobile'
-	]);
-
 
 	// Registered deploy tasks
 
