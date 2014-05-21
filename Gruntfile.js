@@ -315,8 +315,14 @@ module.exports = function(grunt) {
 					banner: '<%= noxie.banner %>',
 					debugInfo: true,		// enable if you want to use FireSass
 					lineNumbers: true,
-					sourcemap: false,		// Requires Sass 3.3.0, which can be installed with gem install sass --pre
-					style: 'expanded'
+					sourcemap: false,		// Requires Sass 3.3.0
+					style: 'expanded',
+					trace: false,
+					check: false,
+					precision: 3,
+					quiet: false,
+					compass: false,
+					noCache: false
 				}
 			},
 			deploy: {
