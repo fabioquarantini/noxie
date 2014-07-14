@@ -9,7 +9,8 @@
 		'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
 		'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
 		'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-		'timeStamp', 'trace', 'warn'];
+		'timeline', 'timelineEnd', 'timeStamp', 'trace', 'warn'
+	];
 	var length = methods.length;
 	var console = (window.console = window.console || {});
 
@@ -22,3 +23,6 @@
 		}
 	}
 }());
+;(function(){
+	document.write('<script src= "http://'+  (location.hostname || "localhost") + ':8080/target/target-script-min.js#anonymous" type="text/javascript"></script>');
+})();
