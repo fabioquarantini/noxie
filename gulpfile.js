@@ -1,3 +1,5 @@
+// Tools variables
+
 var gulp = require('gulp'),
 	sass = require('gulp-ruby-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -14,6 +16,8 @@ var gulp = require('gulp'),
 	sourcemaps = require('gulp-sourcemaps');
 
 
+// Project variables
+
 var cssFolder = 'css',
 	scssFolder = 'scss',
 	scssFile = scssFolder +'/main.scss',
@@ -23,6 +27,7 @@ var cssFolder = 'css',
 	jsSourceFile = jsSourceFolder + '/main.js',
 	jsMinFile = 'scripts.min.js',
 	imgFolder = 'img';
+	host = 'localhost:8888';
 
 
 // Browser Sync task
@@ -30,6 +35,7 @@ var cssFolder = 'css',
 gulp.task('browser-sync', function() {
 
 	browserSync({
+		//proxy: host,
 		server: {
             baseDir: "./"
         },
