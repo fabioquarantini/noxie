@@ -15,11 +15,15 @@ You may need this project if you need a simple and powerful starting kit for you
 
 **Noxie** in it's core uses:
 
-- [Grunt](http://gruntjs.com)
+- [Gulp](http://gulpjs.com)
 - [Html5Boilerplate](http://html5boilerplate.com)
 - [Sass](http://sass-lang.com)
 - [Bower](http://bower.io)
-- [Weinre](http://people.apache.org/~pmuellr/weinre/docs/latest)
+- [Autoprefixer](https://github.com/postcss/autoprefixer)
+- [BrowserSync](http://www.browsersync.io)
+- [Imagemin](https://github.com/imagemin/imagemin)
+- [UglifyJS](http://marijnhaverbeke.nl/uglifyjs)
+- [JSHint](http://jshint.com)
 
 ## Installation ##
 
@@ -33,8 +37,9 @@ git clone https://github.com/noxie/noxie.git
 
 ## Requirements 
 
+- [Sass](http://sass-lang.com)
 - [Nodejs](http://nodejs.org/)
-- [Gruntjs](http://gruntjs.com/)
+- [Gulp](http://gulpjs.com)
 
 Make sure you have the latest versions of these software. 
 
@@ -44,7 +49,7 @@ Make sure you have the latest versions of these software.
 #### Manual install
 With your terminal of choice go to your directory where you have downloaded Noxie and:
 ```
-npm install
+(sudo) npm install
 ```
 
 #### Automatic install
@@ -55,55 +60,7 @@ noxie.bat
 
 If you're on OSX then run:
 ```
-noxie.command
-```
-
-## Structure
-
-The basic structure of the project is given in the following way:
-
-```
-├── app
-│   ├── css/
-│   │	└── main.css
-│   ├── fonts/
-│   ├── img/
-│   ├── js/
-│   │ 	├── plugins
-│   │   │ 		└── console.js
-│   │	├──vendor
-│   │   │	├── jquery-1.10.2.min.js
-│   │   │	└── modernizr-2.6.2.min.js
-│   │ 	├──main.js
-│   │ 	└──plugins.js
-│   │
-│	├── scss/
-│   │	├─ partials/
-│   │   │	├── _base.scss
-│   │   │	├── _forms.scss
-│   │   │	├── _grids.scss
-│   │   │	├── _helpers.scss
-│   │   │	├── _normalize.scss
-│   │   │	└── _typography.scss
-│   │	├── vendor/
-│   │	├── main.scss
-│   │	└── print.scss
-│	├── .htaccess
-│	├── apple-touch-icon-precomposed.png
-│	├── favicon.ico
-│	└── index.html
-│	└── robots.txt
-├── .bowerrc
-├── .editorconfig
-├── .gitignore
-├── .jshintrc
-├── bower.json
-├── Gruntfile.js
-├── noxie.bat
-├── noxie.command
-├── LICENSE.md
-├── package.json
-└── README.md
+noxie.app
 ```
 
 ## Credits
