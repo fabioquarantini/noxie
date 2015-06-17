@@ -1,0 +1,83 @@
+/* Typography */
+
+$line-height: 1.4;
+$font-base: 16px;
+
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+
+/* Font stacks */
+
+$font-primary: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-secondary: "Helvetica Neue", Helvetica, Arial, sans-serif;;
+$font-monospace: "Andale Mono", AndaleMono, monospace;
+
+
+/* Directory */
+
+$dir-img: '../img';
+
+
+/* Colors */
+
+$white: #ffffff;
+$black: #000000;
+$light-grey: #eeeeee;
+$grey: #666666;
+$dark-grey: #222222;
+$light-blue: #b3d4fc;
+$gold: #ab9457;
+$light-green: #5cbc97;
+
+$color-primary: $grey;
+$color-secondary: $light-green;
+
+
+/* Media queries */
+
+$mq-xs: em(480px);
+$mq-sm: em(768px);
+$mq-md: em(992px);
+$mq-lg: em(1200px);
+
+
+/* Buttons */
+
+$btn-radius: em(4px);
+$btn-size-ratio: 1.2;
+$btn-background: (
+	primary: $color-secondary,
+	secondary: #7f8c8d,
+	success: #27ae60,
+	danger: #c0392b,
+	warning: #f1c40f
+);
+$btn-background-hover: (
+	primary: $color-primary,
+	secondary: #7f8c8d,
+	success: #000,
+	danger: #c0392b,
+	warning: #f1c40f
+);
+$btn-text-color: (
+	primary: $white,
+	secondary: $white,
+	success: #27ae60,
+	danger: #c0392b,
+	warning: #f1c40f
+);
+$btn-text-color-hover: (
+	primary: $white,
+	secondary: #7f8c8d,
+	success: #27ae60,
+	danger: #c0392b,
+	warning: #f1c40f
+);
+
+
+
+/* Debug */
+
+$debug-mq: true;

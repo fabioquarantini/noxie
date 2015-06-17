@@ -1,3 +1,39 @@
+/* Align */
+
+%alignnone,
+.alignnone {
+	margin: em(5px) em(20px) em(20px) 0;
+}
+
+%aligncenter,
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	clear: both;
+}
+
+%alignleft,
+.alignleft {
+	float: left;
+	margin-right: em(21px);
+}
+
+%alignright,
+.alignright {
+	float: right;
+	margin-left: em(21px);
+}
+
+
+/* Centered text */
+
+%centered,
+.centered {
+	text-align: center;
+}
+
+
 /* Image replacement */
 
 %ir,
@@ -31,13 +67,13 @@
 %visuallyhidden,
 .visuallyhidden {
 	border: 0;
-	clip: rect(0 0 0 0);
-	height: em(1px);
-	margin: - em(1px);
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: em(1px);
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 
 	/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard */
 

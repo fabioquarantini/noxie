@@ -1,55 +1,45 @@
-/*  ==========================================================================
-	Imports
-	========================================================================== */
+@charset "UTF-8";
 
-@import "base/variables";
-@import "base/mixins";
-@import "base/normalize";
-@import "base/typography";
-@import "base/grids";
-@import "base/forms";
-@import "base/buttons";
-@import "base/placeholders";
+@import
+
+// Helpers
+
+"helpers/functions",
+"helpers/mixins",
 
 
-*,
-*:before,
-*:after {
-	box-sizing:border-box;
-}
+// Settings
 
-/* Remove text-shadow in selection highlight */
-::selection {
- 	background: #b3d4fc;
-	text-shadow: none;
-}
+"base/settings",
 
 
-/* Remove the gap between images, videos, audio and canvas and the bottom of their containers */
-audio,
-canvas,
-img,
-svg,
-video {
-	vertical-align: middle;
-}
-/*  ==========================================================================
-	My styles
-	========================================================================== */
+// Base
+
+"base/normalize",
+"base/base",
+"base/typography",
+"base/links",
+"base/lists",
+"base/forms",
+"base/tables",
+"base/buttons",
+"base/debug",
 
 
+// Vendors
 
 
+// Layouts
 
 
+// Blocks
 
 
+// Placeholders
+
+"helpers/placeholders",
 
 
-/*  ==========================================================================
-	Print styles
-	========================================================================== */
+// Print
 
-@media print {
-	@import "base/print";
-}
+"base/print";
