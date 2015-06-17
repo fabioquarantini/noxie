@@ -25,6 +25,16 @@ You may need this project if you need a simple and powerful starting kit for you
 - [UglifyJS](http://marijnhaverbeke.nl/uglifyjs)
 - [JSHint](http://jshint.com)
 
+
+## Requirements 
+
+- [Nodejs](http://nodejs.org/) check with ```node --version```
+- [Sass](http://sass-lang.com) check with ```sass --version```
+- [Gulp](http://gulpjs.com) check with ```gulp --version```
+
+Make sure you have the latest versions of these software. 
+
+
 ## Installation ##
 
 Download [zip file](https://github.com/noxie/noxie/archive/master.zip)
@@ -34,14 +44,6 @@ or
 ```
 git clone https://github.com/noxie/noxie.git
 ```
-
-## Requirements 
-
-- [Sass](http://sass-lang.com)
-- [Nodejs](http://nodejs.org/)
-- [Gulp](http://gulpjs.com)
-
-Make sure you have the latest versions of these software. 
 
 ## Usage 
 
@@ -53,12 +55,12 @@ With your terminal of choice go to your directory where you have downloaded Noxi
 ```
 
 #### Automatic install
-If you're on Windows run:
+If you're on Windows click on:
 ```
 noxie.bat
 ```
 
-If you're on OSX then run:
+If you're on OSX then click on:
 ```
 noxie.app
 ```
