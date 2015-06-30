@@ -3,19 +3,16 @@
 @import
 
 // Helpers
-
 "helpers/functions",
 "helpers/mixins",
 
 
 // Settings
-
 "base/settings",
 
 
 // Base
-
-"base/normalize",
+"vendors/normalize",
 "base/base",
 "base/typography",
 "base/links",
@@ -36,10 +33,8 @@
 
 
 // Placeholders
-
 "helpers/placeholders",
 
 
 // Print
-
 "base/print";
