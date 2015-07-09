@@ -1,4 +1,4 @@
-# EditorConfig: http://editorconfig.org
+# EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs.: http://editorconfig.org
 
 # Set to "true" to stop .editorconfig files search on current file.
 root = true
@@ -26,7 +26,6 @@ trim_trailing_whitespace = true
 
 # Set to "true" ensure file ends with a newline when saving and "false" to ensure it doesn't.
 insert_final_newline = true
-
 
 # Style for Markdown files
 [*.md]
