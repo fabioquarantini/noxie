@@ -8,20 +8,16 @@ jQuery( document ).ready( function( $ ) {
 
 		DOMready: function() {
 
-			if ($('.selector').length > 0) {
+			if ( $('.selector').length > 0 ) {
 				siteInit.demoFunction();
 			}
 
 		},
 
-
 		// Demo function
-
 		demoFunction: function() {
 
 		}
-
-
 
 	};
 
