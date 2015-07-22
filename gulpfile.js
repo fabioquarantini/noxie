@@ -49,7 +49,7 @@ gulp.task('browser-sync', function() {
 		open: true,
 		notify: true,
 		scrollProportionally: true,
-		injectChanges: true,
+		injectChanges: false,
 	});
 
 });
