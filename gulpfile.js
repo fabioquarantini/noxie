@@ -1,3 +1,5 @@
+'use strict';
+
 // Tools variables
 
 var gulp = require('gulp'),
