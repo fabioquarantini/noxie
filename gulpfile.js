@@ -29,7 +29,7 @@ var cssFolder = 'css',
 	jsVendorFolder = jsSourceFolder + '/vendor',
 	jsSourceFile = jsSourceFolder + '/main.js',
 	jsMinFile = 'scripts.min.js',
-	imgFolder = 'img';
+	imgFolder = 'img',
 	host = 'localhost:8888';
 
 
