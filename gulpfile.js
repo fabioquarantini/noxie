@@ -1,7 +1,6 @@
 'use strict';
 
 // Tools variables
-
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -21,7 +20,6 @@ var gulp = require('gulp'),
 
 
 // Project variables
-
 var cssFolder = 'css',
 	scssFolder = 'scss',
 	scssFile = scssFolder +'/main.scss',
@@ -36,7 +34,6 @@ var cssFolder = 'css',
 
 
 // Browser Sync task
-
 gulp.task('browser-sync', function() {
 
 	browserSync({
@@ -60,7 +57,6 @@ gulp.task('browser-sync', function() {
 
 
 // Style task
-
 gulp.task('styles', function() {
 
 	gulp.src( scssFile )
@@ -103,7 +99,6 @@ gulp.task('styles', function() {
 
 
 // Scripts task
-
 gulp.task('scripts', function() {
 
 	var onError = function(err) {
@@ -133,7 +128,6 @@ gulp.task('scripts', function() {
 
 
 // Hint task
-
 gulp.task('hint', function() {
 
 	return gulp.src( jsSourceFolder + '/*.js')
@@ -141,8 +135,7 @@ gulp.task('hint', function() {
 		.pipe(jshint.reporter('fail'))
 			.on('error', notify.onError({
 				title: 'Hint',
-				message: 'Check terminal for errors',
-				icon: 'apple-touch-icon.png',
+				message: "<%= error.message %>",
 				onLast: true
 			})
 		)
@@ -152,7 +145,6 @@ gulp.task('hint', function() {
 
 
 // Images task
-
 gulp.task('images', function() {
 
 	return gulp.src( imgOriginalsFolder + '/*' )
@@ -175,7 +167,6 @@ gulp.task('images', function() {
 
 
 // Watch task
-
 gulp.task('watch', function() {
 
 	gulp.watch( scssFolder + '/**/*.{scss,sass}', ['styles']);
@@ -192,7 +183,6 @@ gulp.task('watch', function() {
 
 
 // Default task
-
 gulp.task('default', ['browser-sync'], function() {
 
 	gulp.start('styles', 'hint', 'scripts', 'images', 'watch');
