@@ -34,6 +34,7 @@
 		"gulp-filter": "^3.0.1",
 		"gulp-jshint": "^1.11.2",
 		"gulp-minify-css": "^1.2.1",
+		"gulp-newer": "^0.5.1",
 		"gulp-notify": "^2.2.0",
 		"gulp-plumber": "^1.0.1",
 		"gulp-sass": "^2.0.4",
