@@ -1,40 +1,31 @@
-@charset "UTF-8";
-
 @import
 
 // Helpers
-"helpers/functions",
-"helpers/mixins",
-
+'helpers/functions',
+'helpers/mixins',
 
 // Settings
-"base/settings",
-
+'base/settings',
 
 // Base
-"vendors/normalize",
-"base/base",
-"base/typography",
-"base/links",
-"base/lists",
-"base/forms",
-"base/tables",
-"base/buttons",
-"base/debug",
-
+'vendors/normalize',
+'base/base',
+'base/typography',
+'base/links',
+'base/lists',
+'base/forms',
+'base/tables',
+'base/buttons',
+'base/debug',
 
 // Vendors
 
-
 // Layouts
-
 
 // Blocks
 
-
 // Placeholders
-"helpers/placeholders",
-
+'helpers/placeholders',
 
 // Print
-"base/print";
+'base/print';
