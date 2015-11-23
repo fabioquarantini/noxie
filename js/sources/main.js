@@ -8,9 +8,23 @@ jQuery( document ).ready( function( $ ) {
 
 		DOMready: function() {
 
+			if ( $('.slider--primary').length > 0 ) {
+				siteInit.slider();
+			}
+
 			if ( $('[href$=".jpg"], [href$=".png"], [href$=".gif"]').length > 0 ) {
 				siteInit.modal();
 			}
+
+		},
+
+		// Slider
+		slider: function() {
+
+			$(".slider--primary").slick({
+				dots: true,
+				speed: 500
+			});
 
 		},
 
