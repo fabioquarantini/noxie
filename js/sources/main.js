@@ -8,16 +8,28 @@ jQuery( document ).ready( function( $ ) {
 
 		DOMready: function() {
 
-			if ( $('.selector').length > 0 ) {
-				siteInit.demoFunction();
+			if ( $('[href$=".jpg"], [href$=".png"], [href$=".gif"]').length > 0 ) {
+				siteInit.modal();
 			}
 
 		},
 
-		// Demo function
-		demoFunction: function() {
+		// Modal
+		modal: function() {
 
-		}
+			$('[href$=".jpg"], [href$=".png"], [href$=".gif"]').colorbox({
+				transition: 'elastic',
+				speed: 400,
+				opacity: 0.8,
+				slideshow: true,
+				slideshowSpeed: 4000,
+				itemsnitialWidth: 50,
+				initialHeight: 50,
+				maxWidth: '90%',
+				maxHeight: '90%',
+			});
+
+		},
 
 	};
 
