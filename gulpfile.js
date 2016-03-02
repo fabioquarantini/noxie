@@ -9,7 +9,6 @@ var gulp = require('gulp'),
 	jshint = require('gulp-jshint'),
 	stylish = require('jshint-stylish'),
 	uglify = require('gulp-uglify'),
-	imagemin = require('gulp-imagemin'),
 	filter = require('gulp-filter'),
 	concat = require('gulp-concat'),
 	newer = require('gulp-newer'),
@@ -27,8 +26,6 @@ var cssFolder = 'css',
 	jsSourcesFolder = jsFolder + '/sources',
 	jsMainFile = jsSourcesFolder + '/main.js',
 	jsMinFile = 'scripts.min.js',
-	imgFolder = 'img',
-	imgOriginalsFolder = imgFolder + '/originals',
 	host = 'localhost:8888';
 
 
@@ -143,28 +140,6 @@ gulp.task('hint', function() {
 });
 
 
-// Images task
-gulp.task('images', function() {
-
-	return gulp.src( imgOriginalsFolder + '/*' )
-		.pipe(newer( imgFolder ))
-		.pipe(imagemin({
-			optimizationLevel: 4,
-			progressive: true,
-			interlaced: true
-		}))
-		.pipe(gulp.dest( imgFolder ))
-		.pipe(reload({stream: true}))
-		.pipe(notify({
-			title: 'Images',
-			message: 'Task complete',
-			icon: 'apple-touch-icon.png',
-			onLast: true
-		}));
-
-});
-
-
 // Watch task
 gulp.task('watch', function() {
 
@@ -174,8 +149,6 @@ gulp.task('watch', function() {
 
 	gulp.watch([ jsMainFile ], ['hint']);
 
-	gulp.watch( imgOriginalsFolder + '/*', ['images' , reload ]);
-
 	gulp.watch( '**/*.html', reload );
 
 });
@@ -184,6 +157,6 @@ gulp.task('watch', function() {
 // Default task
 gulp.task('default', ['browser-sync'], function() {
 
-	gulp.start('styles', 'hint', 'scripts', 'images', 'watch');
+	gulp.start('styles', 'hint', 'scripts', 'watch');
 
 });
