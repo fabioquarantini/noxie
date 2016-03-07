@@ -15,13 +15,11 @@ You may need this project if you need a simple and powerful starting kit for you
 
 **Noxie** in it's core uses:
 
-- [Gulp](http://gulpjs.com)
 - [Html5Boilerplate](http://html5boilerplate.com)
 - [Sass](http://sass-lang.com)
-- [Bower](http://bower.io)
+- [Gulp](http://gulpjs.com)
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
 - [BrowserSync](http://www.browsersync.io)
-- [Imagemin](https://github.com/imagemin/imagemin)
 - [UglifyJS](http://marijnhaverbeke.nl/uglifyjs)
 - [JSHint](http://jshint.com)
 
