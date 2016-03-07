@@ -8,7 +8,7 @@ jQuery( document ).ready( function( $ ) {
 
 		DOMready: function() {
 
-			if ( $('.slider--primary').length > 0 ) {
+			if ( $('.js-slider--primary').length > 0 ) {
 				siteInit.slider();
 			}
 
