@@ -1,0 +1,40 @@
+html,
+body {
+	font-family: $font-primary;
+	color: $color-black;
+	min-height: 100%;
+	// height: 100%;
+	// overflow-y: scroll; // Scrollbars always visible
+}
+
+*,
+:before,
+:after {
+	box-sizing: border-box;
+}
+
+::selection {
+	//background-color: $color-secondary;
+	text-shadow: none;
+	color: inherit;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle;
+}
+
+img,
+video,
+object {
+	height: auto;
+	max-width: 100%;
+}
+
+figure {
+	margin: 0;
+}

@@ -2,7 +2,9 @@
 # Specific for project
 #########################################
 
-# Write here
+demo
+.sass-lint.yml
+.editorconfig
 
 
 #########################################
@@ -71,9 +73,14 @@ sitemap.*
 #########################################
 
 sftp-config.json
+*.sublime-workspace
+
+#########################################
+# Atom
+#########################################
+
 .ftpconfig
 .remote-sync.json
-*.sublime-workspace
 
 
 #########################################

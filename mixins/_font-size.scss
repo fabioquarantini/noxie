@@ -1,0 +1,25 @@
+// Responsive typography
+@mixin font-size( $font-size-map, $font-size-breakpoints: $breakpoints, $font-size-margin: false ) {
+
+	@each $font-size-breakpoint, $font-size in $font-size-map {
+
+		@if $font-size-breakpoint == null {
+
+			@include make-font-size( $font-size, $font-size-margin );
+
+		} @else {
+
+			// If $font-size is a key that exists in $font-size-breakpoints, use the value
+			@if map-has-key( $font-size-breakpoints, $font-size-breakpoint ) {
+				$font-size-breakpoint: map-get( $font-size-breakpoints, $font-size-breakpoint );
+			}
+
+			@media screen and ( min-width: $font-size-breakpoint ) {
+				@include make-font-size( $font-size, $font-size-margin );
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,97 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-family: $font-primary;
+	font-weight: bold;
+}
+
+h1 {
+	@include font-size( $font-size-map-6, $font-size-margin: true );
+}
+
+h2 {
+	@include font-size( $font-size-map-5, $font-size-margin: true );
+}
+
+h3 {
+	@include font-size( $font-size-map-4, $font-size-margin: true );
+}
+
+h4 {
+	@include font-size( $font-size-map-3, $font-size-margin: true );
+}
+
+h5 {
+	@include font-size( $font-size-map-2, $font-size-margin: true );
+}
+
+h6 {
+	@include font-size( $font-size-map-1, $font-size-margin: true );
+}
+
+p {
+	@include font-size( $font-size-map-0, $font-size-margin: true );
+	padding: 0;
+	margin-top: 0;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+i,
+em {
+	font-style: italic;
+}
+
+small,
+kbd,
+abbr,
+code {
+	display: inline-block;
+	vertical-align: top;
+}
+
+pre {
+	margin: rhythm(1) 0;
+}
+
+small {
+	@include font-size( $font-size-map--1 );
+}
+
+blockquote {
+
+	border-left: 1px solid $color-grey;
+	margin: 0 0 rhythm(1) 0;
+	display: block;
+	padding: rhythm(1) 0 rhythm(1) rhythm(1);
+	font-style: italic;
+
+	p {
+		@include font-size( $font-size-map-0, $font-size-margin: true );
+		display: inline;
+	}
+
+	cite {
+		@include font-size( $font-size-map--1 );
+		display: block;
+	}
+
+}
+
+cite {
+
+	font-style: italic;
+
+	&:before {
+		content: '\2014 \00A0';
+	}
+
+}

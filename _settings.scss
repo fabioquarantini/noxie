@@ -1,0 +1,188 @@
+// Colors
+$color-primary: #7a92ba;
+$color-secondary: #61697d;
+$color-success: #a2bf8a;
+$color-warning: #eccc87;
+$color-error: #c16069;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-grey: #cbcbcb;
+
+// Breakpoints
+$breakpoints: (
+	xs: 480px,
+	sm: 768px,
+	md: 992px,
+	lg: 1200px,
+	xl: 1440px
+);
+
+// Font stacks
+$font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-secondary: Georgia, Times, Times New Roman, serif;
+$font-monospace: "Andale Mono", AndaleMono, monospace;
+
+// Typography
+$base-font-size: 16px;
+$base-line-height: 24px;
+@include establish-baseline;
+
+// Modular Scale (www.modularscale.com)
+$modularscale: (
+	base: $base-font-size,
+	ratio: $minor-third
+);
+
+$font-size--2: ms(-2);
+$font-size--1: ms(-1);
+$font-size-0: ms(0);
+$font-size-1: ms(1);
+$font-size-2: ms(2);
+$font-size-3: ms(3);
+$font-size-4: ms(4);
+$font-size-5: ms(5);
+$font-size-6: ms(6);
+
+// Responsive typography map
+$font-size-map--2: (
+	null: ($font-size--2, 1),
+	xs: ($font-size--2, 1),
+	sm: ($font-size--2, 1),
+	md: ($font-size--2, 1),
+	lg: ($font-size--2, 1),
+	xl: ($font-size--2, 1)
+);
+
+$font-size-map--1: (
+	null: ($font-size--1, 1),
+	xs: ($font-size--1, 1),
+	sm: ($font-size--1, 1),
+	md: ($font-size--1, 1),
+	lg: ($font-size--1, 1),
+	xl: ($font-size--1, 1)
+);
+
+$font-size-map-0: (
+	null: ($font-size-0, 1),
+	xs: ($font-size-0, 1),
+	sm: ($font-size-0, 1),
+	md: ($font-size-0, 1),
+	lg: ($font-size-0, 1),
+	xl: ($font-size-0, 1)
+);
+
+$font-size-map-1: (
+	null: ($font-size-1, 1),
+	xs: ($font-size-1, 1),
+	sm: ($font-size-1, 1),
+	md: ($font-size-1, 1),
+	lg: ($font-size-1, 1),
+	xl: ($font-size-1, 1)
+);
+
+$font-size-map-2: (
+	null: ($font-size-2, 1),
+	xs: ($font-size-2, 1),
+	sm: ($font-size-2, 1),
+	md: ($font-size-2, 1),
+	lg: ($font-size-2, 1),
+	xl: ($font-size-2, 1)
+);
+
+$font-size-map-3: (
+	null: ($font-size-3, 1.5),
+	xs: ($font-size-3, 1.5),
+	sm: ($font-size-3, 1.5),
+	md: ($font-size-3, 1.5),
+	lg: ($font-size-3, 1.5),
+	xl: ($font-size-3, 1.5)
+);
+
+$font-size-map-4: (
+	null: ($font-size-4, 1.5),
+	xs: ($font-size-4, 1.5),
+	sm: ($font-size-4, 1.5),
+	md: ($font-size-4, 1.5),
+	lg: ($font-size-4, 1.5),
+	xl: ($font-size-4, 1.5)
+);
+
+$font-size-map-5: (
+	null: ($font-size-5, 2),
+	xs: ($font-size-5, 2),
+	sm: ($font-size-5, 2),
+	md: ($font-size-5, 2),
+	lg: ($font-size-5, 2),
+	xl: ($font-size-5, 2)
+);
+
+$font-size-map-6: (
+	null: ($font-size-6, 2),
+	xs: ($font-size-6, 2),
+	sm: ($font-size-6, 2),
+	md: ($font-size-6, 2),
+	lg: ($font-size-6, 2),
+	xl: ($font-size-6, 2)
+);
+
+// Grid
+@include gridle_setup((
+	context: 12,			// number of columns in your grid
+	gutter-width: 20px,		// size of the gutters
+	states-classes: false,	// if we need to generate the states classes
+	classes: true			// is used to generate all the classes
+));
+
+@each $key, $value in $breakpoints {
+	@include gridle_register_state(
+		$key, ( min-width : $value )
+	);
+}
+
+// @include gridle_register_clear_each( 4 , left );
+
+@include gridle_generate_classes();
+
+// Buttons
+$button-radius: em(5px);
+$button-border: 1px;
+$button-padding-top: 0.5;
+$button-padding-right: 1;
+$button-padding-bottom: 0.5;
+$button-padding-left: 1;
+$button: (	// ('static color', 'hover color')
+	default: (
+		background: ($color-primary, $color-secondary),
+		text: ($color-white, $color-black),
+		border: ($color-primary, $color-secondary)
+	),
+	secondary: (
+		background: ($color-secondary, $color-primary),
+		text: ($color-white, $color-black),
+		border: ($color-secondary, $color-primary)
+	),
+	success: (
+		background: ($color-success, $color-primary),
+		text: ($color-white, $color-black),
+		border: ($color-success, $color-primary)
+	),
+	warning: (
+		background: ($color-warning, $color-primary),
+		text: ($color-white, $color-black),
+		border: ($color-warning, $color-primary)
+	),
+	error: (
+		background: ($color-error, $color-primary),
+		text: ($color-white, $color-black),
+		border: ($color-error, $color-primary)
+	)
+);
+
+// Paths
+$path-img: '../img/';
+$path-fonts: '../fonts/';
+
+// Debug
+$debug-breakpoints: false;
+$debug-rhythm: false;
+$debug-css: false;

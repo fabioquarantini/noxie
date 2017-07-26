@@ -1,0 +1,153 @@
+.button {
+
+	display: inline-block;
+	margin: 0 0 rhythm(1) 0;
+	padding: rhythm($button-padding-top) rhythm($button-padding-right) rhythm($button-padding-bottom) rhythm($button-padding-left);
+	@include font-size( $font-size-map-0, $font-size-margin: true );
+	border: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: all .15s;
+	text-decoration: none;
+
+	@each $key, $value in $button {
+
+		@if $key == default {
+
+			background-color: nth( map-get($value, background), 1 );
+			color: nth( map-get($value, text), 1 );
+			border-color: nth( map-get($value, border), 1 );
+
+			&:hover,
+			&--active {
+				background-color: nth( map-get($value, background), 2 );
+				color: nth( map-get($value, text), 2 );
+				border-color: nth( map-get($value, border), 2 );
+
+				&.button--bordered {
+					color: nth( map-get($value, border), 2 );
+					border-color: nth( map-get($value, border), 2 );
+				}
+			}
+
+			&.button--bordered {
+				color: nth( map-get($value, border), 1 );
+				border-color: nth( map-get($value, border), 1 );
+			}
+
+		}
+
+	}
+
+	&:visited {
+
+	}
+
+	&:hover {
+
+	}
+
+	&:active {
+		outline: none;
+	}
+
+	&--small {
+		padding-top: rhythm(0.25);
+		padding-bottom: rhythm(0.25);
+		margin-top: rhythm(0.25);
+		margin-bottom: rhythm(1.25);
+	}
+
+	&--large {
+		padding-top: rhythm( $button-padding-top * 2 );
+		padding-bottom: rhythm( $button-padding-top * 2 );
+	}
+
+	&--bold {
+		font-weight: bold;
+	}
+
+	&--full {
+		width: 100%;
+		padding-right: 0;
+		padding-left: 0;
+		text-align: center;
+	}
+
+	&--centered {
+		display: table;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&--uppercase {
+		text-transform: uppercase;
+	}
+
+	&--rounded {
+		border-radius: $button-radius;
+	}
+
+	&--pill {
+		border-radius: 1000px;
+	}
+
+	&--float {
+		position: relative;
+		transition: all 0.2s ;
+		box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+
+		&:hover {
+			transform: scale(1.1,1.1);
+			box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
+		}
+
+	}
+
+	&--bordered {
+		@include rhythm-borders( 1px, 0.5 );
+		@include apply-side-rhythm-border(left, 1px, 1);
+		@include apply-side-rhythm-border(right, 1px, 1);
+		background-color: transparent !important;
+	}
+
+	&[disabled],
+	&.is-disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+
+	@each $key, $value in $button {
+
+		@if $key != default {
+
+			&--#{$key} {
+				background-color: nth( map-get($value, background), 1 );
+				color: nth( map-get($value, text), 1 );
+				border-color: nth( map-get($value, border), 1 );
+
+				&.button--bordered {
+					color: nth( map-get($value, border), 1 );
+					border-color: nth( map-get($value, border), 1 );
+				}
+
+			}
+
+			&--#{$key}:hover,
+			&--#{$key}--active {
+				background-color: nth( map-get($value, background), 2 );
+				color: nth( map-get($value, text), 2 );
+				border-color: nth( map-get($value, border), 2 );
+
+				&.button--bordered {
+					color: nth( map-get($value, border), 2 );
+					border-color: nth( map-get($value, border), 2 );
+				}
+			}
+
+		}
+
+	}
+
+}

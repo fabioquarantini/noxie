@@ -1,0 +1,42 @@
+// Unordered/Ordered list
+ul,
+ol {
+	@include font-size( $font-size-map-0, $font-size-margin: true );
+	padding: 0;
+	margin-top: 0;
+	margin-left: rhythm(0.75);
+
+	ul,
+	ol {
+		margin-bottom: 0;
+		list-style-type: inherit;
+	}
+
+	ul {
+		list-style-type: circle;
+
+		ul {
+			list-style-type: square;
+		}
+	}
+}
+
+// Definition list
+dl {
+	@include font-size( $font-size-map-0, $font-size-margin: true );
+	padding: 0;
+	margin-top: 0;
+}
+
+dt,
+dd {
+	margin-bottom: rhythm(1);
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin-left: 0;
+}

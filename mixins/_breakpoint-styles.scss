@@ -1,0 +1,20 @@
+// Generate styles with breakpoits
+@mixin breakpoint-styles ( $selector, $operator : '>=' ) {
+
+	#{$selector} {
+		@content;
+	}
+
+	@each $key, $value in $breakpoints {
+
+		@include media('#{$operator}#{$key}') {
+
+			#{$selector}\@#{$key} {
+				@content;
+			}
+
+		}
+
+	}
+
+}
