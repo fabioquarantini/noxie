@@ -38,3 +38,13 @@
 @include breakpoint-styles('.float-none') {
 	float: none;
 }
+
+// Column
+@for $i from 0 through 4 {
+
+	@include breakpoint-styles('.column--#{$i}') {
+		column-count: $i;
+		column-gap: rhythm(1);
+	}
+
+}
