@@ -4,6 +4,11 @@
 	max-width: map-get($breakpoints, xl);
 }
 
+.container--full-width {
+	@extend .full-width;
+	max-width: none;
+}
+
 .container--fluid {
 	max-width: none;
 }
