@@ -323,11 +323,16 @@ select {
 
 .form__select--multiple,
 select[multiple] {
-	height: auto;
-	padding: 0!important;
 	@include rhythm-borders( 1px, 1 );
 	border-color: $color-grey;
-	height: rhythm(7);
+	padding: 0 !important;
+	height: rhythm(5);
+
+	option {
+		height: rhythm(1.5);
+		padding-top: rhythm(0.5);
+	}
+
 }
 
 // Select custom ( Wrap the select with this class )
