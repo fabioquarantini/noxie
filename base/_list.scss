@@ -28,15 +28,12 @@ dl {
 	margin-top: 0;
 }
 
-dt,
-dd {
-	margin-bottom: rhythm(1);
-}
-
 dt {
 	font-weight: bold;
+	margin-bottom: 0;
 }
 
 dd {
-	margin-left: 0;
+	margin-left: rhythm(1);
+	margin-bottom: rhythm(1);
 }
