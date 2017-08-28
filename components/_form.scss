@@ -331,14 +331,14 @@ select[multiple] {
 }
 
 // Select custom ( Wrap the select with this class )
-.form__group--custom-select {
+.form__group--select-custom {
 
 	position: relative;
 
 	&:before {
 		content: "";
 		position: absolute;
-		top: 40%;
+		top: 42%;
 		right: 10px;
 		@include triangle( bottom, $color-grey, 6px )
 	}
