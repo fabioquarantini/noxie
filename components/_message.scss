@@ -8,7 +8,8 @@
 	color: $color-primary;
 	border-color: $color-primary;
 
-	&.has-error {
+	&.has-error,
+	.has-error & {
 		border-color: $color-error;
 		color: $color-error;
 		.message__close {
@@ -16,7 +17,8 @@
 		}
 	}
 
-	&.has-success {
+	&.has-success,
+	.has-success & {
 		border-color: $color-success;
 		color: $color-success;
 		.message__close {
@@ -24,7 +26,8 @@
 		}
 	}
 
-	&.has-warning {
+	&.has-warning,
+	.has-warning & {
 		border-color: $color-warning;
 		color: $color-warning;
 		.message__close {
