@@ -63,21 +63,25 @@
 		background-color: $color-primary;
 		color: $color-white;
 
+		.has-error &,
 		&.has-error {
 			background-color: $color-error;
 			color: $color-white;
 		}
 
+		.has-success &,
 		&.has-success {
 			background-color: $color-success;
 			color: $color-white;
 		}
 
+		.has-warning &,
 		&.has-warning {
 			background-color: $color-warning;
 			color: $color-white;
 		}
 
+		.message--secondary &,
 		&.message--secondary {
 			color: $color-white;
 			background-color: $color-secondary;
