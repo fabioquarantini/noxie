@@ -20,6 +20,22 @@ legend {
 .form__label,
 label {
 	display: block;
+
+	&.has-error,
+	.has-error & {
+		color: $color-error;
+	}
+
+	&.has-success,
+	.has-success & {
+		color: $color-success;
+	}
+
+	&.has-warning,
+	.has-warning & {
+		color: $color-warning;
+	}
+
 }
 
 .form__input,
@@ -65,6 +81,21 @@ select {
 			outline: none;
 		}
 
+	}
+
+	&.has-error,
+	.has-error & {
+		border-color: $color-error;
+	}
+
+	&.has-success,
+	.has-success & {
+		border-color: $color-success;
+	}
+
+	&.has-warning,
+	.has-warning & {
+		border-color: $color-warning;
 	}
 }
 
