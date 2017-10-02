@@ -21,11 +21,11 @@
 }
 
 @include breakpoint-styles('.centered--horizontal') {
-	@include centered( $horizontal: true, $vertical: false );
+	@include centered( true, false );
 }
 
 @include breakpoint-styles('.centered--vertical') {
-	@include centered( $horizontal: false, $vertical: true );
+	@include centered( false, true );
 }
 
 // Fit an element to the dimensions of its parent
