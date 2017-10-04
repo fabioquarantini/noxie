@@ -1,0 +1,54 @@
+.footer {
+	padding: rhythm(2);
+	background: $color-primary;
+	margin-bottom: rhythm(1);
+}
+
+.footer__bottom {
+	margin-top: rhythm(1);
+}
+
+.footer__column {
+	margin-bottom: rhythm(1);
+	@include media('>=md') {
+		margin:0;
+	}
+}
+
+.footer-organization {
+	font-size: $font-size--1;
+	color:$color-white;
+	@include media('>=md') {
+		color:$color-secondary;
+	}
+}
+
+.footer-organization__phone {
+	display: block;
+	color:$color-black;
+	@include media('>=md') {
+		display: inline-block;
+		margin-left: rhythm(2);
+		&:after {
+			content:"|";
+			color:$color-secondary;
+			left:rhythm(1);
+			right:rhythm(1);
+		}
+	}
+}
+
+.footer-organization__mail {
+	display: block;
+	color:$color-black;
+	@include media('>=md') {
+		display: inline-block;
+	}
+}
+
+.footer-organization__phone-number, .footer-organization__mail-address {
+	color: $color-white;
+	@include media('>=md') {
+		color: $color-secondary;
+	}
+}
