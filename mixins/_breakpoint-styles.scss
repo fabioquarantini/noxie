@@ -1,5 +1,5 @@
-// Generate styles with breakpoits
-@mixin breakpoint-styles ( $selector, $operator : '>=' ) {
+// Generate styles with breakpoints
+@mixin breakpoint-styles ( $selector ) {
 
 	#{$selector} {
 		@content;
@@ -7,12 +7,25 @@
 
 	@each $key, $value in $breakpoints {
 
-		@include media('#{$operator}#{$key}') {
+		@if map-get-next($breakpoints,$key, false, key) != false  {
 
-			#{$selector}\@#{$key} {
-				@content;
+			@include media('>=#{$key}', '<#{map-get-next($breakpoints,$key, false, key)}') {
+
+				#{$selector}\@#{$key} {
+					@content;
+				}
+
 			}
 
+		} @else {
+
+			@include media('>#{$key}') {
+
+				#{$selector}\@#{$key} {
+					@content;
+				}
+
+			}
 		}
 
 	}
