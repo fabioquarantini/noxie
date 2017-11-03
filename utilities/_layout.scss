@@ -40,7 +40,7 @@
 }
 
 // Column
-@for $i from 1 through 4 {
+@for $i from 0 through 4 {
 
 	@include breakpoint-styles('.column--#{$i}') {
 		column-count: $i;
